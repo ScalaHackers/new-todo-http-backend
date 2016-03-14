@@ -32,7 +32,7 @@ class TodoStorageActor extends Actor with TodoTable {
   private var workers = Map[String, WorkerState]()
 
   // workState is event sourced
-  //private var workState = WorkState.empty
+  private var workState = WorkState.empty
 
   def receive = {
     case JobProtocol.RegisterWorker(workerId) =>
@@ -42,7 +42,7 @@ class TodoStorageActor extends Actor with TodoTable {
         log.info("Worker registered: {}", workerId)
         workers += (workerId -> WorkerState(sender(), status = Idle))
         if (workState.hasWork)
-          sender() ! MasterWorkerProtocol.WorkIsReady
+          sender() ! JobProtocol.WorkIsReady
       }
 
     case Get =>
