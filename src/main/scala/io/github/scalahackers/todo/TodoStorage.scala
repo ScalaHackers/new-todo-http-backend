@@ -1,6 +1,9 @@
 package io.github.scalahackers.todo
 
 import akka.actor._
+import com.datainc.pipeline.workflow.TodoManagerActor.WorkerState
+import com.datainc.pipeline.workflow.TodoManagerActor.WorkerState
+import com.datainc.pipeline.workflow.{MasterWorkerProtocol, WorkState}
 
 import scala.concurrent.Await
 import scala.concurrent.duration.Duration
@@ -25,7 +28,23 @@ class TodoStorageActor extends Actor with TodoTable {
   import TodoStorageActor._
   import driver.api._
 
+  // workers state is not event sourced
+  private var workers = Map[String, WorkerState]()
+
+  // workState is event sourced
+  //private var workState = WorkState.empty
+
   def receive = {
+    case JobProtocol.RegisterWorker(workerId) =>
+      if (workers.contains(workerId)) {
+        workers += (workerId -> workers(workerId).copy(ref = sender()))
+      } else {
+        log.info("Worker registered: {}", workerId)
+        workers += (workerId -> WorkerState(sender(), status = Idle))
+        if (workState.hasWork)
+          sender() ! MasterWorkerProtocol.WorkIsReady
+      }
+
     case Get =>
       sender() ! Await.result(db.run(todos.result), Duration.Inf)
     case Get(id) =>
@@ -35,9 +54,13 @@ class TodoStorageActor extends Actor with TodoTable {
         case Some(todo) =>
           Await.result(db.run(todos += todo), Duration.Inf)
           sender() ! todo
-          // hd: create a new TodoWorker
-          val todoWorkerOne = TodoWorker(_)
-          todoWorkerOne ! todo
+          // hd: to find which worker is free
+          workers.foreach {
+            // send to many???
+            case (_, WorkerState(ref, Idle)) => ref ! todo
+
+            case _ => // busy
+          }
           // hd
         case None =>
           sender() ! Status.Failure(new IllegalArgumentException("Insufficient data"))
