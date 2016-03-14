@@ -1,30 +1,8 @@
 package io.github.scalahackers.todo
 
 import java.util.UUID
-import com.datainc.pipeline.workflow.MasterWorkerProtocol.RegisterWorker
-import com.datainc.pipeline.workflow.{MasterWorkerProtocol, Work}
-import com.datainc.pipeline.workflow.MasterWorkerProtocol.Ack
-import com.datainc.pipeline.workflow.MasterWorkerProtocol.RegisterWorker
-import com.datainc.pipeline.workflow.MasterWorkerProtocol.WorkFailed
-import com.datainc.pipeline.workflow.MasterWorkerProtocol.WorkIsDone
-import com.datainc.pipeline.workflow.MasterWorkerProtocol.WorkIsReady
-import com.datainc.pipeline.workflow.MasterWorkerProtocol.WorkerRequestsWork
-import com.datainc.pipeline.workflow.TodoWorker.WorkComplete
-import com.datainc.pipeline.workflow.TodoWorker.WorkComplete
-
-import scala.concurrent.duration._
-import akka.actor.Actor
-import akka.actor.ActorLogging
-import akka.actor.ActorRef
-import akka.actor.Props
-import akka.actor.ReceiveTimeout
-import akka.actor.Terminated
-import akka.cluster.client.ClusterClient.SendToAll
-import akka.actor.OneForOneStrategy
-import akka.actor.SupervisorStrategy.Stop
-import akka.actor.SupervisorStrategy.Restart
-import akka.actor.ActorInitializationException
-import akka.actor.DeathPactException
+import akka.actor._
+import scala.sys.process._
 
 object TodoWorker {
 
@@ -38,6 +16,7 @@ object TodoWorker {
 class TodoWorker(todoStorageActorRef: ActorRef)
   extends Actor with ActorLogging {
   import JobProtocol._
+  import TodoStorageActor._
 
   val workerId = UUID.randomUUID().toString
 
@@ -49,13 +28,14 @@ class TodoWorker(todoStorageActorRef: ActorRef)
   def idle: Receive = {
     case WorkIsReady =>
       // ack to master
-      todoStorageActorRef ! todo.id
+      todoStorageActorRef ! JobProtocol.WorkIsReady
 
     case todo: Todo =>
-      log.info("Got todo work: {}", job)
+      log.info("Got todo work: {}", todo.id)
       val currentWorkId = Some(todo.id)
-    // do the work here
-    println("do the work")
-      todoStorageActorRef ! TodoResult
+      // do the work here
+      val cmd = "ls -al"
+      val output =  cmd.!!
+      //todoStorageActorRef ! new TodoResultUpdate(Option[output], false, 0)
   }
 }
