@@ -1,0 +1,6 @@
+.ensime*
+target
+*~
+*.swp
+*#
+.idea/
