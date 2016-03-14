@@ -6,15 +6,25 @@ import com.datainc.pipeline.workflow.TodoManagerActor.WorkerState
 import com.datainc.pipeline.workflow.{MasterWorkerProtocol, WorkState}
 
 import scala.concurrent.Await
-import scala.concurrent.duration.Duration
+import scala.concurrent.duration.{Deadline, Duration}
 
 trait TodoStorage {
   implicit val system: ActorSystem
 
   lazy val todoStorage: ActorRef = system.actorOf(Props(new TodoStorageActor))
+
+  // init workers, for a set workers
+  lazy val worker = system.actorOf(Props(new TodoWorker(todoStorage)))
 }
 
 object TodoStorageActor {
+
+  private sealed trait WorkerStatus
+  private case object Idle extends WorkerStatus
+  private case class Busy(workId: String) extends WorkerStatus
+  private case class WorkerState(ref: ActorRef, status: WorkerStatus)
+
+
   sealed trait Command
   case object Get extends Command
   case class Get(id: String) extends Command
@@ -32,7 +42,12 @@ class TodoStorageActor extends Actor with TodoTable {
   private var workers = Map[String, WorkerState]()
 
   // workState is event sourced
-  private var workState = WorkState.empty
+  //private var workState = WorkState.empty
+
+  def isIdleWorker(state: WorkerState): Boolean = state match{
+    case WorkerState(_, Idle) => true
+    case _ => false
+  }
 
   def receive = {
     case JobProtocol.RegisterWorker(workerId) =>
@@ -42,7 +57,7 @@ class TodoStorageActor extends Actor with TodoTable {
         log.info("Worker registered: {}", workerId)
         workers += (workerId -> WorkerState(sender(), status = Idle))
         if (workState.hasWork)
-          sender() ! JobProtocol.WorkIsReady
+          sender() ! MasterWorkerProtocol.WorkIsReady
       }
 
     case Get =>
@@ -55,9 +70,7 @@ class TodoStorageActor extends Actor with TodoTable {
           Await.result(db.run(todos += todo), Duration.Inf)
           sender() ! todo
           // hd: to find which worker is free
-          workers.foreach {
-            // send to many???
-            case (_, WorkerState(ref, Idle)) => ref ! todo
+          workers.find((k, v) => isIdleWorker(v)).foreach(_._1 ! todo)
 
             case _ => // busy
           }
@@ -76,5 +89,9 @@ class TodoStorageActor extends Actor with TodoTable {
     case Clear =>
       Await.result(db.run(todos.delete), Duration.Inf)
       sender() ! Status.Success()
+
+    case TodoResult =>
+      // save to DB
+      // return to HTTP frontend
   }
 }

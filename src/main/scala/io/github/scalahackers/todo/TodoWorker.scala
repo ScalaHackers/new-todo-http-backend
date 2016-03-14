@@ -37,13 +37,12 @@ object TodoWorker {
   // reference to master/TodoStorage
 class TodoWorker(todoStorageActorRef: ActorRef)
   extends Actor with ActorLogging {
-  import MasterWorkerProtocol._
+  import JobProtocol._
 
   val workerId = UUID.randomUUID().toString
 
-    //???
-  val registerTask = context.system.scheduler.schedule(0.seconds, registerInterval, todoStorageActorRef,
-    SendToAll("/user/master/singleton", RegisterWorker(workerId)))
+    // register
+  todoStorageActorRef ! RegisterWorker(workerId)
 
   def receive = idle
 
@@ -52,32 +51,11 @@ class TodoWorker(todoStorageActorRef: ActorRef)
       // ack to master
       todoStorageActorRef ! todo.id
 
-    case Work(workId, job) =>
-      log.info("Got work: {}", job)
+    case todo: Todo =>
+      log.info("Got todo work: {}", job)
       val currentWorkId = Some(todo.id)
-      context.become(working)
-  }
-
-  def working: Receive = {
-    case WorkComplete(result) =>
-      log.info("Work is complete. Result {}.", result)
-      // work is done
-      todoStorageActorRef ! todo.id
-      //sendToMaster(WorkIsDone(workerId, workId, result))
-      context.become(workIsDone(result))
-
-    case _: Work =>
-      log.info("Yikes. Master told me to do work, while I'm working.")
-  }
-
-  def workIsDone(result: Any): Receive = {
-    case Ack(id) if id == workId =>
-      todoStorageActorRef ! todo.id
-      //sendToMaster(WorkerRequestsWork(workerId))
-      context.become(idle)
-    case ReceiveTimeout =>
-      log.info("No ack from master, retrying")
-      todoStorageActorRef ! todo.id
-      //sendToMaster(WorkIsDone(workerId, workId, result))
+    // do the work here
+    println("do the work")
+      todoStorageActorRef ! TodoResult
   }
 }
