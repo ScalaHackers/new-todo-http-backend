@@ -66,8 +66,12 @@ class TodoStorageActor extends Actor with TodoTable with ActorLogging{
           Await.result(db.run(todos += todo), Duration.Inf)
         // sender() ! todo
         // hd: to find which worker is free
-        //workers.find(_ == isIdleWorker()).getOrElse() ! todo
         //workers.find((k, v) => isIdleWorker(v)).foreach(_._1 ! todo)
+          workers.find {
+            case (_, WorkerState(ref, Idle)) => true
+          } foreach {
+            case (_, WorkerState(ref, _)) => ref ! todo
+          }
 
         case none => // no match
           sender() ! Status.Failure(new IllegalArgumentException("Insufficient data"))
