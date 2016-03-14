@@ -1,4 +1,4 @@
-name := "todo-backend-akka"
+name := "new-todo-http-backend"
 
 packageArchetype.java_application
 
