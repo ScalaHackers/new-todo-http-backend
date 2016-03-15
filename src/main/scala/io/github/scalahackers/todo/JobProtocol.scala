@@ -16,5 +16,9 @@ object JobProtocol {
   // Messages to Workers
   case object WorkIsReady
 
-  // data protocol
+  // state machine protocol
+  val initStat    = 0
+  val prepStat    = 1
+  val validateStat= 2
+  val finalStat   = 10
 }

@@ -9,31 +9,35 @@ trait TodoTable extends DatabaseConfig {
   protected val todoResults = TableQuery[Todos]
 
   class Todos(tag: Tag) extends Table[Todo](tag, "todos") {
-    def * = (id, title, completed, order) <>((Todo.apply _).tupled, Todo.unapply)
+    def * = (id, extid, title, state, order, result) <>((Todo.apply _).tupled, Todo.unapply)
 
     def id = column[String]("id", O.PrimaryKey)
 
-    //def extid = column[String]("extid")
+    def extid = column[String]("extid")
 
     def title = column[String]("title")
 
-    def completed = column[Boolean]("completed")
+    def state = column[Int]("state")
 
     def order = column[Int]("order")
 
-    // def result = column[String]("result")
+    def result = column[String]("result")
   }
 
   class TodoResults(tag: Tag) extends Table[TodoResult](tag, "todos") {
-    def * = (id, title, completed, order) <>((TodoResult.apply _).tupled, TodoResult.unapply)
+    def * = (id, extid, title, state, order, result) <>((TodoResult.apply _).tupled, TodoResult.unapply)
 
     def id = column[String]("id", O.PrimaryKey)
 
+    def extid = column[String]("extid")
+
     def title = column[String]("title")
 
-    def completed = column[Boolean]("completed")
+    def state = column[Int]("state")
 
     def order = column[Int]("order")
+
+    def result = column[String]("result")
   }
 
 }

@@ -43,6 +43,6 @@ class TodoWorker(todoStorageActorRef: ActorRef)
     // Process(cmd)
     //todoStorageActorRef ! new TodoResultUpdate(Option[output], Option[false], Option[0])
       //todoStorageActorRef ! JobProtocol.WorkIsDone
-      todoStorageActorRef ! new Todo(todo.id, output.toString(), true, 1)
+      todoStorageActorRef ! new Todo(todo.id, todo.id, output.toString(), JobProtocol.finalStat, 0, output.toString())
   }
 }
