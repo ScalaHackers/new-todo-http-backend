@@ -1,7 +1,9 @@
 package io.github.scalahackers.todo
 
 import java.util.UUID
+
 import akka.actor._
+
 import scala.sys.process._
 
 object TodoWorker {
@@ -10,17 +12,18 @@ object TodoWorker {
     Props(classOf[TodoWorker], todoStorageActorRef)
 
   case class WorkComplete(result: Any)
+
 }
 
-  // reference to master/TodoStorage
+// reference to master/TodoStorage
 class TodoWorker(todoStorageActorRef: ActorRef)
   extends Actor with ActorLogging {
+
   import JobProtocol._
-  import TodoStorageActor._
 
   val workerId = UUID.randomUUID().toString
 
-    // register
+  // register
   todoStorageActorRef ! RegisterWorker(workerId)
 
   def receive = idle
@@ -35,7 +38,9 @@ class TodoWorker(todoStorageActorRef: ActorRef)
       val currentWorkId = Some(todo.id)
       // do the work here
       val cmd = "ls -al"
-      val output =  cmd.!!
-      //todoStorageActorRef ! new TodoResultUpdate(Option[output], false, 0)
+      val output = cmd.!!
+      println("Hello!")
+    // Process(cmd)
+    //todoStorageActorRef ! new TodoResultUpdate(Option[output], false, 0)
   }
 }

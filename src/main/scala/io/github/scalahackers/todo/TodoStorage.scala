@@ -3,46 +3,61 @@ package io.github.scalahackers.todo
 import akka.actor._
 
 import scala.concurrent.Await
-import scala.concurrent.duration.{Deadline, Duration}
+import scala.concurrent.duration.Duration
 
 trait TodoStorage {
-  implicit val system: ActorSystem
-
   lazy val todoStorage: ActorRef = system.actorOf(Props(new TodoStorageActor))
-
-  // init workers, for a set workers
+  // init workers, for a set of workers
   lazy val worker = system.actorOf(Props(new TodoWorker(todoStorage)))
+  implicit val system: ActorSystem
 }
 
 object TodoStorageActor {
 
+  // command
+  sealed trait Command
+
+  // worker state table
   private sealed trait WorkerStatus
-  private case object Idle extends WorkerStatus
+
+  case class Get(id: String) extends Command
+
+  case class Add(todo: TodoUpdate) extends Command
+
+  case class Update(id: String, todo: TodoUpdate) extends Command
+
+  case class Delete(id: String) extends Command
+
+  case class Response(result: TodoResultUpdate) extends Command
+
   private case class Busy(workId: String) extends WorkerStatus
+
   private case class WorkerState(ref: ActorRef, status: WorkerStatus)
 
+  // clients/front-end state table
+  private case class ClientState(ref: ActorRef, clientId: String)
 
-  sealed trait Command
+  private case object Idle extends WorkerStatus
+
   case object Get extends Command
-  case class Get(id: String) extends Command
-  case class Add(todo: TodoUpdate) extends Command
-  case class Update(id: String, todo: TodoUpdate) extends Command
-  case class Delete(id: String) extends Command
-  case class Response(result: TodoResultUpdate) extends Command
+
   // other case class
   case object Clear extends Command
+
 }
-class TodoStorageActor extends Actor with TodoTable with ActorLogging{
+
+class TodoStorageActor extends Actor with TodoTable with ActorLogging {
+
   import TodoStorageActor._
   import driver.api._
 
   // workers state is not event sourced
-  private var clients = Map[String, WorkerState]()
+  private var clients = Map[String, ClientState]()
 
   // workers state is not event sourced
   private var workers = Map[String, WorkerState]()
 
-  def isIdleWorker(state: WorkerState): Boolean = state match{
+  def isIdleWorker(state: WorkerState): Boolean = state match {
     case WorkerState(_, Idle) => true
     case _ => false
   }
@@ -64,9 +79,10 @@ class TodoStorageActor extends Actor with TodoTable with ActorLogging{
       todoUpdate.title.map(Todo.create(_, todoUpdate)) match {
         case Some(todo) =>
           Await.result(db.run(todos += todo), Duration.Inf)
-        // sender() ! todo
-        // hd: to find which worker is free
-        //workers.find((k, v) => isIdleWorker(v)).foreach(_._1 ! todo)
+          // sender() ! Ack
+          // save the senders into table Clients
+          // hd: to find which worker is free
+          //workers.find((k, v) => isIdleWorker(v)).foreach(_._1 ! todo)
           workers.find {
             case (_, WorkerState(ref, Idle)) => true
           } foreach {
@@ -92,9 +108,10 @@ class TodoStorageActor extends Actor with TodoTable with ActorLogging{
       todoResultUpdate.title.map(TodoResult.create(_, todoResultUpdate)) match {
         case Some(todoResult) =>
           Await.result(db.run(todoResults += todoResult), Duration.Inf)
-          // hd: to find which front end is sender
-          //workers.find((k, v) => isIdleWorker(v)).foreach(_._1 ! todo)
-          sender() ! todoResult
+        // hd: to find which front end is sender
+        // find the frontend frmo table Clients
+        //workers.find((k, v) => isIdleWorker(v)).foreach(_._1 ! todo)
+        //sender() ! todoResult
 
         case None => // no match
           sender() ! Status.Failure(new IllegalArgumentException("Insufficient data"))

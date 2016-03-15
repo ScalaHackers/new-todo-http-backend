@@ -4,26 +4,31 @@ trait TodoTable extends DatabaseConfig {
 
   import driver.api._
 
-  class Todos(tag: Tag) extends Table[Todo](tag, "todos") {
-    def id = column[String]("id", O.PrimaryKey)
-    def title = column[String]("title")
-    def completed = column[Boolean]("completed")
-    def order = column[Int]("order")
-
-    def * = (id, title, completed, order) <> ((Todo.apply _).tupled, Todo.unapply)
-  }
-
   protected val todos = TableQuery[Todos]
+  protected val todoResults = TableQuery[TodoResults]
+
+  class Todos(tag: Tag) extends Table[Todo](tag, "todos") {
+    def * = (id, title, completed, order) <>((Todo.apply _).tupled, Todo.unapply)
+
+    def id = column[String]("id", O.PrimaryKey)
+
+    def title = column[String]("title")
+
+    def completed = column[Boolean]("completed")
+
+    def order = column[Int]("orders")
+  }
 
   class TodoResults(tag: Tag) extends Table[TodoResult](tag, "todoResults") {
+    def * = (id, title, completed, order) <>((TodoResult.apply _).tupled, TodoResult.unapply)
+
     def id = column[String]("id", O.PrimaryKey)
+
     def title = column[String]("title")
+
     def completed = column[Boolean]("completed")
-    def order = column[Int]("order")
 
-    def * = (id, title, completed, order) <> ((TodoResult.apply _).tupled, TodoResult.unapply)
+    def order = column[Int]("orders")
   }
-
-  protected val todoResults = TableQuery[TodoResults]
 
 }

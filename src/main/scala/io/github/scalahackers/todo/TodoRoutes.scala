@@ -6,6 +6,7 @@ import akka.http.scaladsl.model.headers._
 import akka.http.scaladsl.server.Directives._
 import akka.pattern._
 import akka.util._
+
 import scala.concurrent.duration._
 
 trait TodoRoutes extends TodoMarshalling
@@ -20,13 +21,13 @@ trait TodoRoutes extends TodoMarshalling
       `Access-Control-Allow-Methods`(GET, HEAD, POST, DELETE, OPTIONS, PUT, PATCH)
     ) & extract(_.request.getUri())) { uri =>
       implicit val todoFormat = todoFormatFor(uri.path("/todos").toString)
-        pathPrefix("todos") {
-          pathEnd {
-            get {
-              onSuccess(todoStorage ? TodoStorageActor.Get) { todos =>
-                complete(StatusCodes.OK, todos.asInstanceOf[Iterable[Todo]])
-              }
-            } ~
+      pathPrefix("todos") {
+        pathEnd {
+          get {
+            onSuccess(todoStorage ? TodoStorageActor.Get) { todos =>
+              complete(StatusCodes.OK, todos.asInstanceOf[Iterable[Todo]])
+            }
+          } ~
             post {
               entity(as[TodoUpdate]) { update =>
                 onSuccess(todoStorage ? TodoStorageActor.Add(update)) { todo =>
@@ -39,13 +40,13 @@ trait TodoRoutes extends TodoMarshalling
                 complete(StatusCodes.OK)
               }
             }
-          } ~ {
-            path(Segment) { id =>
-              get {
-                onSuccess(todoStorage ? TodoStorageActor.Get(id)) { todo =>
-                  complete(StatusCodes.OK, todo.asInstanceOf[Todo])
-                }
-              } ~
+        } ~ {
+          path(Segment) { id =>
+            get {
+              onSuccess(todoStorage ? TodoStorageActor.Get(id)) { todo =>
+                complete(StatusCodes.OK, todo.asInstanceOf[Todo])
+              }
+            } ~
               patch {
                 entity(as[TodoUpdate]) { update =>
                   onSuccess(todoStorage ? TodoStorageActor.Update(id, update)) { todo =>
@@ -58,9 +59,9 @@ trait TodoRoutes extends TodoMarshalling
                   complete(StatusCodes.OK)
                 }
               }
-            }
           }
-        } ~
+        }
+      } ~
         path("") {
           get {
             complete(StatusCodes.OK)
@@ -69,6 +70,6 @@ trait TodoRoutes extends TodoMarshalling
         options {
           complete(StatusCodes.OK)
         }
-      }
+    }
   }
 }
