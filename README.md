@@ -12,4 +12,4 @@ for mysql demo, the following are needed:
 2. create a dbuser of (test, password)
 3. create a db of 'tododb'
 4. create table of 'todos':
-    create table todos (id VARCHAR(16) NOT NULL, title VARCHAR(32), completed INT, `order` INT);
+    create table todos (id VARCHAR(16) NOT NULL, extid VARCHAR(16), title VARCHAR(32), state INT, `order` INT, result TEXT);

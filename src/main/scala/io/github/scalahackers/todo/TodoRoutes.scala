@@ -12,7 +12,7 @@ import scala.concurrent.duration._
 trait TodoRoutes extends TodoMarshalling
   with TodoStorageProvider {
 
-  implicit val timeout: Timeout = 2 seconds
+  implicit val timeout: Timeout = 10 seconds
 
   def routes = {
     (respondWithHeaders(
