@@ -38,9 +38,9 @@ class TodoWorker(todoStorageActorRef: ActorRef)
       val currentWorkId = Some(todo.id)
       // do the work here
       val cmd = "ls -al"
-      val output = cmd.!!
-      println("Hello!")
+      val output = Seq(cmd).!!
+      println("Hello! " + output)
     // Process(cmd)
-    //todoStorageActorRef ! new TodoResultUpdate(Option[output], false, 0)
+    //todoStorageActorRef ! new TodoResultUpdate(Option[output], Option[false], Option[0])
   }
 }
