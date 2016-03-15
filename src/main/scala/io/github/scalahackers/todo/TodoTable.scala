@@ -16,7 +16,7 @@ trait TodoTable extends DatabaseConfig {
 
     def completed = column[Boolean]("completed")
 
-    def order = column[Int]("orders")
+    def order = column[Int]("order")
   }
 
   class TodoResults(tag: Tag) extends Table[TodoResult](tag, "todoResults") {
@@ -28,7 +28,7 @@ trait TodoTable extends DatabaseConfig {
 
     def completed = column[Boolean]("completed")
 
-    def order = column[Int]("orders")
+    def order = column[Int]("order")
   }
 
 }
