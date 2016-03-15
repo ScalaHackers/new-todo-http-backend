@@ -28,7 +28,7 @@ object TodoStorageActor {
 
   case class Delete(id: String) extends Command
 
-  case class Response(result: TodoResultUpdate) extends Command
+  case class Response(result: TodoUpdate) extends Command
 
   private case class Busy(workId: String) extends WorkerStatus
 
@@ -104,12 +104,12 @@ class TodoStorageActor extends Actor with TodoTable with ActorLogging {
       Await.result(db.run(todos.delete), Duration.Inf)
       sender() ! Status.Success()
 
-    case Response(todoResultUpdate) =>
-      todoResultUpdate.title.map(TodoResult.create(_, todoResultUpdate)) match {
-        case Some(todoResult) =>
-          Await.result(db.run(todoResults += todoResult), Duration.Inf)
+    case Response(todoUpdate) =>
+      todoUpdate.title.map(Todo.create(_, todoUpdate)) match {
+        case Some(todo) =>
+          Await.result(db.run(todos += todo), Duration.Inf)
         // hd: to find which front end is sender
-        // find the frontend frmo table Clients
+        // find the frontend from table Clients
         //workers.find((k, v) => isIdleWorker(v)).foreach(_._1 ! todo)
         //sender() ! todoResult
 

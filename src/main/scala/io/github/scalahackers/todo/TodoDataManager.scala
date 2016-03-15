@@ -1,22 +1,25 @@
 package io.github.scalahackers.todo
 
+/**
+  * Created by love on 3/14/2016.
+  */
 import java.util.UUID
 
 import akka.actor._
 
 import scala.sys.process._
 
-object TodoWorker {
+object TodoDataManager {
 
   def props(todoStorageActorRef: ActorRef): Props =
-    Props(classOf[TodoWorker], todoStorageActorRef)
+    Props(classOf[TodoDataManager], todoStorageActorRef)
 
   case class WorkComplete(result: Any)
 
 }
 
 // reference to master/TodoStorage
-class TodoWorker(todoStorageActorRef: ActorRef)
+class TodoDataManager(todoStorageActorRef: ActorRef)
   extends Actor with ActorLogging {
 
   import JobProtocol._
@@ -33,6 +36,7 @@ class TodoWorker(todoStorageActorRef: ActorRef)
       // ack to master
       todoStorageActorRef ! JobProtocol.WorkIsReady
 
+    //query database
     case todo: Todo =>
       log.info("Got todo work: {}", todo.id)
       val currentWorkId = Some(todo.id)
@@ -42,7 +46,5 @@ class TodoWorker(todoStorageActorRef: ActorRef)
       println("Hello! " + output)
     // Process(cmd)
     //todoStorageActorRef ! new TodoResultUpdate(Option[output], Option[false], Option[0])
-      //todoStorageActorRef ! JobProtocol.WorkIsDone
-      todoStorageActorRef ! new Todo(todo.id, output.toString(), true, 1)
   }
 }
