@@ -36,13 +36,18 @@ object TodoStorageActor {
 
   private case class Busy(workId: String) extends WorkerStatus
 
-  private case class WorkerState(ref: ActorRef, status: WorkerStatus)
-
   private case object Idle extends WorkerStatus
 
-  // clients/front-end state table
-  private case class ClientState(ref: ActorRef, clientId: String)
+  private case class WorkerState(ref: ActorRef, status: WorkerStatus)
 
+  // clients/front-end state table
+  private sealed trait ClientStatus
+
+  private case class NotAvailable(clientName: String) extends ClientStatus
+
+  private case object Available extends ClientStatus
+
+  private case class ClientState(ref: ActorRef, status: ClientStatus)
 }
 
 class TodoStorageActor extends Actor with TodoTable with ActorLogging {
@@ -65,6 +70,14 @@ class TodoStorageActor extends Actor with TodoTable with ActorLogging {
   }
 
   def receive = {
+    case JobProtocol.RegisterClient(clientName) =>
+      if (clients.contains(clientName)) {
+        clients += (clientName -> clients(clientName).copy(ref = sender()))
+      } else {
+        log.info("Client registered: {}", clientName)
+        clients += (clientName -> ClientState(sender(), status = Available))
+      }
+
     case JobProtocol.RegisterWorker(workerId) =>
       if (workers.contains(workerId)) {
         workers += (workerId -> workers(workerId).copy(ref = sender()))
