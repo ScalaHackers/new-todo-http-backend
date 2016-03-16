@@ -64,6 +64,11 @@ class TodoStorageActor extends Actor with TodoTable with ActorLogging {
   // init children workers, we will need a set of workers
   val worker = context.actorOf(Props(new TodoWorker(self)))
 
+  def isAvailableClient(state: ClientState): Boolean = state match {
+    case ClientState(_, Available) => true
+    case _ => false
+  }
+
   def isIdleWorker(state: WorkerState): Boolean = state match {
     case WorkerState(_, Idle) => true
     case _ => false
@@ -126,10 +131,14 @@ class TodoStorageActor extends Actor with TodoTable with ActorLogging {
       todoUpdate.title.map(Todo.create(_, todoUpdate)) match {
         case Some(todo) =>
           Await.result(db.run(todos += todo), Duration.Inf)
-        // hd: to find which front end is sender
-        // find the frontend from table Clients
-        //workers.find((k, v) => isIdleWorker(v)).foreach(_._1 ! todo)
-        //sender() ! todoResult
+          // hd: to find which front end is sender
+          // find the frontend from table Clients
+          println("I am here response")
+          clients.find {
+            case (_, ClientState(ref, Available)) => true
+          } foreach {
+            case (_, ClientState(ref, _)) => ref ! todo
+          }
 
         case None => // no match
           sender() ! Status.Failure(new IllegalArgumentException("Insufficient data"))
