@@ -7,7 +7,7 @@ import akka.stream._
 import scala.util._
 
 object Main extends App
-  with TodoStorage
+  //with TodoStorage
   with TodoRoutes
   with TodoTable {
 
@@ -19,6 +19,8 @@ object Main extends App
   implicit val executor = system.dispatcher
   implicit val materializer = ActorMaterializer()
 
+  val todoStorage: ActorRef = system.actorOf(Props(new TodoStorageActor))
+
   //  import driver.api._
   //  val setupAction: DBIO[Unit] = DBIO.seq(todos.schema.create)
   //  Await.result(db.run(setupAction), Duration.Inf)
@@ -26,4 +28,5 @@ object Main extends App
   Http(system).bindAndHandle(routes, httpHost, port = port)
     .foreach(binding => system.log.info("Bound to " + binding.localAddress))
 
+  todoStorage ! JobProtocol.Ack("start")
 }

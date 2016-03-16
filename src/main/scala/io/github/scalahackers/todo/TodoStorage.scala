@@ -7,8 +7,7 @@ import scala.concurrent.duration.Duration
 
 trait TodoStorage {
   lazy val todoStorage: ActorRef = system.actorOf(Props(new TodoStorageActor))
-  // init workers, for a set of workers
-  lazy val worker = system.actorOf(Props(new TodoWorker(todoStorage)))
+
   implicit val system: ActorSystem
 }
 
@@ -16,9 +15,6 @@ object TodoStorageActor {
 
   // command
   sealed trait Command
-
-  // worker state table
-  private sealed trait WorkerStatus
 
   case class Get(id: String) extends Command
 
@@ -30,19 +26,22 @@ object TodoStorageActor {
 
   case class Response(result: TodoUpdate) extends Command
 
-  private case class Busy(workId: String) extends WorkerStatus
-
-  private case class WorkerState(ref: ActorRef, status: WorkerStatus)
-
-  // clients/front-end state table
-  private case class ClientState(ref: ActorRef, clientId: String)
-
-  private case object Idle extends WorkerStatus
-
   case object Get extends Command
 
   // other case class
   case object Clear extends Command
+
+  // worker state table
+  private sealed trait WorkerStatus
+
+  private case class Busy(workId: String) extends WorkerStatus
+
+  private case class WorkerState(ref: ActorRef, status: WorkerStatus)
+
+  private case object Idle extends WorkerStatus
+
+  // clients/front-end state table
+  private case class ClientState(ref: ActorRef, clientId: String)
 
 }
 
@@ -56,6 +55,9 @@ class TodoStorageActor extends Actor with TodoTable with ActorLogging {
 
   // workers state is not event sourced
   private var workers = Map[String, WorkerState]()
+
+  // init children workers, we will need a set of workers
+  val worker = context.actorOf(Props(new TodoWorker(self)))
 
   def isIdleWorker(state: WorkerState): Boolean = state match {
     case WorkerState(_, Idle) => true
@@ -83,11 +85,13 @@ class TodoStorageActor extends Actor with TodoTable with ActorLogging {
           // save the senders into table Clients
           // hd: to find which worker is free
           //workers.find((k, v) => isIdleWorker(v)).foreach(_._1 ! todo)
+          println("I am here")
           workers.find {
             case (_, WorkerState(ref, Idle)) => true
           } foreach {
             case (_, WorkerState(ref, _)) => ref ! todo
           }
+          //if no available worker, we will put this task on hold
 
         case none => // no match
           sender() ! Status.Failure(new IllegalArgumentException("Insufficient data"))
