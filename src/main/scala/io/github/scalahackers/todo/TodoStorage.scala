@@ -109,6 +109,7 @@ class TodoStorageActor extends Actor with TodoTable with ActorLogging {
       sender() ! Status.Success()
 
     case Response(todoUpdate) =>
+      println("response is received from worker")
       todoUpdate.title.map(Todo.create(_, todoUpdate)) match {
         case Some(todo) =>
           Await.result(db.run(todos += todo), Duration.Inf)
