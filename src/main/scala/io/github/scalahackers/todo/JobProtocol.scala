@@ -3,12 +3,12 @@ package io.github.scalahackers.todo
 object JobProtocol {
 
   // Messages from clients/external to manager
-  case class RegisterClient(clientName: String)
+  case class RegisterClient(clientName: String, clientType: Int)
 
   case class NotifyClient(clientName: String, result: Any)
 
   // Messages from Workers to manager
-  case class RegisterWorker(workerId: String)
+  case class RegisterWorker(workerId: String, workerType: String)
 
   case class WorkerRequestsWork(workerId: String)
 
@@ -22,9 +22,20 @@ object JobProtocol {
 
   // Messages to Workers
 
+  // type of clients
+  val syncClient    = 1
+  val asyncClient   = 2
+
+  // type of workers
+  val todoWorker    = "todo"
+  val searchWorker  = "search"
+  val dataWorker    = "data"
+
   // state machine protocol
-  val initStat    = 0
-  val prepStat    = 1
-  val validateStat= 2
-  val finalStat   = 10
+  val initState     = 0
+  val prepState     = 1
+  val validateState = 2
+  val searchState   = 3
+  val finalState    = 10
+  val errorState    = -1
 }

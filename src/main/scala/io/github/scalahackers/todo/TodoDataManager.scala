@@ -27,7 +27,7 @@ class TodoDataManager(todoStorageActorRef: ActorRef)
   val workerId = UUID.randomUUID().toString
 
   // register
-  todoStorageActorRef ! RegisterWorker(workerId)
+  todoStorageActorRef ! RegisterWorker(workerId, dataWorker)
 
   def receive = idle
 

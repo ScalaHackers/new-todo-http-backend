@@ -13,7 +13,7 @@ trait TodoStorage {
 
 object TodoStorageActor {
 
-  // command
+  // commands
   sealed trait Command
 
   case class Get(id: String) extends Command
@@ -28,7 +28,6 @@ object TodoStorageActor {
 
   case object Get extends Command
 
-  // other case class
   case object Clear extends Command
 
   // worker state table
@@ -61,29 +60,31 @@ class TodoStorageActor extends Actor with TodoTable with ActorLogging {
   // workers state is not event sourced
   private var workers = Map[String, WorkerState]()
 
-  // init children workers, we will need a set of workers
-  val worker = context.actorOf(Props(new TodoWorker(self)))
+  // init children todoWorkers, we will need a set of workers
+  // for
+  val todoWorker = context.actorOf(Props(new TodoWorker(self)))
+  val searchWorker = context.actorOf(Props(new SearchWorker(self)))
 
-  def isAvailableClient(state: ClientState): Boolean = state match {
-    case ClientState(_, Available) => true
-    case _ => false
-  }
-
-  def isIdleWorker(state: WorkerState): Boolean = state match {
-    case WorkerState(_, Idle) => true
-    case _ => false
+  def addClientMap(clientName : String, sender: ActorRef) = {
+    if (clients.contains(clientName)) {
+      clients += (clientName -> clients(clientName).copy(ref = sender))
+    } else {
+      log.info("Client registered: {}", clientName)
+      clients += (clientName -> ClientState(sender, status = Available))
+    }
   }
 
   def receive = {
-    case JobProtocol.RegisterClient(clientName) =>
-      if (clients.contains(clientName)) {
+    case JobProtocol.RegisterClient(clientName, clientType) =>
+      /*if (clients.contains(clientName)) {
         clients += (clientName -> clients(clientName).copy(ref = sender()))
       } else {
         log.info("Client registered: {}", clientName)
         clients += (clientName -> ClientState(sender(), status = Available))
-      }
+      }*/
+      addClientMap(clientName, sender())
 
-    case JobProtocol.RegisterWorker(workerId) =>
+    case JobProtocol.RegisterWorker(workerId, workerType) =>
       if (workers.contains(workerId)) {
         workers += (workerId -> workers(workerId).copy(ref = sender()))
       } else {
@@ -96,6 +97,9 @@ class TodoStorageActor extends Actor with TodoTable with ActorLogging {
     case Get(id) =>
       sender() ! Await.result(db.run(todos.filter(_.id === id).result.head), Duration.Inf)
     case Add(todoUpdate) =>
+      // if sender() is not in clients map yet, add it.
+      addClientMap("", sender())
+
       todoUpdate.title.map(Todo.create(_, todoUpdate)) match {
         case Some(todo) =>
           Await.result(db.run(todos += todo), Duration.Inf)
@@ -103,7 +107,6 @@ class TodoStorageActor extends Actor with TodoTable with ActorLogging {
           // save the senders into table Clients
           // hd: to find which worker is free
           //workers.find((k, v) => isIdleWorker(v)).foreach(_._1 ! todo)
-          println("I am here")
           workers.find {
             case (_, WorkerState(ref, Idle)) => true
           } foreach {
@@ -111,7 +114,7 @@ class TodoStorageActor extends Actor with TodoTable with ActorLogging {
           }
           //if no available worker, we will put this task on hold
 
-        case none => // no match
+        case None => // no match, expcetion handling later
           sender() ! Status.Failure(new IllegalArgumentException("Insufficient data"))
       }
     case Update(id, update) =>
@@ -127,20 +130,20 @@ class TodoStorageActor extends Actor with TodoTable with ActorLogging {
       sender() ! Status.Success()
 
     case Response(todoUpdate) =>
-      println("response is received from worker")
+      println("response is received from {} worker" + sender().toString())
       todoUpdate.title.map(Todo.create(_, todoUpdate)) match {
         case Some(todo) =>
           Await.result(db.run(todos += todo), Duration.Inf)
           // hd: to find which front end is sender
           // find the frontend from table Clients
-          println("I am here response")
+          println("look for client to send response")
           clients.find {
             case (_, ClientState(ref, Available)) => true
           } foreach {
             case (_, ClientState(ref, _)) => ref ! todo
           }
 
-        case None => // no match
+        case None => // no match, expcetion handling later
           sender() ! Status.Failure(new IllegalArgumentException("Insufficient data"))
         // return to HTTP frontend
       }

@@ -24,7 +24,7 @@ class TodoWorker(todoStorageActorRef: ActorRef)
   val workerId = UUID.randomUUID().toString
   override def preStart(): Unit = {
     // register
-    todoStorageActorRef ! RegisterWorker(workerId)
+    todoStorageActorRef ! RegisterWorker(workerId, todoWorker)
   }
 
   /* register
@@ -46,11 +46,11 @@ class TodoWorker(todoStorageActorRef: ActorRef)
     case todo: Todo =>
       println("Got todo work")
       log.info("Got todo work: {}", todo.id)
+      // work on data validation, then change state and return to manager
       val currentWorkId = Some(todo.id)
-      var output: String = "test"
-      // do the work here
+      var output: String = "pass todo validation"
       try {
-        //val cmd = "dir"
+        //val cmd = "data validation"
         //output = Seq(cmd).!!
         println("Hello! " + output)
       }
@@ -63,7 +63,7 @@ class TodoWorker(todoStorageActorRef: ActorRef)
         //todoStorageActorRef ! JobProtocol.WorkIsDone
         todoStorageActorRef ! TodoStorageActor.Response(
             TodoUpdate(Option(todo.id), Option(output.toString()),
-              Option(JobProtocol.finalStat), Option(0), Option(output.toString())))
+              Option(JobProtocol.validateState), Option(0), Option(output.toString())))
       }
   }
 }
