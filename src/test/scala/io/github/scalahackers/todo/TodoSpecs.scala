@@ -12,20 +12,20 @@ class TodoSpecs extends Suite
     with WordSpecLike
     with ShouldMatchers
     with TodoRoutes
-    with TodoStorage {
+    with TodoManager {
 
   "The Todo backend" should {
     "respond to a POST with the todo which was posted to it" in {
-      Post("/todos", HttpEntity(`application/json`, """{ "extid": "123456", "title": "a todo" }""")) ~> routes ~> check {
+      Post("/todostxs", HttpEntity(`application/json`, """{ "extid": "123456", "request": "a todo" }""")) ~> routes ~> check {
         status should equal(StatusCodes.OK)
-        entityAs[JsObject].fields("title") should equal(JsString("a todo"))
+        entityAs[JsObject].fields("request") should equal(JsString("a todo"))
       }
     }
 
     "create a todo with an order field" in {
-      Post("/todos", HttpEntity(`application/json`, """{ "extid": "123456", "title": "a todo", "order": 523 }""")) ~> routes ~> check {
+      Post("/todostxs", HttpEntity(`application/json`, """{ "extid": "123456", "request": "a todo", "response": "test" }""")) ~> routes ~> check {
         status should equal(StatusCodes.OK)
-        entityAs[JsObject].fields("order") should equal(JsNumber(523))
+        entityAs[JsObject].fields("response") should equal(JsString("test"))
       }
     }
   }

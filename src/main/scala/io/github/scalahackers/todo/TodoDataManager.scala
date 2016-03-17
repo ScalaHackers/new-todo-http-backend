@@ -37,7 +37,7 @@ class TodoDataManager(todoStorageActorRef: ActorRef)
       todoStorageActorRef ! JobProtocol.WorkIsReady
 
     //query database
-    case todo: Todo =>
+    case todo: TodoTxs =>
       log.info("Got todo work: {}", todo.id)
       val currentWorkId = Some(todo.id)
       // do the work here

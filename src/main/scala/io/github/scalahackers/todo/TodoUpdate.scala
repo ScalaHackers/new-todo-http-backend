@@ -1,8 +1,10 @@
 package io.github.scalahackers.todo
 
 case class TodoUpdate(extid: Option[String],
-                      title: Option[String],
+                      request: Option[String],
                       state: Option[Int],
-                      order: Option[Int],
-                      result: Option[String])
+                      substate: Option[Int],
+                      response: Option[String],
+                      starttime: Option[String],
+                      endtime: Option[String])
 

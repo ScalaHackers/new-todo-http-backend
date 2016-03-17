@@ -5,13 +5,15 @@ import akka.actor._
 import scala.concurrent.Await
 import scala.concurrent.duration.Duration
 
-trait TodoStorage {
-  lazy val todoStorage: ActorRef = system.actorOf(Props(new TodoStorageActor))
+
+
+trait TodoManager {
+  lazy val todoManager: ActorRef = system.actorOf(Props(new TodoManagerActor))
 
   implicit val system: ActorSystem
 }
 
-object TodoStorageActor {
+object TodoManagerActor {
 
   // commands
   sealed trait Command
@@ -40,9 +42,9 @@ object TodoStorageActor {
   private case class WorkerState(ref: ActorRef, status: WorkerStatus)
 }
 
-class TodoStorageActor extends Actor with TodoTable with ActorLogging {
+class TodoManagerActor extends Actor with TodoTxsTable with ActorLogging {
 
-  import TodoStorageActor._
+  import TodoManagerActor._
   import driver.api._
 
   // workers state is not event sourced
@@ -74,7 +76,7 @@ class TodoStorageActor extends Actor with TodoTable with ActorLogging {
     case Get(id) =>
       sender() ! Await.result(db.run(todos.filter(_.id === id).result.head), Duration.Inf)
     case Add(todoUpdate) =>
-      todoUpdate.title.map(Todo.create(_, todoUpdate)) match {
+      todoUpdate.request.map(TodoTxs.create(_, todoUpdate)) match {
         case Some(todo) =>
           Await.result(db.run(todos += todo), Duration.Inf)
           // if sender() is not in clients map yet, add it.
@@ -92,7 +94,7 @@ class TodoStorageActor extends Actor with TodoTable with ActorLogging {
       }
     case Update(id, update) =>
       for (old <- Await.result(db.run(todos.filter(_.id === id).result.headOption), Duration.Inf)) {
-        Await.result(db.run(todos.filter(_.id === id).update(Todo.create(old, update))), Duration.Inf)
+        Await.result(db.run(todos.filter(_.id === id).update(TodoTxs.create(old, update))), Duration.Inf)
       }
       self.forward(Get(id))
     case Delete(id) =>
@@ -105,7 +107,7 @@ class TodoStorageActor extends Actor with TodoTable with ActorLogging {
     case Response(todoUpdate) =>
       println("response is received from {} worker" + sender().toString())
       // move to next state, if final, return to client
-      todoUpdate.title.map(Todo.create(_, todoUpdate)) match {
+      todoUpdate.request.map(TodoTxs.create(_, todoUpdate)) match {
         case Some(todo) =>
           Await.result(db.run(todos += todo), Duration.Inf)
           // hd: to find which front end is sender

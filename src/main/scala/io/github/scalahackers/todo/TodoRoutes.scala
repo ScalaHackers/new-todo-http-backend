@@ -10,7 +10,7 @@ import akka.util._
 import scala.concurrent.duration._
 
 trait TodoRoutes extends TodoMarshalling
-  with TodoStorageProvider {
+  with TodoManagerProvider {
 
   implicit val timeout: Timeout = 10 seconds
 
@@ -20,42 +20,42 @@ trait TodoRoutes extends TodoMarshalling
       `Access-Control-Allow-Headers`("Accept", "Content-Type"),
       `Access-Control-Allow-Methods`(GET, HEAD, POST, DELETE, OPTIONS, PUT, PATCH)
     ) & extract(_.request.getUri())) { uri =>
-      implicit val todoFormat = todoFormatFor(uri.path("/todos").toString)
-      pathPrefix("todos") {
+      implicit val todoFormat = todoFormatFor(uri.path("/todostxs").toString)
+      pathPrefix("todostxs") {
         pathEnd {
           get {
-            onSuccess(todoStorage ? TodoStorageActor.Get) { todos =>
-              complete(StatusCodes.OK, todos.asInstanceOf[Iterable[Todo]])
+            onSuccess(todoManager ? TodoManagerActor.Get) { todos =>
+              complete(StatusCodes.OK, todos.asInstanceOf[Iterable[TodoTxs]])
             }
           } ~
             post {
               entity(as[TodoUpdate]) { update =>
-                onSuccess(todoStorage ? TodoStorageActor.Add(update)) { todo =>
-                  complete(StatusCodes.OK, todo.asInstanceOf[Todo])
+                onSuccess(todoManager ? TodoManagerActor.Add(update)) { todo =>
+                  complete(StatusCodes.OK, todo.asInstanceOf[TodoTxs])
                 }
               }
             } ~
             delete {
-              onSuccess(todoStorage ? TodoStorageActor.Clear) { _ =>
+              onSuccess(todoManager ? TodoManagerActor.Clear) { _ =>
                 complete(StatusCodes.OK)
               }
             }
         } ~ {
           path(Segment) { id =>
             get {
-              onSuccess(todoStorage ? TodoStorageActor.Get(id)) { todo =>
-                complete(StatusCodes.OK, todo.asInstanceOf[Todo])
+              onSuccess(todoManager ? TodoManagerActor.Get(id)) { todo =>
+                complete(StatusCodes.OK, todo.asInstanceOf[TodoTxs])
               }
             } ~
               patch {
                 entity(as[TodoUpdate]) { update =>
-                  onSuccess(todoStorage ? TodoStorageActor.Update(id, update)) { todo =>
-                    complete(StatusCodes.OK, todo.asInstanceOf[Todo])
+                  onSuccess(todoManager ? TodoManagerActor.Update(id, update)) { todo =>
+                    complete(StatusCodes.OK, todo.asInstanceOf[TodoTxs])
                   }
                 }
               } ~
               delete {
-                onSuccess(todoStorage ? TodoStorageActor.Delete(id)) { _ =>
+                onSuccess(todoManager ? TodoManagerActor.Delete(id)) { _ =>
                   complete(StatusCodes.OK)
                 }
               }

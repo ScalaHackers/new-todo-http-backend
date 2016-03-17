@@ -27,7 +27,7 @@ object JobProtocol {
   val searchWorker  = "search"
   val dataWorker    = "data"
 
-  // state machine protocol： main states
+  // state machine protocol： main states, change to string later
   val initState     = 0
   val prepState     = 1
   val validateState = 2
@@ -35,7 +35,7 @@ object JobProtocol {
   val finalState    = 10
   val errorState    = -1
 
-  // state machine protocol： sub states
+  // state machine protocol： sub states , change to string later
   val newSubState   = 100
   val wipSubState   = 101
   val doneSubState  = 103

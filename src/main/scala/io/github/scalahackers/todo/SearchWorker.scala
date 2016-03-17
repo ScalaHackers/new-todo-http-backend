@@ -8,15 +8,15 @@ import akka.actor._
 
 object SearchWorker {
 
-  def props(todoStorageActorRef: ActorRef): Props =
-    Props(classOf[TodoWorker], todoStorageActorRef)
+  def props(todoManagerActorRef: ActorRef): Props =
+    Props(classOf[TodoWorker], todoManagerActorRef)
 
   //case class WorkComplete(result: Any)
 
 }
 
 // reference to master/TodoStorage
-class SearchWorker(todoStorageActorRef: ActorRef)
+class SearchWorker(todoManagerActorRef: ActorRef)
   extends Actor with ActorLogging {
 
   import JobProtocol._
@@ -24,7 +24,7 @@ class SearchWorker(todoStorageActorRef: ActorRef)
   val workerId = UUID.randomUUID().toString
   override def preStart(): Unit = {
     // register
-    todoStorageActorRef ! RegisterWorker(workerId, searchWorker)
+    todoManagerActorRef ! RegisterWorker(workerId, searchWorker)
   }
 
   /* register
@@ -41,9 +41,9 @@ class SearchWorker(todoStorageActorRef: ActorRef)
   def idle: Receive = {
     case WorkIsReady =>
       // ack to master
-      todoStorageActorRef ! JobProtocol.WorkIsReady
+      todoManagerActorRef ! JobProtocol.WorkIsReady
 
-    case todo: Todo =>
+    case todo: TodoTxs =>
       println("Got todo work")
       log.info("Got todo work: {}", todo.id)
       // work on data validation, then change state and return to manager
@@ -62,9 +62,14 @@ class SearchWorker(todoStorageActorRef: ActorRef)
         // Process(cmd)
         //todoStorageActorRef ! new TodoResultUpdate(Option[output], Option[false], Option[0])
         //todoStorageActorRef ! JobProtocol.WorkIsDone
-        todoStorageActorRef ! TodoStorageActor.Response(
-          TodoUpdate(Option(todo.id), Option(output.toString()),
-            Option(JobProtocol.finalState), Option(0), Option(output.toString())))
+        todoManagerActorRef ! TodoManagerActor.Response(
+          TodoUpdate(Option(todo.extid),
+            Option(todo.request),
+            Option(JobProtocol.searchState),
+            Option(JobProtocol.doneSubState),
+            Option(output.toString()), // response
+            None, None  // startime and endtime, TBD
+          ))
       }
   }
 }
