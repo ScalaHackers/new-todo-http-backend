@@ -56,7 +56,7 @@ class TodoManagerActor extends Actor with TodoTxsTable with ActorLogging {
   // init children todoWorkers, we will need a set of workers
   // for
   val todoWorker = context.actorOf(Props(new TodoWorker(self)))
-  val searchWorker = context.actorOf(Props(new SearchWorker(self)))
+  //val searchWorker = context.actorOf(Props(new SearchWorker(self)))
 
   def addTxsClientMap(id: String, sender: ActorRef) = {
     clients += (id -> sender)
