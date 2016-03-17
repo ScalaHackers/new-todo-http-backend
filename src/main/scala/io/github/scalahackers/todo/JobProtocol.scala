@@ -22,10 +22,6 @@ object JobProtocol {
 
   // Messages to Workers
 
-  // type of clients
-  val syncClient    = 1
-  val asyncClient   = 2
-
   // type of workers
   val todoWorker    = "todo"
   val searchWorker  = "search"

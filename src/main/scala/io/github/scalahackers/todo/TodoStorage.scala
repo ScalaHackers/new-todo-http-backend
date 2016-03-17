@@ -38,15 +38,6 @@ object TodoStorageActor {
   private case object Idle extends WorkerStatus
 
   private case class WorkerState(ref: ActorRef, status: WorkerStatus)
-
-  // clients/front-end state table
-  private sealed trait ClientStatus
-
-  private case class NotAvailable(clientName: String) extends ClientStatus
-
-  private case object Available extends ClientStatus
-
-  private case class ClientState(ref: ActorRef, status: ClientStatus)
 }
 
 class TodoStorageActor extends Actor with TodoTable with ActorLogging {
@@ -55,7 +46,7 @@ class TodoStorageActor extends Actor with TodoTable with ActorLogging {
   import driver.api._
 
   // workers state is not event sourced
-  private var clients = Map[String, ClientState]()
+  private var clients = Map[String, ActorRef]()
 
   // workers state is not event sourced
   private var workers = Map[String, WorkerState]()
@@ -65,25 +56,11 @@ class TodoStorageActor extends Actor with TodoTable with ActorLogging {
   val todoWorker = context.actorOf(Props(new TodoWorker(self)))
   val searchWorker = context.actorOf(Props(new SearchWorker(self)))
 
-  def addClientMap(clientName : String, sender: ActorRef) = {
-    if (clients.contains(clientName)) {
-      clients += (clientName -> clients(clientName).copy(ref = sender))
-    } else {
-      log.info("Client registered: {}", clientName)
-      clients += (clientName -> ClientState(sender, status = Available))
-    }
+  def addTxsClientMap(id: String, sender: ActorRef) = {
+    clients += (id -> sender)
   }
 
   def receive = {
-    case JobProtocol.RegisterClient(clientName, clientType) =>
-      /*if (clients.contains(clientName)) {
-        clients += (clientName -> clients(clientName).copy(ref = sender()))
-      } else {
-        log.info("Client registered: {}", clientName)
-        clients += (clientName -> ClientState(sender(), status = Available))
-      }*/
-      addClientMap(clientName, sender())
-
     case JobProtocol.RegisterWorker(workerId, workerType) =>
       if (workers.contains(workerId)) {
         workers += (workerId -> workers(workerId).copy(ref = sender()))
@@ -97,12 +74,12 @@ class TodoStorageActor extends Actor with TodoTable with ActorLogging {
     case Get(id) =>
       sender() ! Await.result(db.run(todos.filter(_.id === id).result.head), Duration.Inf)
     case Add(todoUpdate) =>
-      // if sender() is not in clients map yet, add it.
-      addClientMap("", sender())
-
       todoUpdate.title.map(Todo.create(_, todoUpdate)) match {
         case Some(todo) =>
           Await.result(db.run(todos += todo), Duration.Inf)
+          // if sender() is not in clients map yet, add it.
+          addTxsClientMap(todo.id, sender())
+
           // sender() ! Ack
           // save the senders into table Clients
           // hd: to find which worker is free
@@ -137,10 +114,9 @@ class TodoStorageActor extends Actor with TodoTable with ActorLogging {
           // hd: to find which front end is sender
           // find the frontend from table Clients
           println("look for client to send response")
-          clients.find {
-            case (_, ClientState(ref, Available)) => true
-          } foreach {
-            case (_, ClientState(ref, _)) => ref ! todo
+          clients.get(todo.id) match {
+            case Some(ref) => ref ! todo
+            case _ =>
           }
 
         case None => // no match, expcetion handling later
