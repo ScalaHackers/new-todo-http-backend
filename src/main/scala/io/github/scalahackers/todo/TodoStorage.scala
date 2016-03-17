@@ -79,17 +79,13 @@ class TodoStorageActor extends Actor with TodoTable with ActorLogging {
           Await.result(db.run(todos += todo), Duration.Inf)
           // if sender() is not in clients map yet, add it.
           addTxsClientMap(todo.id, sender())
-
           // sender() ! Ack
-          // save the senders into table Clients
-          // hd: to find which worker is free
-          //workers.find((k, v) => isIdleWorker(v)).foreach(_._1 ! todo)
           workers.find {
             case (_, WorkerState(ref, Idle)) => true
           } foreach {
             case (_, WorkerState(ref, _)) => ref ! todo
           }
-          //if no available worker, we will put this task on hold
+          //if no available worker, we will queue this task in todos table
 
         case None => // no match, expcetion handling later
           sender() ! Status.Failure(new IllegalArgumentException("Insufficient data"))
@@ -108,14 +104,17 @@ class TodoStorageActor extends Actor with TodoTable with ActorLogging {
 
     case Response(todoUpdate) =>
       println("response is received from {} worker" + sender().toString())
+      // move to next state, if final, return to client
       todoUpdate.title.map(Todo.create(_, todoUpdate)) match {
         case Some(todo) =>
           Await.result(db.run(todos += todo), Duration.Inf)
           // hd: to find which front end is sender
           // find the frontend from table Clients
-          println("look for client to send response")
+          println("look for client to send response for {}" + todo.id)
           clients.get(todo.id) match {
-            case Some(ref) => ref ! todo
+            case Some(ref) =>
+              ref ! todo
+              println("response is + " + todo.toString)
             case _ =>
           }
 
@@ -123,5 +122,6 @@ class TodoStorageActor extends Actor with TodoTable with ActorLogging {
           sender() ! Status.Failure(new IllegalArgumentException("Insufficient data"))
         // return to HTTP frontend
       }
+      // check if there is pending txs in queue of todos, schedule it if so.
   }
 }

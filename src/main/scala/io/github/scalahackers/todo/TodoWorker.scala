@@ -46,7 +46,7 @@ class TodoWorker(todoStorageActorRef: ActorRef)
     case todo: Todo =>
       println("Got todo work")
       log.info("Got todo work: {}", todo.id)
-      // work on data validation, then change state and return to manager
+      // work on data validation, then change sub state and return to manager
       val currentWorkId = Some(todo.id)
       var output: String = "pass todo validation"
       try {

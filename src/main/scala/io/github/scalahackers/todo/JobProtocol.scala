@@ -27,11 +27,18 @@ object JobProtocol {
   val searchWorker  = "search"
   val dataWorker    = "data"
 
-  // state machine protocol
+  // state machine protocol： main states
   val initState     = 0
   val prepState     = 1
   val validateState = 2
   val searchState   = 3
   val finalState    = 10
   val errorState    = -1
+
+  // state machine protocol： sub states
+  val newSubState   = 100
+  val wipSubState   = 101
+  val doneSubState  = 103
+
+  // state machine will be a config map file, like BPM
 }
