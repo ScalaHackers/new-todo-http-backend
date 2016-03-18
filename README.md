@@ -14,10 +14,10 @@ for mysql demo, the followings are needed:
 4. create table of 'todos':
     create table todotxs (id VARCHAR(16) NOT NULL PRIMARY KEY, extid VARCHAR(16),
                         request TEXT, state INT, substate INT, response TEXT,
-                        starttime DATETIME, endtime DATETIME);
+                        starttime VARCHAR(16), endtime VARCHAR(16));
     request/response could be either real data or reference/url/link to payload.
 5. run scala unit testing
 6. use postman or curl to test REST interface, for example on windows:
---curl -i -X POST -H "Accept: application/json" -H "Content-Type:application/json" -d "{\"extid\":\"123456\", \"title\":\"a todo\"}" http://localhost:8080/todos"
+--curl -i -X POST -H "Accept: application/json" -H "Content-Type:application/json" -d "{\"extid\":\"123456\", \"request\":\"a todo\"}" http://localhost:8080/todostxs"
 
 

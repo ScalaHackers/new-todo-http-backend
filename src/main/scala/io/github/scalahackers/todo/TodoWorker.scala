@@ -50,8 +50,8 @@ class TodoWorker(todoManagerActorRef: ActorRef)
       val currentWorkId = Some(todo.id)
       var output: String = "pass todo validation"
       try {
-        val cmd = "cmd dir "
-        output = cmd.!!
+        //val cmd = "cmd dir "
+        //output = cmd.!!
         println("Hello! " + output)
       }
       catch {
