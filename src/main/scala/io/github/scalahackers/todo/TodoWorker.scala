@@ -44,6 +44,7 @@ class TodoWorker(todoManagerActorRef: ActorRef)
       todoManagerActorRef ! JobProtocol.WorkIsReady
 
     case todo: TodoTxs =>
+      println("I am in worker: " , self.toString())
       println("Got todo work: {}", todo.id)
       log.info("Got todo work: {}", todo.id)
       // work on data validation, then change sub state and return to manager

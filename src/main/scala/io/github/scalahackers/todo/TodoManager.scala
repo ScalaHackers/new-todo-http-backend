@@ -77,10 +77,13 @@ class TodoManagerActor extends Actor with TodoTxsTable with ActorLogging {
     case Get(id) =>
       sender() ! Await.result(db.run(todos.filter(_.id === id).result.head), Duration.Inf)
     case Add(todoUpdate) =>
+      println("extid: %s is in manager actor: %s".format(todoUpdate.extid, self.toString()))
+
       todoUpdate.request.map(TodoTxs.create(_, todoUpdate)) match {
         case Some(todo) =>
           Await.result(db.run(todos += todo), Duration.Inf)
           // if sender() is not in clients map yet, add it.
+          println("new txsid: %s is created in manager actor: %s".format(todo.id, self.toString()))
           addTxsClientMap(todo.id, sender())
           // sender() ! Ack
           workers.find {
@@ -106,16 +109,17 @@ class TodoManagerActor extends Actor with TodoTxsTable with ActorLogging {
       sender() ! Status.Success()
 
     case Response(todo, update) =>
-      println("response is received from {} worker" + sender().toString())
+      println("response for txsid: %s is received in manager actor: %s, from worker: %s".format(todo.id, self.toString(),
+        sender().toString()))
       for (old <- Await.result(db.run(todos.filter(_.id === todo.id).result.headOption), Duration.Inf)) {
         Await.result(db.run(todos.filter(_.id === todo.id).update(TodoTxs.create(old, update))), Duration.Inf)
         // hd: to find which front end is sender
         // find the frontend from table Clients
-        println("look for client to send response for {}" + todo.id)
         clients.get(todo.id) match {
           case Some(ref) =>
             ref ! todo
-            println("response is + " + todo.toString)
+            println("txs: %s has been sent back to client : %s".format(todo.id, ref.toString()))
+            println("The response is + " + todo.toString)
           case _ =>
         }
       }

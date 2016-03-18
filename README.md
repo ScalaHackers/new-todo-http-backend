@@ -20,4 +20,6 @@ for mysql demo, the followings are needed:
 6. use postman or curl to test REST interface, for example on windows:
 --curl -i -X POST -H "Accept: application/json" -H "Content-Type:application/json" -d "{\"extid\":\"123456\", \"request\":\"a todo\"}" http://localhost:8080/todostxs"
 
+samplerequest.json: "request":"{\"panel list\": \"test\", \"run_folder\": \"???\"}}"
+
 
