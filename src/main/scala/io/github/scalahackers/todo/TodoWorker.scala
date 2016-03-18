@@ -50,25 +50,32 @@ class TodoWorker(todoManagerActorRef: ActorRef)
       val currentWorkId = Some(todo.id)
       var output: String = "pass todo validation"
       try {
-        //val cmd = "data validation"
-        //output = Seq(cmd).!!
+        val cmd = "cmd dir "
+        output = cmd.!!
         println("Hello! " + output)
       }
       catch {
-        case ex: Exception => log.error("Todo error: {}" + ex, todo.id)
+        case ex: Exception => {
+          log.error("Todo error: {} {}", ex, todo.id)
+        }
       }
       finally {
         // Process(cmd)
         //todoStorageActorRef ! new TodoResultUpdate(Option[output], Option[false], Option[0])
         //todoStorageActorRef ! JobProtocol.WorkIsDone
         todoManagerActorRef ! TodoManagerActor.Response(
-            TodoUpdate(Option(todo.extid),
+/*            TodoUpdate(Option(todo.extid),
               Option(todo.request),
               Option(JobProtocol.validateState),
               Option(JobProtocol.doneSubState),
               Option(output.toString()), // response
-              None, None  // startime and endtime, TBD
-            ))
+              None, None  // startime and endtime, TBD */
+              todo, TodoUpdate(Option(todo.extid),
+                        Option(todo.request),
+                        Option(JobProtocol.validateState),
+                        Option(JobProtocol.doneSubState),
+                        Option(output.toString()), // response
+                        None, None ))
       }
   }
 }

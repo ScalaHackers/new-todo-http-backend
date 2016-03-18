@@ -26,7 +26,8 @@ object TodoManagerActor {
 
   case class Delete(id: String) extends Command
 
-  case class Response(result: TodoUpdate) extends Command
+  //case class Response(result: TodoUpdate) extends Command
+  case class Response(result: TodoTxs, update: TodoUpdate) extends Command
 
   case object Get extends Command
 
@@ -104,25 +105,19 @@ class TodoManagerActor extends Actor with TodoTxsTable with ActorLogging {
       Await.result(db.run(todos.delete), Duration.Inf)
       sender() ! Status.Success()
 
-    case Response(todoUpdate) =>
+    case Response(todo, update) =>
       println("response is received from {} worker" + sender().toString())
-      // move to next state, if final, return to client
-      todoUpdate.request.map(TodoTxs.create(_, todoUpdate)) match {
-        case Some(todo) =>
-          Await.result(db.run(todos += todo), Duration.Inf)
-          // hd: to find which front end is sender
-          // find the frontend from table Clients
-          println("look for client to send response for {}" + todo.id)
-          clients.get(todo.id) match {
-            case Some(ref) =>
-              ref ! todo
-              println("response is + " + todo.toString)
-            case _ =>
-          }
-
-        case None => // no match, expcetion handling later
-          sender() ! Status.Failure(new IllegalArgumentException("Insufficient data"))
-        // return to HTTP frontend
+      for (old <- Await.result(db.run(todos.filter(_.id === todo.id).result.headOption), Duration.Inf)) {
+        Await.result(db.run(todos.filter(_.id === todo.id).update(TodoTxs.create(old, update))), Duration.Inf)
+        // hd: to find which front end is sender
+        // find the frontend from table Clients
+        println("look for client to send response for {}" + todo.id)
+        clients.get(todo.id) match {
+          case Some(ref) =>
+            ref ! todo
+            println("response is + " + todo.toString)
+          case _ =>
+        }
       }
       // check if there is pending txs in queue of todos, schedule it if so.
   }
