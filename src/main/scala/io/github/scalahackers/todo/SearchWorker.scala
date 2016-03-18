@@ -44,7 +44,6 @@ class SearchWorker(todoManagerActorRef: ActorRef)
       todoManagerActorRef ! JobProtocol.WorkIsReady
 
     case todo: TodoTxs =>
-      println("Got todo work: {}", todo.id)
       log.info("Got todo work: {}", todo.id)
       // work on data validation, then change state and return to manager
       val currentWorkId = Some(todo.id)
@@ -53,7 +52,7 @@ class SearchWorker(todoManagerActorRef: ActorRef)
       try {
         //val cmd = "dir"
         //output = Seq(cmd).!!
-        println("Hello! " + output)
+        log.debug("Hello! " + output)
       }
       catch {
         case ex: Exception => log.error("Todo error: {}" + ex, todo.id)
