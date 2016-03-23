@@ -16,6 +16,7 @@ object TodoWorker {
 }
 
 // reference to master/TodoStorage
+//calls TodoWorker extends BaseWorker()
 class TodoWorker(todoManagerActorRef: ActorRef)
   extends Actor with ActorLogging {
 
@@ -44,16 +45,16 @@ class TodoWorker(todoManagerActorRef: ActorRef)
       todoManagerActorRef ! JobProtocol.WorkIsReady
 
     case todo: TodoTxs =>
-      println("I am in worker: " , self.toString())
-      println("Got todo work: {}", todo.id)
+      log.info("I am in worker: {} " , self.toString())
       log.info("Got todo work: {}", todo.id)
       // work on data validation, then change sub state and return to manager
       val currentWorkId = Some(todo.id)
       var output: String = "pass todo validation"
       try {
-        //val cmd = "cmd dir "
+        //val cmd = "ls -la"
         //output = cmd.!!
-        println("Hello! " + output)
+        //output = WorkExecutor.callExtProgram(todo.request)
+        log.info("Hello! " + output)
       }
       catch {
         case ex: Exception => {

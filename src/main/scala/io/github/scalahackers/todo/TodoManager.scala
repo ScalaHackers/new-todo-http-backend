@@ -77,13 +77,14 @@ class TodoManagerActor extends Actor with TodoTxsTable with ActorLogging {
     case Get(id) =>
       sender() ! Await.result(db.run(todos.filter(_.id === id).result.head), Duration.Inf)
     case Add(todoUpdate) =>
-      println("extid: %s is in manager actor: %s".format(todoUpdate.extid, self.toString()))
+      log.info("\n\n\n")
+      log.info("extid: %s is in manager actor: %s".format(todoUpdate.extid, self.toString()))
 
       todoUpdate.request.map(TodoTxs.create(_, todoUpdate)) match {
         case Some(todo) =>
           Await.result(db.run(todos += todo), Duration.Inf)
           // if sender() is not in clients map yet, add it.
-          println("new txsid: %s is created in manager actor: %s".format(todo.id, self.toString()))
+          log.info("new txsid: %s is created in manager actor: %s".format(todo.id, self.toString()))
           addTxsClientMap(todo.id, sender())
           // sender() ! Ack
           workers.find {
@@ -91,9 +92,9 @@ class TodoManagerActor extends Actor with TodoTxsTable with ActorLogging {
           } foreach {
             case (_, WorkerState(ref, _)) => ref ! todo
           }
-          //if no available worker, we will queue this task in todos table
+          //otherwise, there is no available worker, we will queue this task in txs table
 
-        case None => // no match, expcetion handling later
+        case None => // no match, exception handling later
           sender() ! Status.Failure(new IllegalArgumentException("Insufficient data"))
       }
     case Update(id, update) =>
@@ -109,7 +110,7 @@ class TodoManagerActor extends Actor with TodoTxsTable with ActorLogging {
       sender() ! Status.Success()
 
     case Response(todo, update) =>
-      println("response for txsid: %s is received in manager actor: %s, from worker: %s".format(todo.id, self.toString(),
+      log.info("response for txsid: %s is received in manager actor: %s, from worker: %s".format(todo.id, self.toString(),
         sender().toString()))
       for (old <- Await.result(db.run(todos.filter(_.id === todo.id).result.headOption), Duration.Inf)) {
         Await.result(db.run(todos.filter(_.id === todo.id).update(TodoTxs.create(old, update))), Duration.Inf)
@@ -118,8 +119,8 @@ class TodoManagerActor extends Actor with TodoTxsTable with ActorLogging {
         clients.get(todo.id) match {
           case Some(ref) =>
             ref ! todo
-            println("txs: %s has been sent back to client : %s".format(todo.id, ref.toString()))
-            println("The response is + " + todo.toString)
+            log.info("txs: %s has been sent back to client : %s".format(todo.id, ref.toString()))
+            log.info("The response is + " + todo.toString)
           case _ =>
         }
       }
