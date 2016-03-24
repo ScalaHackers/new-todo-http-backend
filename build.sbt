@@ -7,8 +7,8 @@ scalaVersion := "2.11.7"
 libraryDependencies ++= Seq(
   "com.typesafe.akka" % "akka-http-experimental_2.11" % "2.0.3",
   "com.typesafe.akka" % "akka-http-spray-json-experimental_2.11" % "2.0.3",
-  "com.typesafe.slick" %% "slick" % "3.1.1",
-  "com.typesafe.slick" %% "slick-extensions" % "3.0.0",
+  "com.typesafe.slick" %% "slick" % "3.1.0",
+  "com.typesafe.slick" %% "slick-extensions" % "3.1.0",
   "com.oracle" % "ojdbc7" % "12.1.0.2",
   "mysql" % "mysql-connector-java" % "5.1.37",
   "com.typesafe.akka" % "akka-http-testkit-experimental_2.11" % "2.0.3" % "test",
