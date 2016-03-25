@@ -62,14 +62,26 @@ trait TodoRoutes extends TodoMarshalling
           }
         }
       } ~
-        path("") {
-          get {
-            complete(StatusCodes.OK)
-          }
+      path("notifytxs") {
+        get {
+          complete(StatusCodes.OK)
         } ~
-        options {
+        post {
+            entity(as[TodoUpdate]) { update =>
+              onSuccess(todoManager ? TodoManagerActor.Add(update)) { todo =>
+                complete(StatusCodes.OK, todo.asInstanceOf[TodoTxs])
+              }
+            }
+          }
+      } ~
+      path("") {
+        get {
           complete(StatusCodes.OK)
         }
+      } ~
+      options {
+        complete(StatusCodes.OK)
+      }
     }
   }
 }

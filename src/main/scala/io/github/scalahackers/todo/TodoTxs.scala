@@ -3,7 +3,7 @@ package io.github.scalahackers.todo
 import scala.util.Random
 
 //case class Todo(id: String, title: String, completed: Boolean = false, order: Int = 0)
-case class TodoTxs(id: String, extid: String = "", request: String, state: Int = 0, substate: Int = 0,
+case class TodoTxs(id: String, extid: String = "", request: String, state: String = "", substate: String = "",
                    response: String = "", starttime: String = "", endtime: String = "")
 
 case object TodoTxs {

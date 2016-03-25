@@ -28,18 +28,18 @@ object JobProtocol {
   val enrollWorker  = "enroll"
 
   // state machine protocol： main states, change to string later
-  val initState     = 0
-  val prepState     = 1
-  val validateState = 2
-  val searchState   = 3
-  val enrollState   = 4
-  val finalState    = 10
-  val errorState    = -1
+  val initState     = "INIT"
+  val prepState     = "PREP"
+  val validateState = "VALIDATE"
+  val searchState   = "SEARCH"
+  val enrollState   = "ENROLL"
+  val finalState    = "FINAL"
+  val errorState    = "ERROR"
 
   // state machine protocol： sub states , change to string later
-  val newSubState   = 100
-  val wipSubState   = 101
-  val doneSubState  = 103
+  val newSubState   = "NEWSUB"
+  val wipSubState   = "WIPSUB"
+  val doneSubState  = "DONESUB"
 
   // state machine will be a config map file in application.conf, like BPM
 }
