@@ -10,4 +10,7 @@ trait DatabaseConfigOracle {
   implicit val session: Session = db.createSession()
 
   def db = Database.forConfig("oracledb")
+
+  //val db = Database.forURL("jdbc:oracle:thin:@//localhost:1521/XE", "dbuser", "testtest", null,
+  //          driver = "com.typesafe.slick.driver.oracle.OracleDriver", null, true)
 }
