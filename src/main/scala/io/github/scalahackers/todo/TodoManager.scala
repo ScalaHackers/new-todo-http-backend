@@ -55,9 +55,11 @@ class TodoManagerActor extends Actor with TodoTxsTable with ActorLogging {
   private var workers = Map[String, WorkerState]()
 
   // init children todoWorkers, we will need a set of workers
-  // for
-  val todoWorker = context.actorOf(Props(new TodoWorker(self)))
-  //val searchWorker = context.actorOf(Props(new SearchWorker(self)))
+  var numTodoWorkers = 0
+  for (a <- 1 until 10) {
+    var todoWorker = context.actorOf(Props(new TodoWorker(self)))
+    var searchWorker = context.actorOf(Props(new SearchWorker(self)))
+  }
 
   def addTxsClientMap(id: String, sender: ActorRef) = {
     clients += (id -> sender)
@@ -70,6 +72,13 @@ class TodoManagerActor extends Actor with TodoTxsTable with ActorLogging {
       } else {
         log.info("Worker registered: {}", workerId)
         workers += (workerId -> WorkerState(sender(), status = Idle))
+      }
+
+    case JobProtocol.UnRegisterWorker(workerId, workerType) =>
+      if (workers.contains(workerId)) {
+        workers -= workerId
+      } else {
+        log.info("There is no such worker registered: {}", workerId)
       }
 
     case Get =>

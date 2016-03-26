@@ -28,6 +28,10 @@ class TodoWorker(todoManagerActorRef: ActorRef)
     todoManagerActorRef ! RegisterWorker(workerId, todoWorker)
   }
 
+  override def postStop(): Unit = {
+    todoManagerActorRef ! UnRegisterWorker(workerId, todoWorker)
+  }
+
   /* register
   override def postRestart(reason: Throwable): Unit = {
     todoStorageActorRef ! RegisterWorker(workerId)

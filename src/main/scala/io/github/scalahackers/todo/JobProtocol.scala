@@ -11,6 +11,7 @@ object JobProtocol {
 
   // Messages from Workers to manager
   case class RegisterWorker(workerId: String, workerType: String)
+  case class UnRegisterWorker(workerId: String, workerType: String)
   case class WorkerRequestsWork(workerId: String)
   case object WorkIsReady
   case class WorkIsDone(workerId: String, workId: String, result: Any)
