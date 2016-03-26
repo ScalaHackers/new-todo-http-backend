@@ -26,9 +26,6 @@ object TodoManagerActor {
 
   case class Delete(id: String) extends Command
 
-  case class Schedule() extends Command
-
-
   //case class Response(result: TodoUpdate) extends Command
   case class Response(result: TodoTxs, update: TodoUpdate) extends Command
 
@@ -143,7 +140,13 @@ class TodoManagerActor extends Actor with TodoTxsTable with ActorLogging {
         }
       }
       // check if there is pending txs in queue of todos, schedule it if so.
-      log.info("check if any pending txs for this type of workers.")
-      Schedule()
+      Schedule(sender(), JobProtocol.validateState)
+  }
+
+  def Schedule(freeWorker: ActorRef, pendingState: String): Unit = {
+    log.info("check if any pending txs for this type of workers.")
+    for (pending <- Await.result(db.run(todos.filter(_.state =!= pendingState).result.headOption), Duration.Inf)) {
+      freeWorker ! pending
+    }
   }
 }
