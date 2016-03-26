@@ -2,7 +2,7 @@ package io.github.scalahackers.todo
 
 import java.util.UUID
 
-import scala.sys.process._
+//import scala.sys.process._
 import scala.concurrent.duration._
 import akka.actor._
 
@@ -20,6 +20,7 @@ object TodoWorker {
 class TodoWorker(todoManagerActorRef: ActorRef)
   extends Actor with ActorLogging {
 
+  import TodoWorker._
   import JobProtocol._
 
   val workerId = UUID.randomUUID().toString
@@ -39,16 +40,9 @@ class TodoWorker(todoManagerActorRef: ActorRef)
 
   def receive = idle
 
-  //import context.dispatcher
-  //val registerTask = context.system.scheduler.schedule(0.seconds, 10.seconds, todoStorageActorRef,
-  //  RegisterWorker(workerId))
-
   def idle: Receive = {
-    case WorkIsReady =>
-      // ack to master
-      todoManagerActorRef ! JobProtocol.WorkIsReady
-
     case todo: TodoTxs =>
+      // done sth in state machine
       log.info("I am in worker: {} " , self.toString())
       log.info("Got todo work: {}", todo.id)
       // work on data validation, then change sub state and return to manager
@@ -70,12 +64,6 @@ class TodoWorker(todoManagerActorRef: ActorRef)
         //todoStorageActorRef ! new TodoResultUpdate(Option[output], Option[false], Option[0])
         //todoStorageActorRef ! JobProtocol.WorkIsDone
         todoManagerActorRef ! TodoManagerActor.Response(
-/*            TodoUpdate(Option(todo.extid),
-              Option(todo.request),
-              Option(JobProtocol.validateState),
-              Option(JobProtocol.doneSubState),
-              Option(output.toString()), // response
-              None, None  // startime and endtime, TBD */
               todo, TodoUpdate(Option(todo.extid),
                         Option(todo.request),
                         Option(JobProtocol.validateState),
@@ -83,5 +71,24 @@ class TodoWorker(todoManagerActorRef: ActorRef)
                         Option(output.toString()), // response
                         None, None ))
       }
+      //context.become(working)
+      context.become(idle)
+  }
+
+  def working: Receive = {
+    case WorkComplete(result) =>
+      log.info("Work is complete. Result {}.", result)
+      // done sth in state machine
+      todoManagerActorRef ! TodoManagerActor.Response
+      context.become(WorkIsDoneAck(result))
+
+    case _ =>
+  }
+
+  def WorkIsDoneAck(result: Any): Receive = {
+    case Ack(id) =>
+      // done sth in state machine
+      todoManagerActorRef ! TodoManagerActor.Response
+      context.become(idle)
   }
 }

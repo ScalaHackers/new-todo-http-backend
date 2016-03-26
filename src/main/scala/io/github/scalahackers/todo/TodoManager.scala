@@ -26,6 +26,9 @@ object TodoManagerActor {
 
   case class Delete(id: String) extends Command
 
+  case class Schedule() extends Command
+
+
   //case class Response(result: TodoUpdate) extends Command
   case class Response(result: TodoTxs, update: TodoUpdate) extends Command
 
@@ -41,6 +44,7 @@ object TodoManagerActor {
   private case object Idle extends WorkerStatus
 
   private case class WorkerState(ref: ActorRef, status: WorkerStatus)
+
 }
 
 class TodoManagerActor extends Actor with TodoTxsTable with ActorLogging {
@@ -55,10 +59,10 @@ class TodoManagerActor extends Actor with TodoTxsTable with ActorLogging {
   private var workers = Map[String, WorkerState]()
 
   // init children todoWorkers, we will need a set of workers
-  var numTodoWorkers = 0
-  for (a <- 1 until 10) {
-    var todoWorker = context.actorOf(Props(new TodoWorker(self)))
-    var searchWorker = context.actorOf(Props(new SearchWorker(self)))
+  var numTodoWorkers = 2
+  for (i <- 1 until numTodoWorkers ) {
+    context.actorOf(Props(new TodoWorker(self)))
+    context.actorOf(Props(new SearchWorker(self)))
   }
 
   def addTxsClientMap(id: String, sender: ActorRef) = {
@@ -83,10 +87,14 @@ class TodoManagerActor extends Actor with TodoTxsTable with ActorLogging {
 
     case Get =>
       sender() ! Await.result(db.run(todos.result), Duration.Inf)
+
     case Get(id) =>
       sender() ! Await.result(db.run(todos.filter(_.id === id).result.head), Duration.Inf)
+
     case Add(todoUpdate) =>
-      log.info("\n\n\n")
+
+      // data validation
+
       log.info("extid: %s is in manager actor: %s".format(todoUpdate.extid, self.toString()))
 
       todoUpdate.request.map(TodoTxs.create(_, todoUpdate)) match {
@@ -111,9 +119,11 @@ class TodoManagerActor extends Actor with TodoTxsTable with ActorLogging {
         Await.result(db.run(todos.filter(_.id === id).update(TodoTxs.create(old, update))), Duration.Inf)
       }
       self.forward(Get(id))
+
     case Delete(id) =>
       Await.result(db.run(todos.filter(_.id === id).delete), Duration.Inf)
       sender() ! Status.Success()
+
     case Clear =>
       Await.result(db.run(todos.delete), Duration.Inf)
       sender() ! Status.Success()
@@ -129,10 +139,11 @@ class TodoManagerActor extends Actor with TodoTxsTable with ActorLogging {
           case Some(ref) =>
             ref ! todo
             log.info("txs: %s has been sent back to client : %s".format(todo.id, ref.toString()))
-            log.info("The response is + " + todo.toString)
           case _ =>
         }
       }
       // check if there is pending txs in queue of todos, schedule it if so.
+      log.info("check if any pending txs for this type of workers.")
+      Schedule()
   }
 }
