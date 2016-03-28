@@ -52,8 +52,10 @@ class TodoManagerActor extends Actor with TodoTxsTable with ActorLogging {
   // workers state is not event sourced
   private var clients = Map[String, ActorRef]()
 
-  // workers state is not event sourced
   private var workers = Map[String, WorkerState]()
+  private var searchworkers = Map[String, WorkerState]()
+
+  private var workerMap = Map[String, Map[String, WorkerState]]()
 
   // init children todoWorkers, we will need a set of workers
   var numTodoWorkers = 2
@@ -125,7 +127,7 @@ class TodoManagerActor extends Actor with TodoTxsTable with ActorLogging {
       Await.result(db.run(todos.delete), Duration.Inf)
       sender() ! Status.Success()
 
-    case Response(todo, update) =>
+    case Response(todo, update, state) =>
       log.info("response for txsid: %s is received in manager actor: %s, from worker: %s".format(todo.id, self.toString(),
         sender().toString()))
       for (old <- Await.result(db.run(todos.filter(_.id === todo.id).result.headOption), Duration.Inf)) {
@@ -140,10 +142,10 @@ class TodoManagerActor extends Actor with TodoTxsTable with ActorLogging {
         }
       }
       // check if there is pending txs in queue of todos, schedule it if so.
-      Schedule(sender(), JobProtocol.validateState)
+      schedule(sender(), JobProtocol.validateState)
   }
 
-  def Schedule(freeWorker: ActorRef, pendingState: String): Unit = {
+  def schedule(freeWorker: ActorRef, pendingState: String): Unit = {
     log.info("check if any pending txs for this type of workers.")
     for (pending <- Await.result(db.run(todos.filter(_.state =!= pendingState).result.headOption), Duration.Inf)) {
       freeWorker ! pending
