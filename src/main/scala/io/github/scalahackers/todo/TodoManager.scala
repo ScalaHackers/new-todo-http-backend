@@ -7,11 +7,11 @@ import scala.concurrent.duration.Duration
 
 
 
-trait TodoManager {
-  lazy val todoManager: ActorRef = system.actorOf(Props(new TodoManagerActor))
-
-  implicit val system: ActorSystem
-}
+//trait TodoManager {
+//  lazy val todoManager: ActorRef = system.actorOf(Props(new TodoManagerActor))
+//
+//  implicit val system: ActorSystem
+//}
 
 object TodoManagerActor {
 
@@ -47,15 +47,16 @@ object TodoManagerActor {
 class TodoManagerActor extends Actor with TodoTxsTable with ActorLogging {
 
   import TodoManagerActor._
+  import JobProtocol._
   import driver.api._
 
   // workers state is not event sourced
   private var clients = Map[String, ActorRef]()
 
-  private var workers = Map[String, WorkerState]()
-  private var searchworkers = Map[String, WorkerState]()
+  private var todoWorkers = Map[String, WorkerState]()
+  private var searchWorkers = Map[String, WorkerState]()
 
-  private var workerMap = Map[String, Map[String, WorkerState]]()
+  private var stateWorkerMap = Map[String, Map[String, WorkerState]]()
 
   // init children todoWorkers, we will need a set of workers
   var numTodoWorkers = 2
@@ -69,20 +70,38 @@ class TodoManagerActor extends Actor with TodoTxsTable with ActorLogging {
   }
 
   def receive = {
-    case JobProtocol.RegisterWorker(workerId, workerType) =>
-      if (workers.contains(workerId)) {
-        workers += (workerId -> workers(workerId).copy(ref = sender()))
-      } else {
-        log.info("Worker registered: {}", workerId)
-        workers += (workerId -> WorkerState(sender(), status = Idle))
-      }
+    case RegisterWorker(workerId, workerType) => workerType match {
+      case todoWorkerType =>
+        if (todoWorkers.contains (workerId) ) {
+          todoWorkers += (workerId -> todoWorkers (workerId).copy (ref = sender () ) )
+        } else {
+        log.info ("Worker registered: {}", workerId)
+          todoWorkers += (workerId -> WorkerState (sender (), status = Idle) )
+        }
 
-    case JobProtocol.UnRegisterWorker(workerId, workerType) =>
-      if (workers.contains(workerId)) {
-        workers -= workerId
-      } else {
-        log.info("There is no such worker registered: {}", workerId)
-      }
+      case searchWorkerType =>
+        if (searchWorkers.contains (workerId) ) {
+          searchWorkers += (workerId -> searchWorkers (workerId).copy (ref = sender () ) )
+        } else {
+          log.info ("Worker registered: {}", workerId)
+          searchWorkers += (workerId -> WorkerState (sender (), status = Idle) )
+        }
+    }
+    case UnRegisterWorker(workerId, workerType) => workerType match {
+      case todoWorkerType =>
+        if (todoWorkers.contains(workerId)) {
+          todoWorkers -= workerId
+        } else {
+          log.info("There is no such worker registered: {}", workerId)
+        }
+
+      case searchWorkerType =>
+        if (searchWorkers.contains(workerId)) {
+          searchWorkers -= workerId
+        } else {
+          log.info("There is no such worker registered: {}", workerId)
+        }
+    }
 
     case Get =>
       sender() ! Await.result(db.run(todos.result), Duration.Inf)
@@ -142,7 +161,7 @@ class TodoManagerActor extends Actor with TodoTxsTable with ActorLogging {
         }
       }
       // check if there is pending txs in queue of todos, schedule it if so.
-      schedule(sender(), JobProtocol.validateState)
+      schedule(sender(), validateState)
   }
 
   def schedule(freeWorker: ActorRef, pendingState: String): Unit = {
