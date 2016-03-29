@@ -45,7 +45,7 @@ class TodoWorker(todoManagerActorRef: ActorRef)
       // done sth in state machine
       log.info("I am in worker: {} " , self.toString())
       log.info("Got todo work: {}", todo.id)
-      Thread.sleep(5000) // simulation
+      Thread.sleep(10000) // simulation
       // work on data validation, then change sub state and return to manager
       val currentWorkId = Some(todo.id)
       var output: String = "pass todo validation"

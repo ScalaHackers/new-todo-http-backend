@@ -37,7 +37,7 @@ object TodoManagerActor {
   // worker state table
   private sealed trait WorkerStatus
 
-  private case class Busy(workId: String) extends WorkerStatus
+  private case class Busy(txsId: String) extends WorkerStatus
 
   private case object Idle extends WorkerStatus
 
@@ -74,22 +74,25 @@ class TodoManagerActor extends Actor with TodoTxsTable with ActorLogging {
 
   def receive = {
     case RegisterWorker(workerId, workerType) => {
-      var workers = stateWorkerMap.get(workerType)
-      workers.foreach( w =>
-        w += (workerId -> WorkerState(sender (), Idle) )
-      )
-    }
-//      stateWorkerMap.get(workerType) match {
-//        case Some(sameTypeWorkers) => sameTypeWorkers.get(workerId) match {
-//          case Some(worker) =>
-//            log.info("New worker registered: {}", workerId)
-//            sameTypeWorkers += (workerId ->WorkerState(sender(), Idle))
-//        }
-//
-//        case None =>
-//          log.error("No such type of worker is supported: {}", workerType)
-//      }
+//      var workers = stateWorkerMap.get(workerType)
+//      workers.foreach( w =>
+//        w += (workerId -> WorkerState(sender (), Idle) )
+//      )
 //    }
+      stateWorkerMap.get(workerType) match {
+        case Some(sameTypeWorkers) => sameTypeWorkers.get(workerId) match {
+          case Some(worker) =>
+            log.info("Worker re-registered: {}", workerId)
+            sameTypeWorkers += (workerId ->WorkerState(sender(), Idle))
+          case None =>
+            log.info("New worker registered: {}", workerId)
+            sameTypeWorkers += (workerId ->WorkerState(sender(), Idle))
+        }
+
+        case None =>
+          log.error("No such type of worker is supported: {}", workerType)
+      }
+    }
 
     case UnRegisterWorker(workerId, workerType) => {
       stateWorkerMap.get(workerType) match {
@@ -112,6 +115,7 @@ class TodoManagerActor extends Actor with TodoTxsTable with ActorLogging {
     case Get(id) =>
       sender() ! Await.result(db.run(todos.filter(_.id === id).result.head), Duration.Inf)
 
+    // for TodoWorker
     case Add(todoUpdate) =>
 
       // data validation
@@ -129,9 +133,13 @@ class TodoManagerActor extends Actor with TodoTxsTable with ActorLogging {
               workers.find {
                 case (_, WorkerState(ref, Idle)) => true
               } foreach {
-                case (_, WorkerState(ref, _)) => ref ! todo
+                case (myWorkerId, WorkerState(ref, _)) =>
+                  ref ! todo
+                  // newly added
+                  changeWorkerStatus(myWorkerId, todoWorkerType, todo.id, Busy(todo.id))
               }
             case None =>
+              log.info("No available worker for new txsid: {}, save in queue", todo.id)
           }
           //otherwise, there is no available worker, we will queue this task in txs table
 
@@ -166,6 +174,8 @@ class TodoManagerActor extends Actor with TodoTxsTable with ActorLogging {
           case _ =>
         }
       }
+      // newly added
+      //changeWorkerStatus(myWorkerId, todoWorkerType, todo.id, Busy(todo.id))
       // check if there is pending txs in queue of todos, schedule it if so.
       //schedule(sender(), validateState)
   }
@@ -176,4 +186,17 @@ class TodoManagerActor extends Actor with TodoTxsTable with ActorLogging {
       freeWorker ! pending
     }
   }
+
+  def changeWorkerStatus(workerId: String, workerType: String, txsId: String, newStatus: WorkerStatus): Unit = {
+    stateWorkerMap.get(workerType) match {
+      case Some(sameTypeWorkers) => sameTypeWorkers.get(workerId) match {
+        case Some(worker) =>
+          sameTypeWorkers += (workerId -> WorkerState(sender(), newStatus))
+        //sameTypeWorkers += (workerId -> worker.copy(status = newStatus))
+        case _ ⇒
+      }
+      case _ =>
+    }
+  }
+
 }
