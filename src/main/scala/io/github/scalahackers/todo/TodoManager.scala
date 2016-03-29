@@ -5,13 +5,14 @@ import akka.actor._
 import scala.concurrent.Await
 import scala.concurrent.duration.Duration
 
+import scala.collection.mutable.Map
 
 
-//trait TodoManager {
-//  lazy val todoManager: ActorRef = system.actorOf(Props(new TodoManagerActor))
-//
-//  implicit val system: ActorSystem
-//}
+trait TodoManager {
+  lazy val todoManager: ActorRef = system.actorOf(Props(new TodoManagerActor))
+
+  implicit val system: ActorSystem
+}
 
 object TodoManagerActor {
 
@@ -56,7 +57,9 @@ class TodoManagerActor extends Actor with TodoTxsTable with ActorLogging {
   private var todoWorkers = Map[String, WorkerState]()
   private var searchWorkers = Map[String, WorkerState]()
 
-  private var stateWorkerMap = Map[String, Map[String, WorkerState]]()
+  // workers' map by (workerType, set of workers for state)
+  private var stateWorkerMap = Map(todoWorkerType -> todoWorkers,
+                  searchWorkerType -> searchWorkers)
 
   // init children todoWorkers, we will need a set of workers
   var numTodoWorkers = 2
@@ -70,38 +73,38 @@ class TodoManagerActor extends Actor with TodoTxsTable with ActorLogging {
   }
 
   def receive = {
-    case RegisterWorker(workerId, workerType) => workerType match {
-      case todoWorkerType =>
-        if (todoWorkers.contains (workerId) ) {
-          todoWorkers += (workerId -> todoWorkers (workerId).copy (ref = sender () ) )
-        } else {
-        log.info ("Worker registered: {}", workerId)
-          todoWorkers += (workerId -> WorkerState (sender (), status = Idle) )
+    case RegisterWorker(workerId, workerType) => {
+      var workers = stateWorkerMap.get(workerType)
+      workers.foreach( w =>
+        w += (workerId -> WorkerState(sender (), Idle) )
+      )
+    }
+//      stateWorkerMap.get(workerType) match {
+//        case Some(sameTypeWorkers) => sameTypeWorkers.get(workerId) match {
+//          case Some(worker) =>
+//            log.info("New worker registered: {}", workerId)
+//            sameTypeWorkers += (workerId ->WorkerState(sender(), Idle))
+//        }
+//
+//        case None =>
+//          log.error("No such type of worker is supported: {}", workerType)
+//      }
+//    }
+
+    case UnRegisterWorker(workerId, workerType) => {
+      stateWorkerMap.get(workerType) match {
+        case Some(sameTypeWorkers) => sameTypeWorkers.get(workerId) match {
+          case Some(worker) =>
+            sameTypeWorkers -= workerId
+          case None =>
+            log.info("There is no such worker registered: {}", workerId)
         }
 
-      case searchWorkerType =>
-        if (searchWorkers.contains (workerId) ) {
-          searchWorkers += (workerId -> searchWorkers (workerId).copy (ref = sender () ) )
-        } else {
-          log.info ("Worker registered: {}", workerId)
-          searchWorkers += (workerId -> WorkerState (sender (), status = Idle) )
-        }
+        case None =>
+          log.error("No such type of worker is supported: {}", workerType)
+      }
     }
-    case UnRegisterWorker(workerId, workerType) => workerType match {
-      case todoWorkerType =>
-        if (todoWorkers.contains(workerId)) {
-          todoWorkers -= workerId
-        } else {
-          log.info("There is no such worker registered: {}", workerId)
-        }
 
-      case searchWorkerType =>
-        if (searchWorkers.contains(workerId)) {
-          searchWorkers -= workerId
-        } else {
-          log.info("There is no such worker registered: {}", workerId)
-        }
-    }
 
     case Get =>
       sender() ! Await.result(db.run(todos.result), Duration.Inf)
@@ -112,9 +115,7 @@ class TodoManagerActor extends Actor with TodoTxsTable with ActorLogging {
     case Add(todoUpdate) =>
 
       // data validation
-
       log.info("extid: %s is in manager actor: %s".format(todoUpdate.extid, self.toString()))
-
       todoUpdate.request.map(TodoTxs.create(_, todoUpdate)) match {
         case Some(todo) =>
           Await.result(db.run(todos += todo), Duration.Inf)
@@ -122,10 +123,15 @@ class TodoManagerActor extends Actor with TodoTxsTable with ActorLogging {
           log.info("new txsid: %s is created in manager actor: %s".format(todo.id, self.toString()))
           addTxsClientMap(todo.id, sender())
           // sender() ! Ack
-          workers.find {
-            case (_, WorkerState(ref, Idle)) => true
-          } foreach {
-            case (_, WorkerState(ref, _)) => ref ! todo
+          var workersMap = stateWorkerMap.get(todoWorkerType)
+          workersMap match {
+            case Some(workers) =>
+              workers.find {
+                case (_, WorkerState(ref, Idle)) => true
+              } foreach {
+                case (_, WorkerState(ref, _)) => ref ! todo
+              }
+            case None =>
           }
           //otherwise, there is no available worker, we will queue this task in txs table
 
@@ -146,7 +152,7 @@ class TodoManagerActor extends Actor with TodoTxsTable with ActorLogging {
       Await.result(db.run(todos.delete), Duration.Inf)
       sender() ! Status.Success()
 
-    case Response(todo, update, state) =>
+    case Response(todo, update) =>
       log.info("response for txsid: %s is received in manager actor: %s, from worker: %s".format(todo.id, self.toString(),
         sender().toString()))
       for (old <- Await.result(db.run(todos.filter(_.id === todo.id).result.headOption), Duration.Inf)) {
@@ -161,7 +167,7 @@ class TodoManagerActor extends Actor with TodoTxsTable with ActorLogging {
         }
       }
       // check if there is pending txs in queue of todos, schedule it if so.
-      schedule(sender(), validateState)
+      //schedule(sender(), validateState)
   }
 
   def schedule(freeWorker: ActorRef, pendingState: String): Unit = {
