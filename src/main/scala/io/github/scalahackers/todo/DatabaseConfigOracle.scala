@@ -1,5 +1,7 @@
 package io.github.scalahackers.todo
 
+import com.typesafe.slick.driver.oracle.OracleDriver
+
 /**
   * Created by hdong on 3/14/2016.
   */

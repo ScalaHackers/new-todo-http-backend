@@ -28,7 +28,7 @@ object TodoManagerActor {
   case class Delete(id: String) extends Command
 
   //case class Response(result: TodoUpdate) extends Command
-  case class Response(result: TodoTxs, update: TodoUpdate) extends Command
+  case class Response(workerId: String, state: String, result: TodoTxs, update: TodoUpdate) extends Command
 
   case object Get extends Command
 
@@ -160,7 +160,7 @@ class TodoManagerActor extends Actor with TodoTxsTable with ActorLogging {
       Await.result(db.run(todos.delete), Duration.Inf)
       sender() ! Status.Success()
 
-    case Response(todo, update) =>
+    case Response(retWorkerIt, state, todo, update) =>
       log.info("response for txsid: %s is received in manager actor: %s, from worker: %s".format(todo.id, self.toString(),
         sender().toString()))
       for (old <- Await.result(db.run(todos.filter(_.id === todo.id).result.headOption), Duration.Inf)) {
@@ -175,7 +175,11 @@ class TodoManagerActor extends Actor with TodoTxsTable with ActorLogging {
         }
       }
       // newly added
-      //changeWorkerStatus(myWorkerId, todoWorkerType, todo.id, Busy(todo.id))
+      changeWorkerStatus(retWorkerIt, todoWorkerType, todo.id, Busy(todo.id))
+
+      // move to next state
+      //changeState(todo, state)
+    
       // check if there is pending txs in queue of todos, schedule it if so.
       //schedule(sender(), validateState)
   }

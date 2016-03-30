@@ -65,7 +65,7 @@ class TodoWorker(todoManagerActorRef: ActorRef)
         //todoStorageActorRef ! new TodoResultUpdate(Option[output], Option[false], Option[0])
         //todoStorageActorRef ! JobProtocol.WorkIsDone
         todoManagerActorRef ! TodoManagerActor.Response(
-              todo, TodoUpdate(Option(todo.extid),
+          workerId, validateState, todo, TodoUpdate(Option(todo.extid),
                         Option(todo.request),
                         Option(validateState),
                         Option(doneSubState),
