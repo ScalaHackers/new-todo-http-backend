@@ -5,6 +5,7 @@ case class TodoUpdate(extid: Option[String],
                       state: Option[String],
                       substate: Option[String],
                       response: Option[String],
+                      priority: Option[Int],
                       starttime: Option[String],
                       endtime: Option[String])
 
@@ -14,5 +15,6 @@ case class TodoInsert(id: String,
                       state: Option[String],
                       substate: Option[String],
                       response: Option[String],
+                      priority: Option[Int],
                       starttime: Option[String],
                       endtime: Option[String])

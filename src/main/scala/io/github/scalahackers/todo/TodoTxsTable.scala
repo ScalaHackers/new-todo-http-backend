@@ -8,24 +8,26 @@ trait TodoTxsTable extends DatabaseConfig {
   // same table
   protected val todos = TableQuery[TodosTxs]
 
-  class TodosTxs(tag: Tag) extends Table[TodoTxs](tag, "txs_sm") {
-    def * = (id, extid, request, state, substate, response, starttime, endtime) <>((TodoTxs.apply _).tupled, TodoTxs.unapply)
+  class TodosTxs(tag: Tag) extends Table[TodoTxs](tag, "TXS_SM") {
+    def * = (id, extid, request, state, substate, response, priority, starttime, endtime) <>((TodoTxs.apply _).tupled, TodoTxs.unapply)
 
-    def id = column[String]("id", O.PrimaryKey)
+    def id = column[String]("ID", O.PrimaryKey)
 
-    def extid = column[String]("extid")
+    def extid = column[String]("EXTID")
 
-    def request = column[String]("request")
+    def request = column[String]("REQUEST")
 
-    def state = column[String]("state")
+    def state = column[String]("STATE")
 
-    def substate = column[String]("substate")
+    def substate = column[String]("SUBSTATE")
 
-    def response = column[String]("response")
+    def response = column[String]("RESPONSE")
 
-    def starttime = column[String]("starttime")
+    def priority = column[Int]("PRIORITY")
 
-    def endtime = column[String]("endtime")
+    def starttime = column[String]("STARTTIME")
+
+    def endtime = column[String]("ENDTIME")
   }
 
 }

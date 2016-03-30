@@ -71,7 +71,7 @@ class SearchWorker(todoManagerActorRef: ActorRef)
             Option(searchState),
             Option(doneSubState),
             Option(output.toString()), // response
-            None, None ))
+            None, None, None))
 
       }
   }

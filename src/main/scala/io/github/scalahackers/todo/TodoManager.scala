@@ -179,7 +179,7 @@ class TodoManagerActor extends Actor with TodoTxsTable with ActorLogging {
 
       // move to next state
       //changeState(todo, state)
-    
+
       // check if there is pending txs in queue of todos, schedule it if so.
       //schedule(sender(), validateState)
   }
