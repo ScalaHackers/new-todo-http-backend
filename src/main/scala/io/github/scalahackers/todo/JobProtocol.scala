@@ -24,7 +24,7 @@ object JobProtocol {
 
   // type of workers
   val todoWorkerType = "TODOWORKER"
-  val searchWorkerType = "TODOWORKER"
+  val searchWorkerType = "SEARCHWORKER"
   val dataWorkerType = "DATAWORKER"
   val enrollWorkerType = "ENROLLWORKER"
 

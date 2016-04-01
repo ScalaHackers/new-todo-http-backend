@@ -1,9 +1,10 @@
 package io.github.scalahackers.todo
 
 import akka.actor._
+import akka.actor.ReceiveTimeout
 
 import scala.concurrent.Await
-import scala.concurrent.duration.Duration
+import scala.concurrent.duration._
 
 import scala.collection.mutable.Map
 
@@ -62,7 +63,7 @@ class TodoManagerActor extends Actor with TodoTxsTable with ActorLogging {
                   searchWorkerType -> searchWorkers)
 
   // init children todoWorkers, we will need a set of workers
-  var numTodoWorkers = 2
+  var numTodoWorkers = 5
   for (i <- 1 until numTodoWorkers ) {
     context.actorOf(Props(new TodoWorker(self)))
     context.actorOf(Props(new SearchWorker(self)))
@@ -71,6 +72,8 @@ class TodoManagerActor extends Actor with TodoTxsTable with ActorLogging {
   def addTxsClientMap(id: String, sender: ActorRef) = {
     clients += (id -> sender)
   }
+
+  context.setReceiveTimeout(60000 milliseconds)
 
   def receive = {
     case RegisterWorker(workerId, workerType) => {
@@ -130,10 +133,14 @@ class TodoManagerActor extends Actor with TodoTxsTable with ActorLogging {
           var workersMap = stateWorkerMap.get(todoWorkerType)
           workersMap match {
             case Some(workers) =>
-              workers.find {
-                case (_, WorkerState(ref, Idle)) => true
-              } foreach {
+              workers.find(entry => entry._2.status == Idle).foreach {
                 case (myWorkerId, WorkerState(ref, _)) =>
+//          workersMap match {
+//            case Some(workers) =>
+//              workers.find {
+//                case (_, WorkerState(ref, Idle)) => true
+//              } foreach {
+//                case (myWorkerId, WorkerState(ref, _)) =>
                   ref ! todo
                   // newly added
                   changeWorkerStatus(myWorkerId, todoWorkerType, todo.id, Busy(todo.id))
@@ -175,7 +182,7 @@ class TodoManagerActor extends Actor with TodoTxsTable with ActorLogging {
         }
       }
       // newly added
-      changeWorkerStatus(retWorkerIt, todoWorkerType, todo.id, Busy(todo.id))
+      changeWorkerStatus(retWorkerIt, todoWorkerType, todo.id, Idle)
 
       // move to next state
       //changeState(todo, state)
