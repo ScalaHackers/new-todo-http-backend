@@ -20,18 +20,18 @@ object JobProtocol {
   case object WorkIsReady  extends BaseRequest
   case class WorkIsDone(workerId: String, workId: String, result: Any)  extends BaseRequest
   case class WorkFailed(workerId: String, workId: String)  extends BaseRequest
-  case class Ack(id: String)  extends BaseRequest
+  case class WorkerAck(id: String)  extends BaseRequest
 
   // type of workers
-  val todoWorkerType = "TODOWORKER"
-  val searchWorkerType = "SEARCHWORKER"
-  val dataWorkerType = "DATAWORKER"
-  val enrollWorkerType = "ENROLLWORKER"
+//  val todoWorkerType = "TODOWORKER"
+//  val searchWorkerType = "SEARCHWORKER"
+//  val dataWorkerType = "DATAWORKER"
+//  val enrollWorkerType = "ENROLLWORKER"
 
   // state machine protocol： main states, change to string later
   val initState     = "INIT"
   val prepState     = "PREP"
-  val validateState = "VALIDATE"
+  val todoState     = "TODO"
   val searchState   = "SEARCH"
   val enrollState   = "ENROLL"
   val finalState    = "FINAL"
@@ -43,4 +43,31 @@ object JobProtocol {
   val doneSubState  = "DONESUB"
 
   // state machine will be a config map file in application.conf, like BPM
+}
+
+object ManagerProtocol {
+
+  // state machine commands
+  sealed trait StateRequest
+
+  case class Get(id: String) extends StateRequest
+
+  case class TodoRequest(todo: TodoUpdate, startState: String) extends StateRequest
+
+  case class Update(id: String, todo: TodoUpdate) extends StateRequest
+
+  case class Delete(id: String) extends StateRequest
+
+  // response from workers
+  case class WorkerResponse(workerId: String, state: String, result: TodoTxs, update: TodoUpdate)
+    extends StateRequest
+
+  // notify from pipeline
+  case class TxsNotify(todo: TodoUpdate) extends StateRequest
+
+  case object Get extends StateRequest
+
+  case object Clear extends StateRequest
+
+  case class Ack(msg: String) extends StateRequest
 }

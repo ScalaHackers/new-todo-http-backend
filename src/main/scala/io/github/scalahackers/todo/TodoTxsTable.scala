@@ -1,7 +1,7 @@
 package io.github.scalahackers.todo
 
-trait TodoTxsTable extends DatabaseConfig {
-//trait TodoTxsTable extends DatabaseConfigOracle {
+//trait TodoTxsTable extends DatabaseConfig {
+trait TodoTxsTable extends DatabaseConfigOracle {
 
   import driver.api._
 

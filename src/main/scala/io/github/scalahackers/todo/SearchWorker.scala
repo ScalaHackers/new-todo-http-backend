@@ -24,11 +24,11 @@ class SearchWorker(todoManagerActorRef: ActorRef)
   val workerId = UUID.randomUUID().toString
   override def preStart(): Unit = {
     // register
-    todoManagerActorRef ! RegisterWorker(workerId, searchWorkerType)
+    todoManagerActorRef ! RegisterWorker(workerId, searchState)
   }
 
   override def postStop(): Unit = {
-    todoManagerActorRef ! UnRegisterWorker(workerId, searchWorkerType)
+    todoManagerActorRef ! UnRegisterWorker(workerId, searchState)
   }
 
   /* register
@@ -65,7 +65,7 @@ class SearchWorker(todoManagerActorRef: ActorRef)
         // Process(cmd)
         //todoStorageActorRef ! new TodoResultUpdate(Option[output], Option[false], Option[0])
         //todoStorageActorRef ! JobProtocol.WorkIsDone
-        todoManagerActorRef ! TodoManagerActor.Response(
+        todoManagerActorRef ! ManagerProtocol.WorkerResponse(
           workerId, searchState, todo, TodoUpdate(Option(todo.extid),
             Option(todo.request),
             Option(searchState),

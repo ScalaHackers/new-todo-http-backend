@@ -12,6 +12,9 @@ import scala.concurrent.duration._
 trait TodoRoutes extends TodoMarshalling
   with TodoManagerProvider {
 
+  import ManagerProtocol._
+  import JobProtocol._
+
   implicit val timeout: Timeout = 10 seconds
 
   def routes = {
@@ -24,41 +27,50 @@ trait TodoRoutes extends TodoMarshalling
       pathPrefix("todostxs") {
         pathEnd {
           get {
-            onSuccess(todoManager ? TodoManagerActor.Get) { todos =>
+            onSuccess(todoManager ? ManagerProtocol.Get) { todos =>
               complete(StatusCodes.OK, todos.asInstanceOf[Iterable[TodoTxs]])
             }
           } ~
             post {
               entity(as[TodoUpdate]) { update =>
-                onSuccess(todoManager ? TodoManagerActor.Add(update)) { todo =>
+                onSuccess(todoManager ? ManagerProtocol.TodoRequest(update, todoState)) { todo =>
                   complete(StatusCodes.OK, todo.asInstanceOf[TodoTxs])
                 }
               }
             } ~
             delete {
-              onSuccess(todoManager ? TodoManagerActor.Clear) { _ =>
+              onSuccess(todoManager ? ManagerProtocol.Clear) { _ =>
                 complete(StatusCodes.OK)
               }
             }
         } ~ {
           path(Segment) { id =>
             get {
-              onSuccess(todoManager ? TodoManagerActor.Get(id)) { todo =>
+              onSuccess(todoManager ? ManagerProtocol.Get(id)) { todo =>
                 complete(StatusCodes.OK, todo.asInstanceOf[TodoTxs])
               }
             } ~
               patch {
                 entity(as[TodoUpdate]) { update =>
-                  onSuccess(todoManager ? TodoManagerActor.Update(id, update)) { todo =>
+                  onSuccess(todoManager ? ManagerProtocol.Update(id, update)) { todo =>
                     complete(StatusCodes.OK, todo.asInstanceOf[TodoTxs])
                   }
                 }
               } ~
               delete {
-                onSuccess(todoManager ? TodoManagerActor.Delete(id)) { _ =>
+                onSuccess(todoManager ? ManagerProtocol.Delete(id)) { _ =>
                   complete(StatusCodes.OK)
                 }
               }
+          }
+        }
+      } ~
+      path("searchtxs") {
+        post {
+          entity(as[TodoUpdate]) { update =>
+            onSuccess(todoManager ? ManagerProtocol.TodoRequest(update, searchState)) { todo =>
+              complete(StatusCodes.OK, todo.asInstanceOf[TodoTxs])
+            }
           }
         }
       } ~
@@ -68,7 +80,7 @@ trait TodoRoutes extends TodoMarshalling
         } ~
         post {
             entity(as[TodoUpdate]) { update =>
-              onSuccess(todoManager ? TodoManagerActor.Add(update)) { todo =>
+              onSuccess(todoManager ? ManagerProtocol.TodoRequest(update, enrollState)) { todo =>
                 complete(StatusCodes.OK, todo.asInstanceOf[TodoTxs])
               }
             }

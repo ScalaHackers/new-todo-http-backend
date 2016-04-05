@@ -22,15 +22,16 @@ class TodoWorker(todoManagerActorRef: ActorRef)
 
   import TodoWorker._
   import JobProtocol._
+  import ManagerProtocol._
 
   val workerId = UUID.randomUUID().toString
   override def preStart(): Unit = {
     // register
-    todoManagerActorRef ! RegisterWorker(workerId, todoWorkerType)
+    todoManagerActorRef ! RegisterWorker(workerId, todoState)
   }
 
   override def postStop(): Unit = {
-    todoManagerActorRef ! UnRegisterWorker(workerId, todoWorkerType)
+    todoManagerActorRef ! UnRegisterWorker(workerId, todoState)
   }
 
   /* register
@@ -64,10 +65,10 @@ class TodoWorker(todoManagerActorRef: ActorRef)
         // Process(cmd)
         //todoStorageActorRef ! new TodoResultUpdate(Option[output], Option[false], Option[0])
         //todoStorageActorRef ! JobProtocol.WorkIsDone
-        todoManagerActorRef ! TodoManagerActor.Response(
-          workerId, validateState, todo, TodoUpdate(Option(todo.extid),
+        todoManagerActorRef ! ManagerProtocol.WorkerResponse(
+          workerId, todoState, todo, TodoUpdate(Option(todo.extid),
                         Option(todo.request),
-                        Option(validateState),
+                        Option(todoState),
                         Option(doneSubState),
                         Option(output.toString()), // response
                         None, None, None ))
@@ -80,16 +81,16 @@ class TodoWorker(todoManagerActorRef: ActorRef)
     case WorkComplete(result) =>
       log.info("Work is complete. Result {}.", result)
       // done sth in state machine
-      todoManagerActorRef ! TodoManagerActor.Response
+      todoManagerActorRef ! ManagerProtocol.WorkerResponse
       context.become(WorkIsDoneAck(result))
 
     case _ =>
   }
 
   def WorkIsDoneAck(result: Any): Receive = {
-    case Ack(id) =>
+    case WorkerAck(id) =>
       // done sth in state machine
-      todoManagerActorRef ! TodoManagerActor.Response
+      todoManagerActorRef ! ManagerProtocol.WorkerResponse
       context.become(idle)
   }
 }

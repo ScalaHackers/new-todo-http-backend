@@ -1,0 +1,2117 @@
+[info] Loading global plugins from C:\Users\love\.sbt\0.13\plugins
+[info] Loading project definition from C:\SourceCode\scalaheckers\new-todo-http-backend\project
+[info] Set current project to new-todo-http-backend (in build file:/C:/SourceCode/scalaheckers/new-todo-http-backend/)
+[info] Running io.github.scalahackers.todo.Main 
+[DEBUG] [04/02/2016 22:58:42.892] [run-main-0] [EventStream(akka://default)] logger log1-Logging$DefaultLogger started
+[DEBUG] [04/02/2016 22:58:42.893] [run-main-0] [EventStream(akka://default)] Default Loggers started
+[DEBUG] [04/02/2016 22:58:42.896] [default-akka.actor.default-dispatcher-3] [akka://default/system] now supervising Actor[akka://default/system/deadLetterListener#-142012011]
+[DEBUG] [04/02/2016 22:58:42.900] [default-akka.actor.default-dispatcher-3] [akka://default/system/deadLetterListener] started (akka.event.DeadLetterListener@168bfd6)
+[DEBUG] [04/02/2016 22:58:42.916] [default-akka.actor.default-dispatcher-3] [akka://default/user] now supervising Actor[akka://default/user/StreamSupervisor-0#-868651848]
+[DEBUG] [04/02/2016 22:58:42.917] [default-akka.actor.default-dispatcher-3] [akka://default/user/StreamSupervisor-0] started (akka.stream.impl.StreamSupervisor@56a3197b)
+[DEBUG] [04/02/2016 22:58:42.920] [default-akka.actor.default-dispatcher-5] [akka://default/user] now supervising Actor[akka://default/user/$a#1307840509]
+[DEBUG] [04/02/2016 22:58:42.929] [default-akka.actor.default-dispatcher-5] [akka://default/user/$a/$a] started (io.github.scalahackers.todo.TodoWorker@ebda28f)
+[DEBUG] [04/02/2016 22:58:42.929] [default-akka.actor.default-dispatcher-3] [akka://default/user/$a] started (io.github.scalahackers.todo.TodoManagerActor@2faa7a70)
+[DEBUG] [04/02/2016 22:58:42.929] [default-akka.actor.default-dispatcher-3] [akka://default/user/$a] now supervising Actor[akka://default/user/$a/$a#-655616289]
+[DEBUG] [04/02/2016 22:58:42.929] [default-akka.actor.default-dispatcher-3] [akka://default/user/$a] now supervising Actor[akka://default/user/$a/$b#1361826867]
+[INFO] [04/02/2016 22:58:42.930] [default-akka.actor.default-dispatcher-3] [akka://default/user/$a] New worker registered: b21f944b-93b1-4e52-8a7e-658456d2b1b2
+[DEBUG] [04/02/2016 22:58:42.931] [default-akka.actor.default-dispatcher-2] [akka://default/user/$a/$b] started (io.github.scalahackers.todo.SearchWorker@7a3b386f)
+[INFO] [04/02/2016 22:58:42.933] [default-akka.actor.default-dispatcher-3] [akka://default/user/$a] New worker registered: 6f15ce2c-6488-42d7-a59e-f04adbcc42b7
+[DEBUG] [04/02/2016 22:58:42.937] [run-main-0] [AkkaSSLConfig(akka://default)] Initializing AkkaSSLConfig extension...
+[DEBUG] [04/02/2016 22:58:42.960] [run-main-0] [AkkaSSLConfig(akka://default)] hostnameVerifier: com.typesafe.sslconfig.ssl.DefaultHostnameVerifier@587df8c9
+[DEBUG] [04/02/2016 22:58:43.434] [default-akka.actor.default-dispatcher-4] [akka://default/user/StreamSupervisor-1] started (akka.stream.impl.StreamSupervisor@60dc7d80)
+[DEBUG] [04/02/2016 22:58:43.434] [default-akka.actor.default-dispatcher-3] [akka://default/user] now supervising Actor[akka://default/user/StreamSupervisor-1#902855651]
+[DEBUG] [04/02/2016 22:58:43.444] [default-akka.actor.default-dispatcher-4] [akka://default/system] now supervising Actor[akka://default/system/IO-TCP#-481654472]
+[DEBUG] [04/02/2016 22:58:43.467] [default-akka.actor.default-dispatcher-4] [akka://default/system/IO-TCP] started (akka.io.TcpManager@572a556c)
+[DEBUG] [04/02/2016 22:58:43.467] [default-akka.actor.default-dispatcher-4] [akka://default/system/IO-TCP] now supervising Actor[akka://default/system/IO-TCP/selectors#-1337912233]
+[DEBUG] [04/02/2016 22:58:43.469] [default-akka.actor.default-dispatcher-4] [akka://default/system/IO-TCP/selectors] started (akka.routing.RouterPoolActor@11944f5c)
+[DEBUG] [04/02/2016 22:58:43.469] [default-akka.actor.default-dispatcher-4] [akka://default/system/IO-TCP/selectors] now supervising Actor[akka://default/system/IO-TCP/selectors/$a#65647]
+[DEBUG] [04/02/2016 22:58:43.490] [default-akka.actor.default-dispatcher-5] [akka://default/system/IO-TCP/selectors/$a] started (akka.io.SelectionHandler@5d3a347c)
+[DEBUG] [04/02/2016 22:58:43.491] [default-akka.actor.default-dispatcher-5] [akka://default/system/IO-TCP/selectors/$a] now watched by Actor[akka://default/system/IO-TCP/selectors#-1337912233]
+[DEBUG] [04/02/2016 22:58:43.504] [default-akka.actor.default-dispatcher-5] [akka://default/user/StreamSupervisor-0] now supervising Actor[akka://default/user/StreamSupervisor-0/flow-0-0-unknown-operation#1718740153]
+[DEBUG] [04/02/2016 22:58:43.521] [default-akka.actor.default-dispatcher-5] [akka://default/user/StreamSupervisor-0/flow-0-0-unknown-operation] started (akka.stream.impl.fusing.ActorGraphInterpreter@70d5fa3c)
+[DEBUG] [04/02/2016 22:58:43.526] [default-akka.actor.default-dispatcher-6] [akka://default/system/IO-TCP/selectors/$a] now supervising Actor[akka://default/system/IO-TCP/selectors/$a/0#1002665981]
+[DEBUG] [04/02/2016 22:58:43.527] [default-akka.actor.default-dispatcher-6] [akka://default/system/IO-TCP/selectors/$a/0] Successfully bound to /0:0:0:0:0:0:0:0:8080
+[DEBUG] [04/02/2016 22:58:43.528] [default-akka.actor.default-dispatcher-6] [akka://default/system/IO-TCP/selectors/$a/0] started (akka.io.TcpListener@4866c38c)
+[DEBUG] [04/02/2016 22:58:43.528] [default-akka.actor.default-dispatcher-6] [akka://default/system/IO-TCP/selectors/$a/0] now watched by Actor[akka://default/system/IO-TCP/selectors/$a#65647]
+[DEBUG] [04/02/2016 22:58:43.531] [default-akka.actor.default-dispatcher-6] [akka://default/system/IO-TCP/selectors/$a/0] now watched by Actor[akka://default/user/StreamSupervisor-0/StageActorRef-0]
+[INFO] [04/02/2016 22:58:43.534] [default-akka.actor.default-dispatcher-6] [ActorSystem(default)] Bound to /0:0:0:0:0:0:0:0:8080
+[DEBUG] [04/02/2016 22:58:43.936] [default-akka.actor.default-dispatcher-3] [akka://default/system/IO-TCP/selectors/$a/0] New connection accepted
+[DEBUG] [04/02/2016 22:58:43.957] [default-akka.actor.default-dispatcher-3] [akka://default/system/IO-TCP/selectors/$a] now supervising Actor[akka://default/system/IO-TCP/selectors/$a/1#-696261852]
+[DEBUG] [04/02/2016 22:58:43.959] [default-akka.actor.default-dispatcher-6] [akka://default/system/IO-TCP/selectors/$a/1] started (akka.io.TcpIncomingConnection@6b6fdc68)
+[DEBUG] [04/02/2016 22:58:43.960] [default-akka.actor.default-dispatcher-6] [akka://default/system/IO-TCP/selectors/$a/1] now watched by Actor[akka://default/system/IO-TCP/selectors/$a#65647]
+[DEBUG] [04/02/2016 22:58:44.220] [default-akka.actor.default-dispatcher-6] [akka://default/user/StreamSupervisor-0] now supervising Actor[akka://default/user/StreamSupervisor-0/flow-1-0-unknown-operation#-1119596091]
+[DEBUG] [04/02/2016 22:58:44.221] [default-akka.actor.default-dispatcher-4] [akka://default/system/IO-TCP/selectors/$a/1] now watched by Actor[akka://default/user/StreamSupervisor-0/StageActorRef-1]
+[DEBUG] [04/02/2016 22:58:44.228] [default-akka.actor.default-dispatcher-6] [akka://default/user/StreamSupervisor-0/flow-1-0-unknown-operation] started (akka.stream.impl.fusing.ActorGraphInterpreter@7c91372a)
+[INFO] [04/02/2016 22:58:44.349] [default-akka.actor.default-dispatcher-9] [akka://default/user/$a] extid: Some(123456) is in manager actor: Actor[akka://default/user/$a#1307840509]
+22:58:44.474 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.QueryCompiler - Source:
+| TableExpansion
+|   table s2: Table TXS_SM
+|   columns: TypeMapping
+|     0: ProductNode
+|       1: Path s2.ID : String'
+|       2: Path s2.EXTID : String'
+|       3: Path s2.REQUEST : String'
+|       4: Path s2.STATE : String'
+|       5: Path s2.SUBSTATE : String'
+|       6: Path s2.RESPONSE : String'
+|       7: Path s2.PRIORITY : Int'
+|       8: Path s2.STARTTIME : String'
+|       9: Path s2.ENDTIME : String'
+
+22:58:44.485 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.AssignUniqueSymbols - Detected features: UsedFeatures(false,true,false,false)
+22:58:44.488 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.QueryCompiler - After phase assignUniqueSymbols:
+| TableExpansion
+|   table s3: Table TXS_SM
+|   columns: TypeMapping
+|     0: ProductNode
+|       1: Path s3.ID : String'
+|       2: Path s3.EXTID : String'
+|       3: Path s3.REQUEST : String'
+|       4: Path s3.STATE : String'
+|       5: Path s3.SUBSTATE : String'
+|       6: Path s3.RESPONSE : String'
+|       7: Path s3.PRIORITY : Int'
+|       8: Path s3.STARTTIME : String'
+|       9: Path s3.ENDTIME : String'
+
+22:58:44.492 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.QueryCompiler - After phase inferTypes: (no change)
+22:58:44.503 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.QueryCompiler - After phase insertCompiler:
+| ResultSetMapping : Vector[(String', String', String', String', String', String', Int', String', String')]
+|   from s5: Insert allFields=[ID, EXTID, REQUEST, STATE, SUBSTATE, RESPONSE, PRIORITY, STARTTIME, ENDTIME] : (String', String', String', String', String', String', Int', String', String')
+|     table s6: Table TXS_SM : Vector[@t4<UnassignedType>]
+|     linear: ProductNode : (String', String', String', String', String', String', Int', String', String')
+|       1: Path s6.ID : String'
+|       2: Path s6.EXTID : String'
+|       3: Path s6.REQUEST : String'
+|       4: Path s6.STATE : String'
+|       5: Path s6.SUBSTATE : String'
+|       6: Path s6.RESPONSE : String'
+|       7: Path s6.PRIORITY : Int'
+|       8: Path s6.STARTTIME : String'
+|       9: Path s6.ENDTIME : String'
+|   map: TypeMapping : Mapped[(String', String', String', String', String', String', Int', String', String')]
+|     0: ProductNode : (String', String', String', String', String', String', Int', String', String')
+|       1: InsertColumn ID : String'
+|         0: Path s5._1 : String'
+|       2: InsertColumn EXTID : String'
+|         0: Path s5._2 : String'
+|       3: InsertColumn REQUEST : String'
+|         0: Path s5._3 : String'
+|       4: InsertColumn STATE : String'
+|         0: Path s5._4 : String'
+|       5: InsertColumn SUBSTATE : String'
+|         0: Path s5._5 : String'
+|       6: InsertColumn RESPONSE : String'
+|         0: Path s5._6 : String'
+|       7: InsertColumn PRIORITY : Int'
+|         0: Path s5._7 : Int'
+|       8: InsertColumn STARTTIME : String'
+|         0: Path s5._8 : String'
+|       9: InsertColumn ENDTIME : String'
+|         0: Path s5._9 : String'
+
+22:58:44.507 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.CodeGen - Compiling server-side and mapping with server-side:
+| Insert allFields=[ID, EXTID, REQUEST, STATE, SUBSTATE, RESPONSE, PRIORITY, STARTTIME, ENDTIME] : (String', String', String', String', String', String', Int', String', String')
+|   table s6: Table TXS_SM : Vector[@t4<UnassignedType>]
+|   linear: ProductNode : (String', String', String', String', String', String', Int', String', String')
+|     1: Path s6.ID : String'
+|     2: Path s6.EXTID : String'
+|     3: Path s6.REQUEST : String'
+|     4: Path s6.STATE : String'
+|     5: Path s6.SUBSTATE : String'
+|     6: Path s6.RESPONSE : String'
+|     7: Path s6.PRIORITY : Int'
+|     8: Path s6.STARTTIME : String'
+|     9: Path s6.ENDTIME : String'
+
+22:58:44.522 [default-akka.actor.default-dispatcher-9] DEBUG s.relational.ResultConverterCompiler - Compiled ResultConverter
+| TypeMappingResultConverter
+|   child: ProductResultConverter
+|     1: SpecializedJdbcResultConverter$$anon$1 idx=1, name=ID : String'
+|     2: SpecializedJdbcResultConverter$$anon$1 idx=2, name=EXTID : String'
+|     3: SpecializedJdbcResultConverter$$anon$1 idx=3, name=REQUEST : String'
+|     4: SpecializedJdbcResultConverter$$anon$1 idx=4, name=STATE : String'
+|     5: SpecializedJdbcResultConverter$$anon$1 idx=5, name=SUBSTATE : String'
+|     6: SpecializedJdbcResultConverter$$anon$1 idx=6, name=RESPONSE : String'
+|     7: BaseResultConverter$mcI$sp idx=7, name=PRIORITY : Int'
+|     8: SpecializedJdbcResultConverter$$anon$1 idx=8, name=STARTTIME : String'
+|     9: SpecializedJdbcResultConverter$$anon$1 idx=9, name=ENDTIME : String'
+
+22:58:44.523 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.CodeGen - Compiled server-side to:
+| CompiledStatement "insert into `TXS_SM` (`ID`,`EXTID`,`REQUEST`,`STATE`,`SUBSTATE`,`RESPONSE`,`PRIORITY`,`STARTTIME`,`ENDTIME`)  values (?,?,?,?,?,?,?,?,?)" : (String', String', String', String', String', String', Int', String', String')
+
+22:58:44.525 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.QueryCompiler - After phase codeGen:
+| ResultSetMapping : Vector[(String', String', String', String', String', String', Int', String', String')]
+|   from s5: CompiledStatement "insert into `TXS_SM` (`ID`,`EXTID`,`REQUEST`,`STATE`,`SUBSTATE`,`RESPONSE`,`PRIORITY`,`STARTTIME`,`ENDTIME`)  values (?,?,?,?,?,?,?,?,?)" : (String', String', String', String', String', String', Int', String', String')
+|   map: CompiledMapping : Mapped[(String', String', String', String', String', String', Int', String', String')]
+|     converter: TypeMappingResultConverter
+|       child: ProductResultConverter
+|         1: SpecializedJdbcResultConverter$$anon$1 idx=1, name=ID : String'
+|         2: SpecializedJdbcResultConverter$$anon$1 idx=2, name=EXTID : String'
+|         3: SpecializedJdbcResultConverter$$anon$1 idx=3, name=REQUEST : String'
+|         4: SpecializedJdbcResultConverter$$anon$1 idx=4, name=STATE : String'
+|         5: SpecializedJdbcResultConverter$$anon$1 idx=5, name=SUBSTATE : String'
+|         6: SpecializedJdbcResultConverter$$anon$1 idx=6, name=RESPONSE : String'
+|         7: BaseResultConverter$mcI$sp idx=7, name=PRIORITY : Int'
+|         8: SpecializedJdbcResultConverter$$anon$1 idx=8, name=STARTTIME : String'
+|         9: SpecializedJdbcResultConverter$$anon$1 idx=9, name=ENDTIME : String'
+
+22:58:44.526 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.QueryCompilerBenchmark - ------------------- Phase: Time ---------
+22:58:44.534 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.QueryCompilerBenchmark -       assignUniqueSymbols:   11.896997 ms
+22:58:44.534 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.QueryCompilerBenchmark -                inferTypes:    4.305428 ms
+22:58:44.534 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.QueryCompilerBenchmark -            insertCompiler:   10.761624 ms
+22:58:44.534 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.QueryCompilerBenchmark -                   codeGen:   22.464672 ms
+22:58:44.534 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.QueryCompilerBenchmark -                     TOTAL:   49.428721 ms
+22:58:44.537 [default-akka.actor.default-dispatcher-9] DEBUG s.backend.DatabaseComponent.action - #1: SingleInsertAction [insert into `TXS_SM` (`ID`,`EXTID`,`REQUEST`,`STATE`,`SUBSTATE`,`RESPONSE`,`PRIORITY`,`STARTTIME`,`ENDTIME`)  values (?,?,?,?,?,?,?,?,?)]
+22:58:44.545 [mysqldb-1] DEBUG slick.jdbc.JdbcBackend.statement - Preparing statement: insert into `TXS_SM` (`ID`,`EXTID`,`REQUEST`,`STATE`,`SUBSTATE`,`RESPONSE`,`PRIORITY`,`STARTTIME`,`ENDTIME`)  values (?,?,?,?,?,?,?,?,?)
+22:58:44.783 [mysqldb-1] DEBUG slick.jdbc.JdbcBackend.benchmark - Execution of prepared update took 35ms
+[INFO] [04/02/2016 22:58:44.784] [default-akka.actor.default-dispatcher-9] [akka://default/user/$a] new txsid: 901315394 is created in manager actor: Actor[akka://default/user/$a#1307840509]
+[INFO] [04/02/2016 22:58:44.786] [default-akka.actor.default-dispatcher-5] [akka://default/user/$a/$a] I am in worker: Actor[akka://default/user/$a/$a#-655616289] 
+[INFO] [04/02/2016 22:58:44.786] [default-akka.actor.default-dispatcher-5] [akka://default/user/$a/$a] Got todo work: 901315394
+[INFO] [04/02/2016 22:58:49.786] [default-akka.actor.default-dispatcher-5] [akka://default/user/$a/$a] Hello! pass todo validation
+[INFO] [04/02/2016 22:58:49.786] [default-akka.actor.default-dispatcher-9] [akka://default/user/$a] response for txsid: 901315394 is received in manager actor: Actor[akka://default/user/$a#1307840509], from worker: Actor[akka://default/user/$a/$a#-655616289]
+22:58:49.817 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.QueryCompiler - Source:
+| Filter s2
+|   from s2: TableExpansion
+|     table s3: Table TXS_SM
+|     columns: TypeMapping
+|       0: ProductNode
+|         1: Path s3.ID : String'
+|         2: Path s3.EXTID : String'
+|         3: Path s3.REQUEST : String'
+|         4: Path s3.STATE : String'
+|         5: Path s3.SUBSTATE : String'
+|         6: Path s3.RESPONSE : String'
+|         7: Path s3.PRIORITY : Int'
+|         8: Path s3.STARTTIME : String'
+|         9: Path s3.ENDTIME : String'
+|   where: Apply Function =
+|     0: Path s2.ID : String'
+|     1: LiteralNode 901315394 (volatileHint=false)
+
+22:58:49.818 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.AssignUniqueSymbols - Detected features: UsedFeatures(false,true,false,false)
+22:58:49.823 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.QueryCompiler - After phase assignUniqueSymbols:
+| Filter s4
+|   from s4: TableExpansion
+|     table s5: Table TXS_SM
+|     columns: TypeMapping
+|       0: ProductNode
+|         1: Path s5.ID : String'
+|         2: Path s5.EXTID : String'
+|         3: Path s5.REQUEST : String'
+|         4: Path s5.STATE : String'
+|         5: Path s5.SUBSTATE : String'
+|         6: Path s5.RESPONSE : String'
+|         7: Path s5.PRIORITY : Int'
+|         8: Path s5.STARTTIME : String'
+|         9: Path s5.ENDTIME : String'
+|   where: Apply Function =
+|     0: Path s4.ID : String'
+|     1: LiteralNode 901315394 (volatileHint=false)
+
+22:58:49.825 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.QueryCompiler - After phase inferTypes: (no change)
+22:58:49.833 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.ExpandTables - Found Selects for NominalTypes: @t6
+22:58:49.836 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.ExpandTables - With correct table types:
+| Filter s4 : Vector[@t6<{ID: String', STARTTIME: String', ENDTIME: String', STATE: String', SUBSTATE: String', RESPONSE: String', EXTID: String', REQUEST: String', PRIORITY: Int'}>]
+|   from s4: Table TXS_SM : Vector[@t6<{ID: String', STARTTIME: String', ENDTIME: String', STATE: String', SUBSTATE: String', RESPONSE: String', EXTID: String', REQUEST: String', PRIORITY: Int'}>]
+|   where: Apply Function = : Boolean
+|     0: Path s4.ID : String'
+|     1: LiteralNode 901315394 (volatileHint=false) : String'
+
+22:58:49.837 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.ExpandTables - Table expansions: @t6 -> (s5,TypeMapping)
+22:58:49.839 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.ExpandTables - Expanding tables in result type
+22:58:49.844 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.QueryCompiler - After phase expandTables:
+| Bind : Vector[t8<Mapped[(String', String', String', String', String', String', Int', String', String')]>]
+|   from s7: Filter s4 : Vector[@t6<{ID: String', STARTTIME: String', ENDTIME: String', STATE: String', SUBSTATE: String', RESPONSE: String', EXTID: String', REQUEST: String', PRIORITY: Int'}>]
+|     from s4: Table TXS_SM : Vector[@t6<{ID: String', STARTTIME: String', ENDTIME: String', STATE: String', SUBSTATE: String', RESPONSE: String', EXTID: String', REQUEST: String', PRIORITY: Int'}>]
+|     where: Apply Function = : Boolean
+|       0: Path s4.ID : String'
+|       1: LiteralNode 901315394 (volatileHint=false) : String'
+|   select: Pure t8 : Vector[t8<Mapped[(String', String', String', String', String', String', Int', String', String')]>]
+|     value: TypeMapping : Mapped[(String', String', String', String', String', String', Int', String', String')]
+|       0: ProductNode : (String', String', String', String', String', String', Int', String', String')
+|         1: Path s7.ID : String'
+|         2: Path s7.EXTID : String'
+|         3: Path s7.REQUEST : String'
+|         4: Path s7.STATE : String'
+|         5: Path s7.SUBSTATE : String'
+|         6: Path s7.RESPONSE : String'
+|         7: Path s7.PRIORITY : Int'
+|         8: Path s7.STARTTIME : String'
+|         9: Path s7.ENDTIME : String'
+
+22:58:49.848 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.QueryCompiler - After phase forceOuterBinds:
+| Bind : Vector[t8<Mapped[(String', String', String', String', String', String', Int', String', String')]>]
+|   from s7: Filter s4 : Vector[@t6<{ID: String', STARTTIME: String', ENDTIME: String', STATE: String', SUBSTATE: String', RESPONSE: String', EXTID: String', REQUEST: String', PRIORITY: Int'}>]
+|     from s4: Table TXS_SM : Vector[@t6<{ID: String', STARTTIME: String', ENDTIME: String', STATE: String', SUBSTATE: String', RESPONSE: String', EXTID: String', REQUEST: String', PRIORITY: Int'}>]
+|     where: Apply Function = : Boolean
+|       0: Path s4.ID : String'
+|       1: LiteralNode 901315394 (volatileHint=false) : String'
+|   select: Pure t8 : Vector[t8<Mapped[(String', String', String', String', String', String', Int', String', String')]>]
+|     value: TypeMapping : Mapped[(String', String', String', String', String', String', Int', String', String')]
+|       0: ProductNode : (String', String', String', String', String', String', Int', String', String')
+|         1: Path s7.ID : String'
+|         2: Path s7.EXTID : String'
+|         3: Path s7.REQUEST : String'
+|         4: Path s7.STATE : String'
+|         5: Path s7.SUBSTATE : String'
+|         6: Path s7.RESPONSE : String'
+|         7: Path s7.PRIORITY : Int'
+|         8: Path s7.STARTTIME : String'
+|         9: Path s7.ENDTIME : String'
+
+22:58:49.852 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.QueryCompiler - After phase removeMappedTypes:
+| Bind : Vector[t8<(String', String', String', String', String', String', Int', String', String')>]
+|   from s7: Filter s4 : Vector[@t6<{ID: String', STARTTIME: String', ENDTIME: String', STATE: String', SUBSTATE: String', RESPONSE: String', EXTID: String', REQUEST: String', PRIORITY: Int'}>]
+|     from s4: Table TXS_SM : Vector[@t6<{ID: String', STARTTIME: String', ENDTIME: String', STATE: String', SUBSTATE: String', RESPONSE: String', EXTID: String', REQUEST: String', PRIORITY: Int'}>]
+|     where: Apply Function = : Boolean
+|       0: Path s4.ID : String'
+|       1: LiteralNode 901315394 (volatileHint=false) : String'
+|   select: Pure t8 : Vector[t8<(String', String', String', String', String', String', Int', String', String')>]
+|     value: ProductNode : (String', String', String', String', String', String', Int', String', String')
+|       1: Path s7.ID : String'
+|       2: Path s7.EXTID : String'
+|       3: Path s7.REQUEST : String'
+|       4: Path s7.STATE : String'
+|       5: Path s7.SUBSTATE : String'
+|       6: Path s7.RESPONSE : String'
+|       7: Path s7.PRIORITY : Int'
+|       8: Path s7.STARTTIME : String'
+|       9: Path s7.ENDTIME : String'
+
+22:58:49.853 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.QueryCompiler - After phase expandSums: (no change)
+22:58:49.853 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.QueryCompiler - After phase emulateOuterJoins: (no change)
+22:58:49.858 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.QueryCompiler - After phase expandRecords:
+| Bind : Vector[t8<(String', String', String', String', String', String', Int', String', String')>]
+|   from s7: Filter s4 : Vector[@t6<{ID: String', STARTTIME: String', ENDTIME: String', STATE: String', SUBSTATE: String', RESPONSE: String', EXTID: String', REQUEST: String', PRIORITY: Int'}>]
+|     from s4: Table TXS_SM : Vector[@t6<{ID: String', STARTTIME: String', ENDTIME: String', STATE: String', SUBSTATE: String', RESPONSE: String', EXTID: String', REQUEST: String', PRIORITY: Int'}>]
+|     where: Apply Function = : Boolean
+|       0: Path s4.ID : String'
+|       1: LiteralNode 901315394 (volatileHint=false) : String'
+|   select: Pure t8 : Vector[t8<(String', String', String', String', String', String', Int', String', String')>]
+|     value: ProductNode : (String', String', String', String', String', String', Int', String', String')
+|       1: Path s7.ID : String'
+|       2: Path s7.EXTID : String'
+|       3: Path s7.REQUEST : String'
+|       4: Path s7.STATE : String'
+|       5: Path s7.SUBSTATE : String'
+|       6: Path s7.RESPONSE : String'
+|       7: Path s7.PRIORITY : Int'
+|       8: Path s7.STARTTIME : String'
+|       9: Path s7.ENDTIME : String'
+
+22:58:49.861 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Analyzing s4.ID with symbols 
+| Path s4.ID : String'
+
+22:58:49.862 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Translated s4.ID to:
+| Path s4.ID
+
+22:58:49.863 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Flattening projection t8
+22:58:49.863 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Analyzing s7.ID with symbols 
+| Path s7.ID : String'
+
+22:58:49.863 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Translated s7.ID to:
+| Path s7.ID
+
+22:58:49.863 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Analyzing s7.EXTID with symbols 
+| Path s7.EXTID : String'
+
+22:58:49.863 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Translated s7.EXTID to:
+| Path s7.EXTID
+
+22:58:49.864 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Analyzing s7.REQUEST with symbols 
+| Path s7.REQUEST : String'
+
+22:58:49.864 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Translated s7.REQUEST to:
+| Path s7.REQUEST
+
+22:58:49.864 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Analyzing s7.STATE with symbols 
+| Path s7.STATE : String'
+
+22:58:49.864 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Translated s7.STATE to:
+| Path s7.STATE
+
+22:58:49.864 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Analyzing s7.SUBSTATE with symbols 
+| Path s7.SUBSTATE : String'
+
+22:58:49.864 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Translated s7.SUBSTATE to:
+| Path s7.SUBSTATE
+
+22:58:49.864 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Analyzing s7.RESPONSE with symbols 
+| Path s7.RESPONSE : String'
+
+22:58:49.864 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Translated s7.RESPONSE to:
+| Path s7.RESPONSE
+
+22:58:49.864 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Analyzing s7.PRIORITY with symbols 
+| Path s7.PRIORITY : Int'
+
+22:58:49.864 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Translated s7.PRIORITY to:
+| Path s7.PRIORITY
+
+22:58:49.865 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Analyzing s7.STARTTIME with symbols 
+| Path s7.STARTTIME : String'
+
+22:58:49.865 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Translated s7.STARTTIME to:
+| Path s7.STARTTIME
+
+22:58:49.865 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Analyzing s7.ENDTIME with symbols 
+| Path s7.ENDTIME : String'
+
+22:58:49.865 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Translated s7.ENDTIME to:
+| Path s7.ENDTIME
+
+22:58:49.866 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Flattening node at Path 
+| ProductNode
+|   1: Path s7.ID
+|   2: Path s7.EXTID
+|   3: Path s7.REQUEST
+|   4: Path s7.STATE
+|   5: Path s7.SUBSTATE
+|   6: Path s7.RESPONSE
+|   7: Path s7.PRIORITY
+|   8: Path s7.STARTTIME
+|   9: Path s7.ENDTIME
+
+22:58:49.868 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Flattening node at Path _1
+| Path s7.ID
+
+22:58:49.868 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Adding definition: s9 -> Path s7.ID
+22:58:49.868 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Flattening node at Path _2
+| Path s7.EXTID
+
+22:58:49.869 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Adding definition: s10 -> Path s7.EXTID
+22:58:49.869 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Flattening node at Path _3
+| Path s7.REQUEST
+
+22:58:49.869 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Adding definition: s11 -> Path s7.REQUEST
+22:58:49.869 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Flattening node at Path _4
+| Path s7.STATE
+
+22:58:49.869 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Adding definition: s12 -> Path s7.STATE
+22:58:49.869 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Flattening node at Path _5
+| Path s7.SUBSTATE
+
+22:58:49.869 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Adding definition: s13 -> Path s7.SUBSTATE
+22:58:49.869 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Flattening node at Path _6
+| Path s7.RESPONSE
+
+22:58:49.869 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Adding definition: s14 -> Path s7.RESPONSE
+22:58:49.869 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Flattening node at Path _7
+| Path s7.PRIORITY
+
+22:58:49.870 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Adding definition: s15 -> Path s7.PRIORITY
+22:58:49.870 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Flattening node at Path _8
+| Path s7.STARTTIME
+
+22:58:49.870 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Adding definition: s16 -> Path s7.STARTTIME
+22:58:49.870 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Flattening node at Path _9
+| Path s7.ENDTIME
+
+22:58:49.870 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Adding definition: s17 -> Path s7.ENDTIME
+22:58:49.872 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Adding translation for t8: (Map(List(_2) -> s10, List(_4) -> s12, List(_5) -> s13, List(_3) -> s11, List(_9) -> s17, List(_1) -> s9, List(_7) -> s15, List(_6) -> s14, List(_8) -> s16), UnassignedType)
+22:58:49.874 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Flattened projection to
+| Pure t8
+|   value: StructNode
+|     s9: Path s7.ID
+|     s10: Path s7.EXTID
+|     s11: Path s7.REQUEST
+|     s12: Path s7.STATE
+|     s13: Path s7.SUBSTATE
+|     s14: Path s7.RESPONSE
+|     s15: Path s7.PRIORITY
+|     s16: Path s7.STARTTIME
+|     s17: Path s7.ENDTIME
+
+22:58:49.877 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.QueryCompiler - After phase flattenProjections:
+| Bind : Vector[t8<{s9: String', s10: String', s11: String', s12: String', s13: String', s14: String', s15: Int', s16: String', s17: String'}>]
+|   from s7: Filter s4 : Vector[@t6<{ID: String', STARTTIME: String', ENDTIME: String', STATE: String', SUBSTATE: String', RESPONSE: String', EXTID: String', REQUEST: String', PRIORITY: Int'}>]
+|     from s4: Table TXS_SM : Vector[@t6<{ID: String', STARTTIME: String', ENDTIME: String', STATE: String', SUBSTATE: String', RESPONSE: String', EXTID: String', REQUEST: String', PRIORITY: Int'}>]
+|     where: Apply Function = : Boolean
+|       0: Path s4.ID : String'
+|       1: LiteralNode 901315394 (volatileHint=false) : String'
+|   select: Pure t8 : Vector[t8<{s9: String', s10: String', s11: String', s12: String', s13: String', s14: String', s15: Int', s16: String', s17: String'}>]
+|     value: StructNode : {s9: String', s10: String', s11: String', s12: String', s13: String', s14: String', s15: Int', s16: String', s17: String'}
+|       s9: Path s7.ID : String'
+|       s10: Path s7.EXTID : String'
+|       s11: Path s7.REQUEST : String'
+|       s12: Path s7.STATE : String'
+|       s13: Path s7.SUBSTATE : String'
+|       s14: Path s7.RESPONSE : String'
+|       s15: Path s7.PRIORITY : Int'
+|       s16: Path s7.STARTTIME : String'
+|       s17: Path s7.ENDTIME : String'
+
+22:58:49.878 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.QueryCompiler - After phase rewriteJoins: (no change)
+22:58:49.880 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.QueryCompiler - After phase verifySymbols: (no change)
+22:58:49.882 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.QueryCompiler - After phase relabelUnions: (no change)
+22:58:49.882 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.QueryCompiler - After phase createAggregates: (no change)
+22:58:49.883 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.QueryCompiler - After phase resolveZipJoins: (no change)
+22:58:49.885 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.PruneProjections - Unreferenced: t8; Field refs: (@t6,RESPONSE), (@t6,STARTTIME), (@t6,REQUEST), (@t6,ENDTIME), (@t6,SUBSTATE), (@t6,ID), (@t6,PRIORITY), (@t6,EXTID), (@t6,STATE)
+22:58:49.889 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.QueryCompiler - After phase pruneProjections: (no change)
+22:58:49.890 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.QueryCompiler - After phase rewriteDistinct: (no change)
+22:58:49.892 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.CreateResultSetMapping - Creating mapping from t8<Mapped[(String', String', String', String', String', String', Int', String', String')]>
+22:58:49.892 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.CreateResultSetMapping - Creating mapping from (String', String', String', String', String', String', Int', String', String')
+22:58:49.892 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.CreateResultSetMapping - Creating mapping from String'
+22:58:49.893 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.CreateResultSetMapping - Creating mapping from String'
+22:58:49.893 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.CreateResultSetMapping - Creating mapping from String'
+22:58:49.893 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.CreateResultSetMapping - Creating mapping from String'
+22:58:49.893 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.CreateResultSetMapping - Creating mapping from String'
+22:58:49.893 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.CreateResultSetMapping - Creating mapping from String'
+22:58:49.893 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.CreateResultSetMapping - Creating mapping from Int'
+22:58:49.893 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.CreateResultSetMapping - Creating mapping from String'
+22:58:49.893 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.CreateResultSetMapping - Creating mapping from String'
+22:58:49.895 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.QueryCompiler - After phase createResultSetMapping:
+| ResultSetMapping : Vector[Mapped[(String', String', String', String', String', String', Int', String', String')]]
+|   from s18: Bind : Vector[t8<{s9: String', s10: String', s11: String', s12: String', s13: String', s14: String', s15: Int', s16: String', s17: String'}>]
+|     from s7: Filter s4 : Vector[@t6<{ID: String', STARTTIME: String', ENDTIME: String', STATE: String', SUBSTATE: String', RESPONSE: String', EXTID: String', REQUEST: String', PRIORITY: Int'}>]
+|       from s4: Table TXS_SM : Vector[@t6<{ID: String', STARTTIME: String', ENDTIME: String', STATE: String', SUBSTATE: String', RESPONSE: String', EXTID: String', REQUEST: String', PRIORITY: Int'}>]
+|       where: Apply Function = : Boolean
+|         0: Path s4.ID : String'
+|         1: LiteralNode 901315394 (volatileHint=false) : String'
+|     select: Pure t8 : Vector[t8<{s9: String', s10: String', s11: String', s12: String', s13: String', s14: String', s15: Int', s16: String', s17: String'}>]
+|       value: StructNode : {s9: String', s10: String', s11: String', s12: String', s13: String', s14: String', s15: Int', s16: String', s17: String'}
+|         s9: Path s7.ID : String'
+|         s10: Path s7.EXTID : String'
+|         s11: Path s7.REQUEST : String'
+|         s12: Path s7.STATE : String'
+|         s13: Path s7.SUBSTATE : String'
+|         s14: Path s7.RESPONSE : String'
+|         s15: Path s7.PRIORITY : Int'
+|         s16: Path s7.STARTTIME : String'
+|         s17: Path s7.ENDTIME : String'
+|   map: TypeMapping : Mapped[(String', String', String', String', String', String', Int', String', String')]
+|     0: ProductNode : (String', String', String', String', String', String', Int', String', String')
+|       1: Path s18.s9 : String'
+|       2: Path s18.s10 : String'
+|       3: Path s18.s11 : String'
+|       4: Path s18.s12 : String'
+|       5: Path s18.s13 : String'
+|       6: Path s18.s14 : String'
+|       7: Path s18.s15 : Int'
+|       8: Path s18.s16 : String'
+|       9: Path s18.s17 : String'
+
+22:58:49.899 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.HoistClientOps - Hoisting operations from defs: 
+22:58:49.900 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.HoistClientOps - New defs: Map(Path s7.RESPONSE -> s19, Path s7.STARTTIME -> s20, Path s7.ENDTIME -> s21, Path s7.REQUEST -> s22, Path s7.STATE -> s23, Path s7.ID -> s24, Path s7.PRIORITY -> s25, Path s7.EXTID -> s26, Path s7.SUBSTATE -> s27)
+22:58:49.906 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.HoistClientOps - New ResultSetMapping:
+| ResultSetMapping : Vector[Mapped[(String', String', String', String', String', String', Int', String', String')]]
+|   from s18: Bind : Vector[t28<{s22: String', s25: Int', s19: String', s21: String', s26: String', s23: String', s24: String', s20: String', s27: String'}>]
+|     from s7: ...
+|     select: Pure t28 : Vector[t28<{s22: String', s25: Int', s19: String', s21: String', s26: String', s23: String', s24: String', s20: String', s27: String'}>]
+|       value: StructNode : {s22: String', s25: Int', s19: String', s21: String', s26: String', s23: String', s24: String', s20: String', s27: String'}
+|         s22: Path s7.REQUEST : String'
+|         s25: Path s7.PRIORITY : Int'
+|         s19: Path s7.RESPONSE : String'
+|         s21: Path s7.ENDTIME : String'
+|         s26: Path s7.EXTID : String'
+|         s23: Path s7.STATE : String'
+|         s24: Path s7.ID : String'
+|         s20: Path s7.STARTTIME : String'
+|         s27: Path s7.SUBSTATE : String'
+|   map: TypeMapping : Mapped[(String', String', String', String', String', String', Int', String', String')]
+|     0: ProductNode : (String', String', String', String', String', String', Int', String', String')
+|       1: Path s18.s24 : String'
+|       2: Path s18.s26 : String'
+|       3: Path s18.s22 : String'
+|       4: Path s18.s23 : String'
+|       5: Path s18.s27 : String'
+|       6: Path s18.s19 : String'
+|       7: Path s18.s25 : Int'
+|       8: Path s18.s20 : String'
+|       9: Path s18.s21 : String'
+
+22:58:49.909 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.QueryCompiler - After phase hoistClientOps:
+| ResultSetMapping : Vector[Mapped[(String', String', String', String', String', String', Int', String', String')]]
+|   from s18: Bind : Vector[t28<{s22: String', s25: Int', s19: String', s21: String', s26: String', s23: String', s24: String', s20: String', s27: String'}>]
+|     from s7: Filter s4 : Vector[@t6<{ID: String', STARTTIME: String', ENDTIME: String', STATE: String', SUBSTATE: String', RESPONSE: String', EXTID: String', REQUEST: String', PRIORITY: Int'}>]
+|       from s4: Table TXS_SM : Vector[@t6<{ID: String', STARTTIME: String', ENDTIME: String', STATE: String', SUBSTATE: String', RESPONSE: String', EXTID: String', REQUEST: String', PRIORITY: Int'}>]
+|       where: Apply Function = : Boolean
+|         0: Path s4.ID : String'
+|         1: LiteralNode 901315394 (volatileHint=false) : String'
+|     select: Pure t28 : Vector[t28<{s22: String', s25: Int', s19: String', s21: String', s26: String', s23: String', s24: String', s20: String', s27: String'}>]
+|       value: StructNode : {s22: String', s25: Int', s19: String', s21: String', s26: String', s23: String', s24: String', s20: String', s27: String'}
+|         s22: Path s7.REQUEST : String'
+|         s25: Path s7.PRIORITY : Int'
+|         s19: Path s7.RESPONSE : String'
+|         s21: Path s7.ENDTIME : String'
+|         s26: Path s7.EXTID : String'
+|         s23: Path s7.STATE : String'
+|         s24: Path s7.ID : String'
+|         s20: Path s7.STARTTIME : String'
+|         s27: Path s7.SUBSTATE : String'
+|   map: TypeMapping : Mapped[(String', String', String', String', String', String', Int', String', String')]
+|     0: ProductNode : (String', String', String', String', String', String', Int', String', String')
+|       1: Path s18.s24 : String'
+|       2: Path s18.s26 : String'
+|       3: Path s18.s22 : String'
+|       4: Path s18.s23 : String'
+|       5: Path s18.s27 : String'
+|       6: Path s18.s19 : String'
+|       7: Path s18.s25 : Int'
+|       8: Path s18.s20 : String'
+|       9: Path s18.s21 : String'
+
+22:58:49.911 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.QueryCompiler - After phase reorderOperations: (no change)
+22:58:49.914 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.MergeToComprehensions - Table fields: Map(@t6 -> Vector(ID, REQUEST, PRIORITY, RESPONSE, ENDTIME, EXTID, STATE, STARTTIME, SUBSTATE))
+22:58:49.918 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.MergeToComprehensions - Creating source from TableNode:
+| Table TXS_SM : Vector[@t6<{ID: String', STARTTIME: String', ENDTIME: String', STATE: String', SUBSTATE: String', RESPONSE: String', EXTID: String', REQUEST: String', PRIORITY: Int'}>]
+
+22:58:49.919 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.MergeToComprehensions - Mappings are: ConstArray(((@t6,ID),List(ID)), ((@t6,REQUEST),List(REQUEST)), ((@t6,PRIORITY),List(PRIORITY)), ((@t6,RESPONSE),List(RESPONSE)), ((@t6,ENDTIME),List(ENDTIME)), ((@t6,EXTID),List(EXTID)), ((@t6,STATE),List(STATE)), ((@t6,STARTTIME),List(STARTTIME)), ((@t6,SUBSTATE),List(SUBSTATE)))
+22:58:49.920 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.MergeToComprehensions - Building new Comprehension from:
+| Table TXS_SM : Vector[@t6<{ID: String', STARTTIME: String', ENDTIME: String', STATE: String', SUBSTATE: String', RESPONSE: String', EXTID: String', REQUEST: String', PRIORITY: Int'}>]
+
+22:58:49.931 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.MergeToComprehensions - Built new Comprehension:
+| Comprehension s29, None, None, ConstArray(), None, None, None, None : Vector[t30<{s31: String', s32: String', s33: Int', s34: String', s35: String', s36: String', s37: String', s38: String', s39: String'}>]
+|   from s29: Table TXS_SM : Vector[@t6<{ID: String', STARTTIME: String', ENDTIME: String', STATE: String', SUBSTATE: String', RESPONSE: String', EXTID: String', REQUEST: String', PRIORITY: Int'}>]
+|   select: Pure t30 : Vector[t30<{s31: String', s32: String', s33: Int', s34: String', s35: String', s36: String', s37: String', s38: String', s39: String'}>]
+|     value: StructNode : {s31: String', s32: String', s33: Int', s34: String', s35: String', s36: String', s37: String', s38: String', s39: String'}
+|       s31: Path s29.ID : String'
+|       s32: Path s29.REQUEST : String'
+|       s33: Path s29.PRIORITY : Int'
+|       s34: Path s29.RESPONSE : String'
+|       s35: Path s29.ENDTIME : String'
+|       s36: Path s29.EXTID : String'
+|       s37: Path s29.STATE : String'
+|       s38: Path s29.STARTTIME : String'
+|       s39: Path s29.SUBSTATE : String'
+
+22:58:49.932 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.MergeToComprehensions - Replacements are: Map((@t6,RESPONSE) -> s34, (@t6,STARTTIME) -> s38, (@t6,REQUEST) -> s32, (@t6,ENDTIME) -> s35, (@t6,SUBSTATE) -> s39, (@t6,ID) -> s31, (@t6,PRIORITY) -> s33, (@t6,EXTID) -> s36, (@t6,STATE) -> s37)
+22:58:49.933 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.MergeToComprehensions - Merging Filter into Comprehension:
+| Filter s4 : Vector[@t6<{ID: String', STARTTIME: String', ENDTIME: String', STATE: String', SUBSTATE: String', RESPONSE: String', EXTID: String', REQUEST: String', PRIORITY: Int'}>]
+|   from s4: ...
+|   where: Apply Function = : Boolean
+|     0: Path s4.ID : String'
+|     1: LiteralNode 901315394 (volatileHint=false) : String'
+
+22:58:49.936 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.MergeToComprehensions - Merged Filter into Comprehension:
+| Comprehension s29, Some(Apply Function =), None, ConstArray(), None, None, None, None : Vector[t30<{s31: String', s32: String', s33: Int', s34: String', s35: String', s36: String', s37: String', s38: String', s39: String'}>]
+|   from s29: Table TXS_SM : Vector[@t6<{ID: String', STARTTIME: String', ENDTIME: String', STATE: String', SUBSTATE: String', RESPONSE: String', EXTID: String', REQUEST: String', PRIORITY: Int'}>]
+|   select: Pure t30 : Vector[t30<{s31: String', s32: String', s33: Int', s34: String', s35: String', s36: String', s37: String', s38: String', s39: String'}>]
+|     value: StructNode : {s31: String', s32: String', s33: Int', s34: String', s35: String', s36: String', s37: String', s38: String', s39: String'}
+|       s31: Path s29.ID : String'
+|       s32: Path s29.REQUEST : String'
+|       s33: Path s29.PRIORITY : Int'
+|       s34: Path s29.RESPONSE : String'
+|       s35: Path s29.ENDTIME : String'
+|       s36: Path s29.EXTID : String'
+|       s37: Path s29.STATE : String'
+|       s38: Path s29.STARTTIME : String'
+|       s39: Path s29.SUBSTATE : String'
+|   where: Apply Function = : Boolean
+|     0: Path s29.ID : String'
+|     1: LiteralNode 901315394 (volatileHint=false) : String'
+
+22:58:49.938 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.MergeToComprehensions - Merging Bind into Comprehension as 'select':
+| Bind : Vector[t28<{s22: String', s25: Int', s19: String', s21: String', s26: String', s23: String', s24: String', s20: String', s27: String'}>]
+|   from s7: ...
+|   select: Pure t28 : Vector[t28<{s22: String', s25: Int', s19: String', s21: String', s26: String', s23: String', s24: String', s20: String', s27: String'}>]
+|     value: StructNode : {s22: String', s25: Int', s19: String', s21: String', s26: String', s23: String', s24: String', s20: String', s27: String'}
+|       s22: Path s7.REQUEST : String'
+|       s25: Path s7.PRIORITY : Int'
+|       s19: Path s7.RESPONSE : String'
+|       s21: Path s7.ENDTIME : String'
+|       s26: Path s7.EXTID : String'
+|       s23: Path s7.STATE : String'
+|       s24: Path s7.ID : String'
+|       s20: Path s7.STARTTIME : String'
+|       s27: Path s7.SUBSTATE : String'
+
+22:58:49.943 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.MergeToComprehensions - Merged Bind into Comprehension as 'select':
+| Comprehension s29, Some(Apply Function =), None, ConstArray(), None, None, None, None : Vector[t28<{s22: String', s25: Int', s19: String', s21: String', s26: String', s23: String', s24: String', s20: String', s27: String'}>]
+|   from s29: Table TXS_SM : Vector[@t6<{ID: String', STARTTIME: String', ENDTIME: String', STATE: String', SUBSTATE: String', RESPONSE: String', EXTID: String', REQUEST: String', PRIORITY: Int'}>]
+|   select: Pure t28 : Vector[t28<{s22: String', s25: Int', s19: String', s21: String', s26: String', s23: String', s24: String', s20: String', s27: String'}>]
+|     value: StructNode : {s22: String', s25: Int', s19: String', s21: String', s26: String', s23: String', s24: String', s20: String', s27: String'}
+|       s22: Path s29.REQUEST : String'
+|       s25: Path s29.PRIORITY : Int'
+|       s19: Path s29.RESPONSE : String'
+|       s21: Path s29.ENDTIME : String'
+|       s26: Path s29.EXTID : String'
+|       s23: Path s29.STATE : String'
+|       s24: Path s29.ID : String'
+|       s20: Path s29.STARTTIME : String'
+|       s27: Path s29.SUBSTATE : String'
+|   where: Apply Function = : Boolean
+|     0: Path s29.ID : String'
+|     1: LiteralNode 901315394 (volatileHint=false) : String'
+
+22:58:49.945 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.MergeToComprehensions - Replacements are: Map((t28,s22) -> s22, (t28,s20) -> s20, (t28,s19) -> s19, (t28,s25) -> s25, (t28,s24) -> s24, (t28,s27) -> s27, (t28,s21) -> s21, (t28,s23) -> s23, (t28,s26) -> s26)
+22:58:49.946 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.MergeToComprehensions - Mappings are: ConstArray(((t28,s22),List(s22)), ((t28,s20),List(s20)), ((t28,s19),List(s19)), ((t28,s25),List(s25)), ((t28,s24),List(s24)), ((t28,s27),List(s27)), ((t28,s21),List(s21)), ((t28,s23),List(s23)), ((t28,s26),List(s26)))
+22:58:49.948 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.QueryCompiler - After phase mergeToComprehensions:
+| ResultSetMapping : Vector[Mapped[(String', String', String', String', String', String', Int', String', String')]]
+|   from s18: Comprehension s29, Some(Apply Function =), None, ConstArray(), None, None, None, None : Vector[t28<{s22: String', s25: Int', s19: String', s21: String', s26: String', s23: String', s24: String', s20: String', s27: String'}>]
+|     from s29: Table TXS_SM : Vector[@t6<{ID: String', STARTTIME: String', ENDTIME: String', STATE: String', SUBSTATE: String', RESPONSE: String', EXTID: String', REQUEST: String', PRIORITY: Int'}>]
+|     select: Pure t28 : Vector[t28<{s22: String', s25: Int', s19: String', s21: String', s26: String', s23: String', s24: String', s20: String', s27: String'}>]
+|       value: StructNode : {s22: String', s25: Int', s19: String', s21: String', s26: String', s23: String', s24: String', s20: String', s27: String'}
+|         s22: Path s29.REQUEST : String'
+|         s25: Path s29.PRIORITY : Int'
+|         s19: Path s29.RESPONSE : String'
+|         s21: Path s29.ENDTIME : String'
+|         s26: Path s29.EXTID : String'
+|         s23: Path s29.STATE : String'
+|         s24: Path s29.ID : String'
+|         s20: Path s29.STARTTIME : String'
+|         s27: Path s29.SUBSTATE : String'
+|     where: Apply Function = : Boolean
+|       0: Path s29.ID : String'
+|       1: LiteralNode 901315394 (volatileHint=false) : String'
+|   map: TypeMapping : Mapped[(String', String', String', String', String', String', Int', String', String')]
+|     0: ProductNode : (String', String', String', String', String', String', Int', String', String')
+|       1: Path s18.s24 : String'
+|       2: Path s18.s26 : String'
+|       3: Path s18.s22 : String'
+|       4: Path s18.s23 : String'
+|       5: Path s18.s27 : String'
+|       6: Path s18.s19 : String'
+|       7: Path s18.s25 : Int'
+|       8: Path s18.s20 : String'
+|       9: Path s18.s21 : String'
+
+22:58:49.950 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.QueryCompiler - After phase optimizeScalar: (no change)
+22:58:49.961 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.RemoveFieldNames - Transformed RSM: 
+| ResultSetMapping
+|   from s18: Comprehension s29, Some(Apply Function =), None, ConstArray(), None, None, None, None : Vector[t28<(String', Int', String', String', String', String', String', String', String')>]
+|     from s29: Table TXS_SM : Vector[@t6<{ID: String', STARTTIME: String', ENDTIME: String', STATE: String', SUBSTATE: String', RESPONSE: String', EXTID: String', REQUEST: String', PRIORITY: Int'}>]
+|     select: Pure t28 : Vector[t28<(String', Int', String', String', String', String', String', String', String')>]
+|       value: ProductNode : (String', Int', String', String', String', String', String', String', String')
+|         1: Path s29.REQUEST : String'
+|         2: Path s29.PRIORITY : Int'
+|         3: Path s29.RESPONSE : String'
+|         4: Path s29.ENDTIME : String'
+|         5: Path s29.EXTID : String'
+|         6: Path s29.STATE : String'
+|         7: Path s29.ID : String'
+|         8: Path s29.STARTTIME : String'
+|         9: Path s29.SUBSTATE : String'
+|     where: Apply Function = : Boolean
+|       0: Path s29.ID : String'
+|       1: LiteralNode 901315394 (volatileHint=false) : String'
+|   map: TypeMapping : Mapped[(String', String', String', String', String', String', Int', String', String')]
+|     0: ProductNode : (String', String', String', String', String', String', Int', String', String')
+|       1: Path s18.s24 : String'
+|       2: Path s18.s26 : String'
+|       3: Path s18.s22 : String'
+|       4: Path s18.s23 : String'
+|       5: Path s18.s27 : String'
+|       6: Path s18.s19 : String'
+|       7: Path s18.s25 : Int'
+|       8: Path s18.s20 : String'
+|       9: Path s18.s21 : String'
+
+22:58:49.963 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.QueryCompiler - After phase removeFieldNames:
+| ResultSetMapping : Vector[Mapped[(String', String', String', String', String', String', Int', String', String')]]
+|   from s18: Comprehension s29, Some(Apply Function =), None, ConstArray(), None, None, None, None : Vector[t28<(String', Int', String', String', String', String', String', String', String')>]
+|     from s29: Table TXS_SM : Vector[@t6<{ID: String', STARTTIME: String', ENDTIME: String', STATE: String', SUBSTATE: String', RESPONSE: String', EXTID: String', REQUEST: String', PRIORITY: Int'}>]
+|     select: Pure t28 : Vector[t28<(String', Int', String', String', String', String', String', String', String')>]
+|       value: ProductNode : (String', Int', String', String', String', String', String', String', String')
+|         1: Path s29.REQUEST : String'
+|         2: Path s29.PRIORITY : Int'
+|         3: Path s29.RESPONSE : String'
+|         4: Path s29.ENDTIME : String'
+|         5: Path s29.EXTID : String'
+|         6: Path s29.STATE : String'
+|         7: Path s29.ID : String'
+|         8: Path s29.STARTTIME : String'
+|         9: Path s29.SUBSTATE : String'
+|     where: Apply Function = : Boolean
+|       0: Path s29.ID : String'
+|       1: LiteralNode 901315394 (volatileHint=false) : String'
+|   map: TypeMapping : Mapped[(String', String', String', String', String', String', Int', String', String')]
+|     0: ProductNode : (String', String', String', String', String', String', Int', String', String')
+|       1: Path s18._7 : String'
+|       2: Path s18._5 : String'
+|       3: Path s18._1 : String'
+|       4: Path s18._6 : String'
+|       5: Path s18._9 : String'
+|       6: Path s18._3 : String'
+|       7: Path s18._2 : Int'
+|       8: Path s18._8 : String'
+|       9: Path s18._4 : String'
+
+22:58:49.964 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.CodeGen - Compiling server-side and mapping with server-side:
+| Comprehension s29, Some(Apply Function =), None, ConstArray(), None, None, None, None : Vector[t28<(String', Int', String', String', String', String', String', String', String')>]
+|   from s29: Table TXS_SM : Vector[@t6<{ID: String', STARTTIME: String', ENDTIME: String', STATE: String', SUBSTATE: String', RESPONSE: String', EXTID: String', REQUEST: String', PRIORITY: Int'}>]
+|   select: Pure t28 : Vector[t28<(String', Int', String', String', String', String', String', String', String')>]
+|     value: ProductNode : (String', Int', String', String', String', String', String', String', String')
+|       1: Path s29.REQUEST : String'
+|       2: Path s29.PRIORITY : Int'
+|       3: Path s29.RESPONSE : String'
+|       4: Path s29.ENDTIME : String'
+|       5: Path s29.EXTID : String'
+|       6: Path s29.STATE : String'
+|       7: Path s29.ID : String'
+|       8: Path s29.STARTTIME : String'
+|       9: Path s29.SUBSTATE : String'
+|   where: Apply Function = : Boolean
+|     0: Path s29.ID : String'
+|     1: LiteralNode 901315394 (volatileHint=false) : String'
+
+22:58:49.983 [default-akka.actor.default-dispatcher-9] DEBUG s.relational.ResultConverterCompiler - Compiled ResultConverter
+| TypeMappingResultConverter
+|   child: ProductResultConverter
+|     1: SpecializedJdbcResultConverter$$anon$1 idx=7, name=<computed> : String'
+|     2: SpecializedJdbcResultConverter$$anon$1 idx=5, name=<computed> : String'
+|     3: SpecializedJdbcResultConverter$$anon$1 idx=1, name=<computed> : String'
+|     4: SpecializedJdbcResultConverter$$anon$1 idx=6, name=<computed> : String'
+|     5: SpecializedJdbcResultConverter$$anon$1 idx=9, name=<computed> : String'
+|     6: SpecializedJdbcResultConverter$$anon$1 idx=3, name=<computed> : String'
+|     7: BaseResultConverter$mcI$sp idx=2, name=<computed> : Int'
+|     8: SpecializedJdbcResultConverter$$anon$1 idx=8, name=<computed> : String'
+|     9: SpecializedJdbcResultConverter$$anon$1 idx=4, name=<computed> : String'
+
+22:58:49.983 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.CodeGen - Compiled server-side to:
+| CompiledStatement "select `REQUEST`, `PRIORITY`, `RESPONSE`, `ENDTIME`, `EXTID`, `STATE`, `ID`, `STARTTIME`, `SUBSTATE` from `TXS_SM` where `ID` = '901315394'" : Vector[t28<(String', Int', String', String', String', String', String', String', String')>]
+
+22:58:49.984 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.QueryCompiler - After phase codeGen:
+| ResultSetMapping : Vector[Mapped[(String', String', String', String', String', String', Int', String', String')]]
+|   from s18: CompiledStatement "select `REQUEST`, `PRIORITY`, `RESPONSE`, `ENDTIME`, `EXTID`, `STATE`, `ID`, `STARTTIME`, `SUBSTATE` from `TXS_SM` where `ID` = '901315394'" : Vector[t28<(String', Int', String', String', String', String', String', String', String')>]
+|   map: CompiledMapping : Mapped[(String', String', String', String', String', String', Int', String', String')]
+|     converter: TypeMappingResultConverter
+|       child: ProductResultConverter
+|         1: SpecializedJdbcResultConverter$$anon$1 idx=7, name=<computed> : String'
+|         2: SpecializedJdbcResultConverter$$anon$1 idx=5, name=<computed> : String'
+|         3: SpecializedJdbcResultConverter$$anon$1 idx=1, name=<computed> : String'
+|         4: SpecializedJdbcResultConverter$$anon$1 idx=6, name=<computed> : String'
+|         5: SpecializedJdbcResultConverter$$anon$1 idx=9, name=<computed> : String'
+|         6: SpecializedJdbcResultConverter$$anon$1 idx=3, name=<computed> : String'
+|         7: BaseResultConverter$mcI$sp idx=2, name=<computed> : Int'
+|         8: SpecializedJdbcResultConverter$$anon$1 idx=8, name=<computed> : String'
+|         9: SpecializedJdbcResultConverter$$anon$1 idx=4, name=<computed> : String'
+
+22:58:49.984 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.QueryCompilerBenchmark - ------------------- Phase: Time ---------
+22:58:49.984 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.QueryCompilerBenchmark -       assignUniqueSymbols:    6.266140 ms
+22:58:49.984 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.QueryCompilerBenchmark -                inferTypes:    1.795433 ms
+22:58:49.984 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.QueryCompilerBenchmark -              expandTables:   18.656147 ms
+22:58:49.984 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.QueryCompilerBenchmark -           forceOuterBinds:    4.213763 ms
+22:58:49.984 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.QueryCompilerBenchmark -         removeMappedTypes:    3.544855 ms
+22:58:49.985 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.QueryCompilerBenchmark -                expandSums:    0.696159 ms
+22:58:49.985 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.QueryCompilerBenchmark -         emulateOuterJoins:    0.849406 ms
+22:58:49.985 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.QueryCompilerBenchmark -             expandRecords:    4.850110 ms
+22:58:49.985 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.QueryCompilerBenchmark -        flattenProjections:   19.117658 ms
+22:58:49.985 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.QueryCompilerBenchmark -              rewriteJoins:    0.805166 ms
+22:58:49.985 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.QueryCompilerBenchmark -             verifySymbols:    2.185098 ms
+22:58:49.985 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.QueryCompilerBenchmark -             relabelUnions:    1.207572 ms
+22:58:49.985 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.QueryCompilerBenchmark -          createAggregates:    0.506458 ms
+22:58:49.985 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.QueryCompilerBenchmark -           resolveZipJoins:    0.594939 ms
+22:58:49.985 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.QueryCompilerBenchmark -          pruneProjections:    6.302595 ms
+22:58:49.985 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.QueryCompilerBenchmark -           rewriteDistinct:    0.913820 ms
+22:58:49.985 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.QueryCompilerBenchmark -    createResultSetMapping:    5.150941 ms
+22:58:49.985 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.QueryCompilerBenchmark -            hoistClientOps:   14.104745 ms
+22:58:49.986 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.QueryCompilerBenchmark -         reorderOperations:    1.898070 ms
+22:58:49.986 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.QueryCompilerBenchmark -     mergeToComprehensions:   37.537033 ms
+22:58:49.986 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.QueryCompilerBenchmark -            optimizeScalar:    1.555475 ms
+22:58:49.986 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.QueryCompilerBenchmark -          removeFieldNames:   13.191280 ms
+22:58:49.986 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.QueryCompilerBenchmark -                   codeGen:   20.381504 ms
+22:58:49.986 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.QueryCompilerBenchmark -                     TOTAL:  166.324367 ms
+22:58:49.990 [default-akka.actor.default-dispatcher-9] DEBUG s.backend.DatabaseComponent.action - #1: StreamingInvokerAction$HeadOptionAction [select `REQUEST`, `PRIORITY`, `RESPONSE`, `ENDTIME`, `EXTID`, `STATE`, `ID`, `STARTTIME`, `SUBSTATE` from `TXS_SM` where `ID` = '901315394']
+22:58:49.994 [mysqldb-1] DEBUG slick.jdbc.JdbcBackend.statement - Preparing statement: select `REQUEST`, `PRIORITY`, `RESPONSE`, `ENDTIME`, `EXTID`, `STATE`, `ID`, `STARTTIME`, `SUBSTATE` from `TXS_SM` where `ID` = '901315394'
+22:58:50.003 [mysqldb-1] DEBUG slick.jdbc.JdbcBackend.benchmark - Execution of prepared statement took 1ms
+22:58:50.027 [mysqldb-1] DEBUG slick.jdbc.StatementInvoker.result - /----------------+----------+----------+---------+--------+-------+-----------+-----------+----------\
+22:58:50.027 [mysqldb-1] DEBUG slick.jdbc.StatementInvoker.result - | 1              | 2        | 3        | 4       | 5      | 6     | 7         | 8         | 9        |
+22:58:50.027 [mysqldb-1] DEBUG slick.jdbc.StatementInvoker.result - | REQUEST        | PRIORITY | RESPONSE | ENDTIME | EXTID  | STATE | ID        | STARTTIME | SUBSTATE |
+22:58:50.027 [mysqldb-1] DEBUG slick.jdbc.StatementInvoker.result - |----------------+----------+----------+---------+--------+-------+-----------+-----------+----------|
+22:58:50.027 [mysqldb-1] DEBUG slick.jdbc.StatementInvoker.result - | a todo testing | 0        |          |         | 123456 |       | 901315394 |           |          |
+22:58:50.028 [mysqldb-1] DEBUG slick.jdbc.StatementInvoker.result - \----------------+----------+----------+---------+--------+-------+-----------+-----------+----------/
+22:58:50.031 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.QueryCompiler - Source:
+| Filter s2
+|   from s2: TableExpansion
+|     table s3: Table TXS_SM
+|     columns: TypeMapping
+|       0: ProductNode
+|         1: Path s3.ID : String'
+|         2: Path s3.EXTID : String'
+|         3: Path s3.REQUEST : String'
+|         4: Path s3.STATE : String'
+|         5: Path s3.SUBSTATE : String'
+|         6: Path s3.RESPONSE : String'
+|         7: Path s3.PRIORITY : Int'
+|         8: Path s3.STARTTIME : String'
+|         9: Path s3.ENDTIME : String'
+|   where: Apply Function =
+|     0: Path s2.ID : String'
+|     1: LiteralNode 901315394 (volatileHint=false)
+
+22:58:50.031 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.AssignUniqueSymbols - Detected features: UsedFeatures(false,true,false,false)
+22:58:50.032 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.QueryCompiler - After phase assignUniqueSymbols:
+| Filter s4
+|   from s4: TableExpansion
+|     table s5: Table TXS_SM
+|     columns: TypeMapping
+|       0: ProductNode
+|         1: Path s5.ID : String'
+|         2: Path s5.EXTID : String'
+|         3: Path s5.REQUEST : String'
+|         4: Path s5.STATE : String'
+|         5: Path s5.SUBSTATE : String'
+|         6: Path s5.RESPONSE : String'
+|         7: Path s5.PRIORITY : Int'
+|         8: Path s5.STARTTIME : String'
+|         9: Path s5.ENDTIME : String'
+|   where: Apply Function =
+|     0: Path s4.ID : String'
+|     1: LiteralNode 901315394 (volatileHint=false)
+
+22:58:50.032 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.QueryCompiler - After phase inferTypes: (no change)
+22:58:50.032 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.ExpandTables - Found Selects for NominalTypes: @t6
+22:58:50.033 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.ExpandTables - With correct table types:
+| Filter s4 : Vector[@t6<{ID: String', STARTTIME: String', ENDTIME: String', STATE: String', SUBSTATE: String', RESPONSE: String', EXTID: String', REQUEST: String', PRIORITY: Int'}>]
+|   from s4: Table TXS_SM : Vector[@t6<{ID: String', STARTTIME: String', ENDTIME: String', STATE: String', SUBSTATE: String', RESPONSE: String', EXTID: String', REQUEST: String', PRIORITY: Int'}>]
+|   where: Apply Function = : Boolean
+|     0: Path s4.ID : String'
+|     1: LiteralNode 901315394 (volatileHint=false) : String'
+
+22:58:50.033 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.ExpandTables - Table expansions: @t6 -> (s5,TypeMapping)
+22:58:50.033 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.ExpandTables - Expanding tables in result type
+22:58:50.034 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.QueryCompiler - After phase expandTables:
+| Bind : Vector[t8<Mapped[(String', String', String', String', String', String', Int', String', String')]>]
+|   from s7: Filter s4 : Vector[@t6<{ID: String', STARTTIME: String', ENDTIME: String', STATE: String', SUBSTATE: String', RESPONSE: String', EXTID: String', REQUEST: String', PRIORITY: Int'}>]
+|     from s4: Table TXS_SM : Vector[@t6<{ID: String', STARTTIME: String', ENDTIME: String', STATE: String', SUBSTATE: String', RESPONSE: String', EXTID: String', REQUEST: String', PRIORITY: Int'}>]
+|     where: Apply Function = : Boolean
+|       0: Path s4.ID : String'
+|       1: LiteralNode 901315394 (volatileHint=false) : String'
+|   select: Pure t8 : Vector[t8<Mapped[(String', String', String', String', String', String', Int', String', String')]>]
+|     value: TypeMapping : Mapped[(String', String', String', String', String', String', Int', String', String')]
+|       0: ProductNode : (String', String', String', String', String', String', Int', String', String')
+|         1: Path s7.ID : String'
+|         2: Path s7.EXTID : String'
+|         3: Path s7.REQUEST : String'
+|         4: Path s7.STATE : String'
+|         5: Path s7.SUBSTATE : String'
+|         6: Path s7.RESPONSE : String'
+|         7: Path s7.PRIORITY : Int'
+|         8: Path s7.STARTTIME : String'
+|         9: Path s7.ENDTIME : String'
+
+22:58:50.035 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.QueryCompiler - After phase forceOuterBinds:
+| Bind : Vector[t8<Mapped[(String', String', String', String', String', String', Int', String', String')]>]
+|   from s7: Filter s4 : Vector[@t6<{ID: String', STARTTIME: String', ENDTIME: String', STATE: String', SUBSTATE: String', RESPONSE: String', EXTID: String', REQUEST: String', PRIORITY: Int'}>]
+|     from s4: Table TXS_SM : Vector[@t6<{ID: String', STARTTIME: String', ENDTIME: String', STATE: String', SUBSTATE: String', RESPONSE: String', EXTID: String', REQUEST: String', PRIORITY: Int'}>]
+|     where: Apply Function = : Boolean
+|       0: Path s4.ID : String'
+|       1: LiteralNode 901315394 (volatileHint=false) : String'
+|   select: Pure t8 : Vector[t8<Mapped[(String', String', String', String', String', String', Int', String', String')]>]
+|     value: TypeMapping : Mapped[(String', String', String', String', String', String', Int', String', String')]
+|       0: ProductNode : (String', String', String', String', String', String', Int', String', String')
+|         1: Path s7.ID : String'
+|         2: Path s7.EXTID : String'
+|         3: Path s7.REQUEST : String'
+|         4: Path s7.STATE : String'
+|         5: Path s7.SUBSTATE : String'
+|         6: Path s7.RESPONSE : String'
+|         7: Path s7.PRIORITY : Int'
+|         8: Path s7.STARTTIME : String'
+|         9: Path s7.ENDTIME : String'
+
+22:58:50.036 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.QueryCompiler - After phase removeMappedTypes:
+| Bind : Vector[t8<(String', String', String', String', String', String', Int', String', String')>]
+|   from s7: Filter s4 : Vector[@t6<{ID: String', STARTTIME: String', ENDTIME: String', STATE: String', SUBSTATE: String', RESPONSE: String', EXTID: String', REQUEST: String', PRIORITY: Int'}>]
+|     from s4: Table TXS_SM : Vector[@t6<{ID: String', STARTTIME: String', ENDTIME: String', STATE: String', SUBSTATE: String', RESPONSE: String', EXTID: String', REQUEST: String', PRIORITY: Int'}>]
+|     where: Apply Function = : Boolean
+|       0: Path s4.ID : String'
+|       1: LiteralNode 901315394 (volatileHint=false) : String'
+|   select: Pure t8 : Vector[t8<(String', String', String', String', String', String', Int', String', String')>]
+|     value: ProductNode : (String', String', String', String', String', String', Int', String', String')
+|       1: Path s7.ID : String'
+|       2: Path s7.EXTID : String'
+|       3: Path s7.REQUEST : String'
+|       4: Path s7.STATE : String'
+|       5: Path s7.SUBSTATE : String'
+|       6: Path s7.RESPONSE : String'
+|       7: Path s7.PRIORITY : Int'
+|       8: Path s7.STARTTIME : String'
+|       9: Path s7.ENDTIME : String'
+
+22:58:50.037 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.QueryCompiler - After phase expandSums: (no change)
+22:58:50.037 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.QueryCompiler - After phase emulateOuterJoins: (no change)
+22:58:50.038 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.QueryCompiler - After phase expandRecords:
+| Bind : Vector[t8<(String', String', String', String', String', String', Int', String', String')>]
+|   from s7: Filter s4 : Vector[@t6<{ID: String', STARTTIME: String', ENDTIME: String', STATE: String', SUBSTATE: String', RESPONSE: String', EXTID: String', REQUEST: String', PRIORITY: Int'}>]
+|     from s4: Table TXS_SM : Vector[@t6<{ID: String', STARTTIME: String', ENDTIME: String', STATE: String', SUBSTATE: String', RESPONSE: String', EXTID: String', REQUEST: String', PRIORITY: Int'}>]
+|     where: Apply Function = : Boolean
+|       0: Path s4.ID : String'
+|       1: LiteralNode 901315394 (volatileHint=false) : String'
+|   select: Pure t8 : Vector[t8<(String', String', String', String', String', String', Int', String', String')>]
+|     value: ProductNode : (String', String', String', String', String', String', Int', String', String')
+|       1: Path s7.ID : String'
+|       2: Path s7.EXTID : String'
+|       3: Path s7.REQUEST : String'
+|       4: Path s7.STATE : String'
+|       5: Path s7.SUBSTATE : String'
+|       6: Path s7.RESPONSE : String'
+|       7: Path s7.PRIORITY : Int'
+|       8: Path s7.STARTTIME : String'
+|       9: Path s7.ENDTIME : String'
+
+22:58:50.038 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Analyzing s4.ID with symbols 
+| Path s4.ID : String'
+
+22:58:50.038 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Translated s4.ID to:
+| Path s4.ID
+
+22:58:50.039 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Flattening projection t8
+22:58:50.039 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Analyzing s7.ID with symbols 
+| Path s7.ID : String'
+
+22:58:50.039 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Translated s7.ID to:
+| Path s7.ID
+
+22:58:50.039 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Analyzing s7.EXTID with symbols 
+| Path s7.EXTID : String'
+
+22:58:50.039 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Translated s7.EXTID to:
+| Path s7.EXTID
+
+22:58:50.039 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Analyzing s7.REQUEST with symbols 
+| Path s7.REQUEST : String'
+
+22:58:50.039 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Translated s7.REQUEST to:
+| Path s7.REQUEST
+
+22:58:50.039 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Analyzing s7.STATE with symbols 
+| Path s7.STATE : String'
+
+22:58:50.039 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Translated s7.STATE to:
+| Path s7.STATE
+
+22:58:50.040 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Analyzing s7.SUBSTATE with symbols 
+| Path s7.SUBSTATE : String'
+
+22:58:50.040 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Translated s7.SUBSTATE to:
+| Path s7.SUBSTATE
+
+22:58:50.040 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Analyzing s7.RESPONSE with symbols 
+| Path s7.RESPONSE : String'
+
+22:58:50.040 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Translated s7.RESPONSE to:
+| Path s7.RESPONSE
+
+22:58:50.041 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Analyzing s7.PRIORITY with symbols 
+| Path s7.PRIORITY : Int'
+
+22:58:50.041 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Translated s7.PRIORITY to:
+| Path s7.PRIORITY
+
+22:58:50.041 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Analyzing s7.STARTTIME with symbols 
+| Path s7.STARTTIME : String'
+
+22:58:50.041 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Translated s7.STARTTIME to:
+| Path s7.STARTTIME
+
+22:58:50.041 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Analyzing s7.ENDTIME with symbols 
+| Path s7.ENDTIME : String'
+
+22:58:50.041 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Translated s7.ENDTIME to:
+| Path s7.ENDTIME
+
+22:58:50.042 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Flattening node at Path 
+| ProductNode
+|   1: Path s7.ID
+|   2: Path s7.EXTID
+|   3: Path s7.REQUEST
+|   4: Path s7.STATE
+|   5: Path s7.SUBSTATE
+|   6: Path s7.RESPONSE
+|   7: Path s7.PRIORITY
+|   8: Path s7.STARTTIME
+|   9: Path s7.ENDTIME
+
+22:58:50.042 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Flattening node at Path _1
+| Path s7.ID
+
+22:58:50.042 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Adding definition: s9 -> Path s7.ID
+22:58:50.042 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Flattening node at Path _2
+| Path s7.EXTID
+
+22:58:50.043 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Adding definition: s10 -> Path s7.EXTID
+22:58:50.043 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Flattening node at Path _3
+| Path s7.REQUEST
+
+22:58:50.043 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Adding definition: s11 -> Path s7.REQUEST
+22:58:50.043 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Flattening node at Path _4
+| Path s7.STATE
+
+22:58:50.043 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Adding definition: s12 -> Path s7.STATE
+22:58:50.043 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Flattening node at Path _5
+| Path s7.SUBSTATE
+
+22:58:50.043 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Adding definition: s13 -> Path s7.SUBSTATE
+22:58:50.043 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Flattening node at Path _6
+| Path s7.RESPONSE
+
+22:58:50.043 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Adding definition: s14 -> Path s7.RESPONSE
+22:58:50.043 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Flattening node at Path _7
+| Path s7.PRIORITY
+
+22:58:50.043 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Adding definition: s15 -> Path s7.PRIORITY
+22:58:50.043 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Flattening node at Path _8
+| Path s7.STARTTIME
+
+22:58:50.043 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Adding definition: s16 -> Path s7.STARTTIME
+22:58:50.044 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Flattening node at Path _9
+| Path s7.ENDTIME
+
+22:58:50.044 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Adding definition: s17 -> Path s7.ENDTIME
+22:58:50.044 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Adding translation for t8: (Map(List(_2) -> s10, List(_4) -> s12, List(_5) -> s13, List(_3) -> s11, List(_9) -> s17, List(_1) -> s9, List(_7) -> s15, List(_6) -> s14, List(_8) -> s16), UnassignedType)
+22:58:50.044 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Flattened projection to
+| Pure t8
+|   value: StructNode
+|     s9: Path s7.ID
+|     s10: Path s7.EXTID
+|     s11: Path s7.REQUEST
+|     s12: Path s7.STATE
+|     s13: Path s7.SUBSTATE
+|     s14: Path s7.RESPONSE
+|     s15: Path s7.PRIORITY
+|     s16: Path s7.STARTTIME
+|     s17: Path s7.ENDTIME
+
+22:58:50.045 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.QueryCompiler - After phase flattenProjections:
+| Bind : Vector[t8<{s9: String', s10: String', s11: String', s12: String', s13: String', s14: String', s15: Int', s16: String', s17: String'}>]
+|   from s7: Filter s4 : Vector[@t6<{ID: String', STARTTIME: String', ENDTIME: String', STATE: String', SUBSTATE: String', RESPONSE: String', EXTID: String', REQUEST: String', PRIORITY: Int'}>]
+|     from s4: Table TXS_SM : Vector[@t6<{ID: String', STARTTIME: String', ENDTIME: String', STATE: String', SUBSTATE: String', RESPONSE: String', EXTID: String', REQUEST: String', PRIORITY: Int'}>]
+|     where: Apply Function = : Boolean
+|       0: Path s4.ID : String'
+|       1: LiteralNode 901315394 (volatileHint=false) : String'
+|   select: Pure t8 : Vector[t8<{s9: String', s10: String', s11: String', s12: String', s13: String', s14: String', s15: Int', s16: String', s17: String'}>]
+|     value: StructNode : {s9: String', s10: String', s11: String', s12: String', s13: String', s14: String', s15: Int', s16: String', s17: String'}
+|       s9: Path s7.ID : String'
+|       s10: Path s7.EXTID : String'
+|       s11: Path s7.REQUEST : String'
+|       s12: Path s7.STATE : String'
+|       s13: Path s7.SUBSTATE : String'
+|       s14: Path s7.RESPONSE : String'
+|       s15: Path s7.PRIORITY : Int'
+|       s16: Path s7.STARTTIME : String'
+|       s17: Path s7.ENDTIME : String'
+
+22:58:50.046 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.QueryCompiler - After phase rewriteJoins: (no change)
+22:58:50.046 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.QueryCompiler - After phase verifySymbols: (no change)
+22:58:50.046 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.QueryCompiler - After phase relabelUnions: (no change)
+22:58:50.046 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.QueryCompiler - After phase createAggregates: (no change)
+22:58:50.046 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.QueryCompiler - After phase resolveZipJoins: (no change)
+22:58:50.046 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.PruneProjections - Unreferenced: t8; Field refs: (@t6,SUBSTATE), (@t6,PRIORITY), (@t6,EXTID), (@t6,REQUEST), (@t6,RESPONSE), (@t6,ENDTIME), (@t6,STARTTIME), (@t6,ID), (@t6,STATE)
+22:58:50.046 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.QueryCompiler - After phase pruneProjections: (no change)
+22:58:50.046 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.QueryCompiler - After phase rewriteDistinct: (no change)
+22:58:50.046 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.CreateResultSetMapping - Creating mapping from t8<Mapped[(String', String', String', String', String', String', Int', String', String')]>
+22:58:50.046 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.CreateResultSetMapping - Creating mapping from (String', String', String', String', String', String', Int', String', String')
+22:58:50.046 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.CreateResultSetMapping - Creating mapping from String'
+22:58:50.046 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.CreateResultSetMapping - Creating mapping from String'
+22:58:50.046 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.CreateResultSetMapping - Creating mapping from String'
+22:58:50.046 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.CreateResultSetMapping - Creating mapping from String'
+22:58:50.046 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.CreateResultSetMapping - Creating mapping from String'
+22:58:50.047 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.CreateResultSetMapping - Creating mapping from String'
+22:58:50.047 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.CreateResultSetMapping - Creating mapping from Int'
+22:58:50.047 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.CreateResultSetMapping - Creating mapping from String'
+22:58:50.047 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.CreateResultSetMapping - Creating mapping from String'
+22:58:50.048 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.QueryCompiler - After phase createResultSetMapping:
+| ResultSetMapping : Vector[Mapped[(String', String', String', String', String', String', Int', String', String')]]
+|   from s18: Bind : Vector[t8<{s9: String', s10: String', s11: String', s12: String', s13: String', s14: String', s15: Int', s16: String', s17: String'}>]
+|     from s7: Filter s4 : Vector[@t6<{ID: String', STARTTIME: String', ENDTIME: String', STATE: String', SUBSTATE: String', RESPONSE: String', EXTID: String', REQUEST: String', PRIORITY: Int'}>]
+|       from s4: Table TXS_SM : Vector[@t6<{ID: String', STARTTIME: String', ENDTIME: String', STATE: String', SUBSTATE: String', RESPONSE: String', EXTID: String', REQUEST: String', PRIORITY: Int'}>]
+|       where: Apply Function = : Boolean
+|         0: Path s4.ID : String'
+|         1: LiteralNode 901315394 (volatileHint=false) : String'
+|     select: Pure t8 : Vector[t8<{s9: String', s10: String', s11: String', s12: String', s13: String', s14: String', s15: Int', s16: String', s17: String'}>]
+|       value: StructNode : {s9: String', s10: String', s11: String', s12: String', s13: String', s14: String', s15: Int', s16: String', s17: String'}
+|         s9: Path s7.ID : String'
+|         s10: Path s7.EXTID : String'
+|         s11: Path s7.REQUEST : String'
+|         s12: Path s7.STATE : String'
+|         s13: Path s7.SUBSTATE : String'
+|         s14: Path s7.RESPONSE : String'
+|         s15: Path s7.PRIORITY : Int'
+|         s16: Path s7.STARTTIME : String'
+|         s17: Path s7.ENDTIME : String'
+|   map: TypeMapping : Mapped[(String', String', String', String', String', String', Int', String', String')]
+|     0: ProductNode : (String', String', String', String', String', String', Int', String', String')
+|       1: Path s18.s9 : String'
+|       2: Path s18.s10 : String'
+|       3: Path s18.s11 : String'
+|       4: Path s18.s12 : String'
+|       5: Path s18.s13 : String'
+|       6: Path s18.s14 : String'
+|       7: Path s18.s15 : Int'
+|       8: Path s18.s16 : String'
+|       9: Path s18.s17 : String'
+
+22:58:50.048 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.HoistClientOps - Hoisting operations from defs: 
+22:58:50.049 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.HoistClientOps - New defs: Map(Path s7.STARTTIME -> s19, Path s7.ENDTIME -> s20, Path s7.STATE -> s21, Path s7.PRIORITY -> s22, Path s7.REQUEST -> s23, Path s7.ID -> s24, Path s7.SUBSTATE -> s25, Path s7.RESPONSE -> s26, Path s7.EXTID -> s27)
+22:58:50.050 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.HoistClientOps - New ResultSetMapping:
+| ResultSetMapping : Vector[Mapped[(String', String', String', String', String', String', Int', String', String')]]
+|   from s18: Bind : Vector[t28<{s20: String', s27: String', s25: String', s24: String', s23: String', s19: String', s26: String', s22: Int', s21: String'}>]
+|     from s7: ...
+|     select: Pure t28 : Vector[t28<{s20: String', s27: String', s25: String', s24: String', s23: String', s19: String', s26: String', s22: Int', s21: String'}>]
+|       value: StructNode : {s20: String', s27: String', s25: String', s24: String', s23: String', s19: String', s26: String', s22: Int', s21: String'}
+|         s20: Path s7.ENDTIME : String'
+|         s27: Path s7.EXTID : String'
+|         s25: Path s7.SUBSTATE : String'
+|         s24: Path s7.ID : String'
+|         s23: Path s7.REQUEST : String'
+|         s19: Path s7.STARTTIME : String'
+|         s26: Path s7.RESPONSE : String'
+|         s22: Path s7.PRIORITY : Int'
+|         s21: Path s7.STATE : String'
+|   map: TypeMapping : Mapped[(String', String', String', String', String', String', Int', String', String')]
+|     0: ProductNode : (String', String', String', String', String', String', Int', String', String')
+|       1: Path s18.s24 : String'
+|       2: Path s18.s27 : String'
+|       3: Path s18.s23 : String'
+|       4: Path s18.s21 : String'
+|       5: Path s18.s25 : String'
+|       6: Path s18.s26 : String'
+|       7: Path s18.s22 : Int'
+|       8: Path s18.s19 : String'
+|       9: Path s18.s20 : String'
+
+22:58:50.051 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.QueryCompiler - After phase hoistClientOps:
+| ResultSetMapping : Vector[Mapped[(String', String', String', String', String', String', Int', String', String')]]
+|   from s18: Bind : Vector[t28<{s20: String', s27: String', s25: String', s24: String', s23: String', s19: String', s26: String', s22: Int', s21: String'}>]
+|     from s7: Filter s4 : Vector[@t6<{ID: String', STARTTIME: String', ENDTIME: String', STATE: String', SUBSTATE: String', RESPONSE: String', EXTID: String', REQUEST: String', PRIORITY: Int'}>]
+|       from s4: Table TXS_SM : Vector[@t6<{ID: String', STARTTIME: String', ENDTIME: String', STATE: String', SUBSTATE: String', RESPONSE: String', EXTID: String', REQUEST: String', PRIORITY: Int'}>]
+|       where: Apply Function = : Boolean
+|         0: Path s4.ID : String'
+|         1: LiteralNode 901315394 (volatileHint=false) : String'
+|     select: Pure t28 : Vector[t28<{s20: String', s27: String', s25: String', s24: String', s23: String', s19: String', s26: String', s22: Int', s21: String'}>]
+|       value: StructNode : {s20: String', s27: String', s25: String', s24: String', s23: String', s19: String', s26: String', s22: Int', s21: String'}
+|         s20: Path s7.ENDTIME : String'
+|         s27: Path s7.EXTID : String'
+|         s25: Path s7.SUBSTATE : String'
+|         s24: Path s7.ID : String'
+|         s23: Path s7.REQUEST : String'
+|         s19: Path s7.STARTTIME : String'
+|         s26: Path s7.RESPONSE : String'
+|         s22: Path s7.PRIORITY : Int'
+|         s21: Path s7.STATE : String'
+|   map: TypeMapping : Mapped[(String', String', String', String', String', String', Int', String', String')]
+|     0: ProductNode : (String', String', String', String', String', String', Int', String', String')
+|       1: Path s18.s24 : String'
+|       2: Path s18.s27 : String'
+|       3: Path s18.s23 : String'
+|       4: Path s18.s21 : String'
+|       5: Path s18.s25 : String'
+|       6: Path s18.s26 : String'
+|       7: Path s18.s22 : Int'
+|       8: Path s18.s19 : String'
+|       9: Path s18.s20 : String'
+
+22:58:50.052 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.QueryCompiler - After phase reorderOperations: (no change)
+22:58:50.052 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.MergeToComprehensions - Table fields: Map(@t6 -> Vector(ID, ENDTIME, EXTID, SUBSTATE, REQUEST, STARTTIME, RESPONSE, PRIORITY, STATE))
+22:58:50.052 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.MergeToComprehensions - Creating source from TableNode:
+| Table TXS_SM : Vector[@t6<{ID: String', STARTTIME: String', ENDTIME: String', STATE: String', SUBSTATE: String', RESPONSE: String', EXTID: String', REQUEST: String', PRIORITY: Int'}>]
+
+22:58:50.052 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.MergeToComprehensions - Mappings are: ConstArray(((@t6,ID),List(ID)), ((@t6,ENDTIME),List(ENDTIME)), ((@t6,EXTID),List(EXTID)), ((@t6,SUBSTATE),List(SUBSTATE)), ((@t6,REQUEST),List(REQUEST)), ((@t6,STARTTIME),List(STARTTIME)), ((@t6,RESPONSE),List(RESPONSE)), ((@t6,PRIORITY),List(PRIORITY)), ((@t6,STATE),List(STATE)))
+22:58:50.052 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.MergeToComprehensions - Building new Comprehension from:
+| Table TXS_SM : Vector[@t6<{ID: String', STARTTIME: String', ENDTIME: String', STATE: String', SUBSTATE: String', RESPONSE: String', EXTID: String', REQUEST: String', PRIORITY: Int'}>]
+
+22:58:50.053 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.MergeToComprehensions - Built new Comprehension:
+| Comprehension s29, None, None, ConstArray(), None, None, None, None : Vector[t30<{s31: String', s32: String', s33: String', s34: String', s35: String', s36: String', s37: String', s38: Int', s39: String'}>]
+|   from s29: Table TXS_SM : Vector[@t6<{ID: String', STARTTIME: String', ENDTIME: String', STATE: String', SUBSTATE: String', RESPONSE: String', EXTID: String', REQUEST: String', PRIORITY: Int'}>]
+|   select: Pure t30 : Vector[t30<{s31: String', s32: String', s33: String', s34: String', s35: String', s36: String', s37: String', s38: Int', s39: String'}>]
+|     value: StructNode : {s31: String', s32: String', s33: String', s34: String', s35: String', s36: String', s37: String', s38: Int', s39: String'}
+|       s31: Path s29.ID : String'
+|       s32: Path s29.ENDTIME : String'
+|       s33: Path s29.EXTID : String'
+|       s34: Path s29.SUBSTATE : String'
+|       s35: Path s29.REQUEST : String'
+|       s36: Path s29.STARTTIME : String'
+|       s37: Path s29.RESPONSE : String'
+|       s38: Path s29.PRIORITY : Int'
+|       s39: Path s29.STATE : String'
+
+22:58:50.053 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.MergeToComprehensions - Replacements are: Map((@t6,SUBSTATE) -> s34, (@t6,PRIORITY) -> s38, (@t6,EXTID) -> s33, (@t6,REQUEST) -> s35, (@t6,RESPONSE) -> s37, (@t6,ENDTIME) -> s32, (@t6,STARTTIME) -> s36, (@t6,ID) -> s31, (@t6,STATE) -> s39)
+22:58:50.054 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.MergeToComprehensions - Merging Filter into Comprehension:
+| Filter s4 : Vector[@t6<{ID: String', STARTTIME: String', ENDTIME: String', STATE: String', SUBSTATE: String', RESPONSE: String', EXTID: String', REQUEST: String', PRIORITY: Int'}>]
+|   from s4: ...
+|   where: Apply Function = : Boolean
+|     0: Path s4.ID : String'
+|     1: LiteralNode 901315394 (volatileHint=false) : String'
+
+22:58:50.056 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.MergeToComprehensions - Merged Filter into Comprehension:
+| Comprehension s29, Some(Apply Function =), None, ConstArray(), None, None, None, None : Vector[t30<{s31: String', s32: String', s33: String', s34: String', s35: String', s36: String', s37: String', s38: Int', s39: String'}>]
+|   from s29: Table TXS_SM : Vector[@t6<{ID: String', STARTTIME: String', ENDTIME: String', STATE: String', SUBSTATE: String', RESPONSE: String', EXTID: String', REQUEST: String', PRIORITY: Int'}>]
+|   select: Pure t30 : Vector[t30<{s31: String', s32: String', s33: String', s34: String', s35: String', s36: String', s37: String', s38: Int', s39: String'}>]
+|     value: StructNode : {s31: String', s32: String', s33: String', s34: String', s35: String', s36: String', s37: String', s38: Int', s39: String'}
+|       s31: Path s29.ID : String'
+|       s32: Path s29.ENDTIME : String'
+|       s33: Path s29.EXTID : String'
+|       s34: Path s29.SUBSTATE : String'
+|       s35: Path s29.REQUEST : String'
+|       s36: Path s29.STARTTIME : String'
+|       s37: Path s29.RESPONSE : String'
+|       s38: Path s29.PRIORITY : Int'
+|       s39: Path s29.STATE : String'
+|   where: Apply Function = : Boolean
+|     0: Path s29.ID : String'
+|     1: LiteralNode 901315394 (volatileHint=false) : String'
+
+22:58:50.057 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.MergeToComprehensions - Merging Bind into Comprehension as 'select':
+| Bind : Vector[t28<{s20: String', s27: String', s25: String', s24: String', s23: String', s19: String', s26: String', s22: Int', s21: String'}>]
+|   from s7: ...
+|   select: Pure t28 : Vector[t28<{s20: String', s27: String', s25: String', s24: String', s23: String', s19: String', s26: String', s22: Int', s21: String'}>]
+|     value: StructNode : {s20: String', s27: String', s25: String', s24: String', s23: String', s19: String', s26: String', s22: Int', s21: String'}
+|       s20: Path s7.ENDTIME : String'
+|       s27: Path s7.EXTID : String'
+|       s25: Path s7.SUBSTATE : String'
+|       s24: Path s7.ID : String'
+|       s23: Path s7.REQUEST : String'
+|       s19: Path s7.STARTTIME : String'
+|       s26: Path s7.RESPONSE : String'
+|       s22: Path s7.PRIORITY : Int'
+|       s21: Path s7.STATE : String'
+
+22:58:50.058 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.MergeToComprehensions - Merged Bind into Comprehension as 'select':
+| Comprehension s29, Some(Apply Function =), None, ConstArray(), None, None, None, None : Vector[t28<{s20: String', s27: String', s25: String', s24: String', s23: String', s19: String', s26: String', s22: Int', s21: String'}>]
+|   from s29: Table TXS_SM : Vector[@t6<{ID: String', STARTTIME: String', ENDTIME: String', STATE: String', SUBSTATE: String', RESPONSE: String', EXTID: String', REQUEST: String', PRIORITY: Int'}>]
+|   select: Pure t28 : Vector[t28<{s20: String', s27: String', s25: String', s24: String', s23: String', s19: String', s26: String', s22: Int', s21: String'}>]
+|     value: StructNode : {s20: String', s27: String', s25: String', s24: String', s23: String', s19: String', s26: String', s22: Int', s21: String'}
+|       s20: Path s29.ENDTIME : String'
+|       s27: Path s29.EXTID : String'
+|       s25: Path s29.SUBSTATE : String'
+|       s24: Path s29.ID : String'
+|       s23: Path s29.REQUEST : String'
+|       s19: Path s29.STARTTIME : String'
+|       s26: Path s29.RESPONSE : String'
+|       s22: Path s29.PRIORITY : Int'
+|       s21: Path s29.STATE : String'
+|   where: Apply Function = : Boolean
+|     0: Path s29.ID : String'
+|     1: LiteralNode 901315394 (volatileHint=false) : String'
+
+22:58:50.058 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.MergeToComprehensions - Replacements are: Map((t28,s25) -> s25, (t28,s22) -> s22, (t28,s26) -> s26, (t28,s24) -> s24, (t28,s21) -> s21, (t28,s19) -> s19, (t28,s23) -> s23, (t28,s20) -> s20, (t28,s27) -> s27)
+22:58:50.059 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.MergeToComprehensions - Mappings are: ConstArray(((t28,s25),List(s25)), ((t28,s22),List(s22)), ((t28,s26),List(s26)), ((t28,s24),List(s24)), ((t28,s21),List(s21)), ((t28,s19),List(s19)), ((t28,s23),List(s23)), ((t28,s20),List(s20)), ((t28,s27),List(s27)))
+22:58:50.061 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.QueryCompiler - After phase mergeToComprehensions:
+| ResultSetMapping : Vector[Mapped[(String', String', String', String', String', String', Int', String', String')]]
+|   from s18: Comprehension s29, Some(Apply Function =), None, ConstArray(), None, None, None, None : Vector[t28<{s20: String', s27: String', s25: String', s24: String', s23: String', s19: String', s26: String', s22: Int', s21: String'}>]
+|     from s29: Table TXS_SM : Vector[@t6<{ID: String', STARTTIME: String', ENDTIME: String', STATE: String', SUBSTATE: String', RESPONSE: String', EXTID: String', REQUEST: String', PRIORITY: Int'}>]
+|     select: Pure t28 : Vector[t28<{s20: String', s27: String', s25: String', s24: String', s23: String', s19: String', s26: String', s22: Int', s21: String'}>]
+|       value: StructNode : {s20: String', s27: String', s25: String', s24: String', s23: String', s19: String', s26: String', s22: Int', s21: String'}
+|         s20: Path s29.ENDTIME : String'
+|         s27: Path s29.EXTID : String'
+|         s25: Path s29.SUBSTATE : String'
+|         s24: Path s29.ID : String'
+|         s23: Path s29.REQUEST : String'
+|         s19: Path s29.STARTTIME : String'
+|         s26: Path s29.RESPONSE : String'
+|         s22: Path s29.PRIORITY : Int'
+|         s21: Path s29.STATE : String'
+|     where: Apply Function = : Boolean
+|       0: Path s29.ID : String'
+|       1: LiteralNode 901315394 (volatileHint=false) : String'
+|   map: TypeMapping : Mapped[(String', String', String', String', String', String', Int', String', String')]
+|     0: ProductNode : (String', String', String', String', String', String', Int', String', String')
+|       1: Path s18.s24 : String'
+|       2: Path s18.s27 : String'
+|       3: Path s18.s23 : String'
+|       4: Path s18.s21 : String'
+|       5: Path s18.s25 : String'
+|       6: Path s18.s26 : String'
+|       7: Path s18.s22 : Int'
+|       8: Path s18.s19 : String'
+|       9: Path s18.s20 : String'
+
+22:58:50.061 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.QueryCompiler - After phase optimizeScalar: (no change)
+22:58:50.063 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.RemoveFieldNames - Transformed RSM: 
+| ResultSetMapping
+|   from s18: Comprehension s29, Some(Apply Function =), None, ConstArray(), None, None, None, None : Vector[t28<(String', String', String', String', String', String', String', Int', String')>]
+|     from s29: Table TXS_SM : Vector[@t6<{ID: String', STARTTIME: String', ENDTIME: String', STATE: String', SUBSTATE: String', RESPONSE: String', EXTID: String', REQUEST: String', PRIORITY: Int'}>]
+|     select: Pure t28 : Vector[t28<(String', String', String', String', String', String', String', Int', String')>]
+|       value: ProductNode : (String', String', String', String', String', String', String', Int', String')
+|         1: Path s29.ENDTIME : String'
+|         2: Path s29.EXTID : String'
+|         3: Path s29.SUBSTATE : String'
+|         4: Path s29.ID : String'
+|         5: Path s29.REQUEST : String'
+|         6: Path s29.STARTTIME : String'
+|         7: Path s29.RESPONSE : String'
+|         8: Path s29.PRIORITY : Int'
+|         9: Path s29.STATE : String'
+|     where: Apply Function = : Boolean
+|       0: Path s29.ID : String'
+|       1: LiteralNode 901315394 (volatileHint=false) : String'
+|   map: TypeMapping : Mapped[(String', String', String', String', String', String', Int', String', String')]
+|     0: ProductNode : (String', String', String', String', String', String', Int', String', String')
+|       1: Path s18.s24 : String'
+|       2: Path s18.s27 : String'
+|       3: Path s18.s23 : String'
+|       4: Path s18.s21 : String'
+|       5: Path s18.s25 : String'
+|       6: Path s18.s26 : String'
+|       7: Path s18.s22 : Int'
+|       8: Path s18.s19 : String'
+|       9: Path s18.s20 : String'
+
+22:58:50.065 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.QueryCompiler - After phase removeFieldNames:
+| ResultSetMapping : Vector[Mapped[(String', String', String', String', String', String', Int', String', String')]]
+|   from s18: Comprehension s29, Some(Apply Function =), None, ConstArray(), None, None, None, None : Vector[t28<(String', String', String', String', String', String', String', Int', String')>]
+|     from s29: Table TXS_SM : Vector[@t6<{ID: String', STARTTIME: String', ENDTIME: String', STATE: String', SUBSTATE: String', RESPONSE: String', EXTID: String', REQUEST: String', PRIORITY: Int'}>]
+|     select: Pure t28 : Vector[t28<(String', String', String', String', String', String', String', Int', String')>]
+|       value: ProductNode : (String', String', String', String', String', String', String', Int', String')
+|         1: Path s29.ENDTIME : String'
+|         2: Path s29.EXTID : String'
+|         3: Path s29.SUBSTATE : String'
+|         4: Path s29.ID : String'
+|         5: Path s29.REQUEST : String'
+|         6: Path s29.STARTTIME : String'
+|         7: Path s29.RESPONSE : String'
+|         8: Path s29.PRIORITY : Int'
+|         9: Path s29.STATE : String'
+|     where: Apply Function = : Boolean
+|       0: Path s29.ID : String'
+|       1: LiteralNode 901315394 (volatileHint=false) : String'
+|   map: TypeMapping : Mapped[(String', String', String', String', String', String', Int', String', String')]
+|     0: ProductNode : (String', String', String', String', String', String', Int', String', String')
+|       1: Path s18._4 : String'
+|       2: Path s18._2 : String'
+|       3: Path s18._5 : String'
+|       4: Path s18._9 : String'
+|       5: Path s18._3 : String'
+|       6: Path s18._7 : String'
+|       7: Path s18._8 : Int'
+|       8: Path s18._6 : String'
+|       9: Path s18._1 : String'
+
+22:58:50.066 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.CodeGen - Compiling server-side and mapping with server-side:
+| Comprehension s29, Some(Apply Function =), None, ConstArray(), None, None, None, None : Vector[t28<(String', String', String', String', String', String', String', Int', String')>]
+|   from s29: Table TXS_SM : Vector[@t6<{ID: String', STARTTIME: String', ENDTIME: String', STATE: String', SUBSTATE: String', RESPONSE: String', EXTID: String', REQUEST: String', PRIORITY: Int'}>]
+|   select: Pure t28 : Vector[t28<(String', String', String', String', String', String', String', Int', String')>]
+|     value: ProductNode : (String', String', String', String', String', String', String', Int', String')
+|       1: Path s29.ENDTIME : String'
+|       2: Path s29.EXTID : String'
+|       3: Path s29.SUBSTATE : String'
+|       4: Path s29.ID : String'
+|       5: Path s29.REQUEST : String'
+|       6: Path s29.STARTTIME : String'
+|       7: Path s29.RESPONSE : String'
+|       8: Path s29.PRIORITY : Int'
+|       9: Path s29.STATE : String'
+|   where: Apply Function = : Boolean
+|     0: Path s29.ID : String'
+|     1: LiteralNode 901315394 (volatileHint=false) : String'
+
+22:58:50.069 [default-akka.actor.default-dispatcher-9] DEBUG s.relational.ResultConverterCompiler - Compiled ResultConverter
+| TypeMappingResultConverter
+|   child: ProductResultConverter
+|     1: SpecializedJdbcResultConverter$$anon$1 idx=4, name=<computed> : String'
+|     2: SpecializedJdbcResultConverter$$anon$1 idx=2, name=<computed> : String'
+|     3: SpecializedJdbcResultConverter$$anon$1 idx=5, name=<computed> : String'
+|     4: SpecializedJdbcResultConverter$$anon$1 idx=9, name=<computed> : String'
+|     5: SpecializedJdbcResultConverter$$anon$1 idx=3, name=<computed> : String'
+|     6: SpecializedJdbcResultConverter$$anon$1 idx=7, name=<computed> : String'
+|     7: BaseResultConverter$mcI$sp idx=8, name=<computed> : Int'
+|     8: SpecializedJdbcResultConverter$$anon$1 idx=6, name=<computed> : String'
+|     9: SpecializedJdbcResultConverter$$anon$1 idx=1, name=<computed> : String'
+
+22:58:50.069 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.CodeGen - Compiled server-side to:
+| CompiledStatement "update `TXS_SM` set `ENDTIME` = ?, `EXTID` = ?, `SUBSTATE` = ?, `ID` = ?, `REQUEST` = ?, `STARTTIME` = ?, `RESPONSE` = ?, `PRIORITY` = ?, `STATE` = ? where `TXS_SM`.`ID` = '901315394'" : Vector[t28<(String', String', String', String', String', String', String', Int', String')>]
+
+22:58:50.070 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.QueryCompiler - After phase codeGen:
+| ResultSetMapping : Vector[Mapped[(String', String', String', String', String', String', Int', String', String')]]
+|   from s18: CompiledStatement "update `TXS_SM` set `ENDTIME` = ?, `EXTID` = ?, `SUBSTATE` = ?, `ID` = ?, `REQUEST` = ?, `STARTTIME` = ?, `RESPONSE` = ?, `PRIORITY` = ?, `STATE` = ? where `TXS_SM`.`ID` = '901315394'" : Vector[t28<(String', String', String', String', String', String', String', Int', String')>]
+|   map: CompiledMapping : Mapped[(String', String', String', String', String', String', Int', String', String')]
+|     converter: TypeMappingResultConverter
+|       child: ProductResultConverter
+|         1: SpecializedJdbcResultConverter$$anon$1 idx=4, name=<computed> : String'
+|         2: SpecializedJdbcResultConverter$$anon$1 idx=2, name=<computed> : String'
+|         3: SpecializedJdbcResultConverter$$anon$1 idx=5, name=<computed> : String'
+|         4: SpecializedJdbcResultConverter$$anon$1 idx=9, name=<computed> : String'
+|         5: SpecializedJdbcResultConverter$$anon$1 idx=3, name=<computed> : String'
+|         6: SpecializedJdbcResultConverter$$anon$1 idx=7, name=<computed> : String'
+|         7: BaseResultConverter$mcI$sp idx=8, name=<computed> : Int'
+|         8: SpecializedJdbcResultConverter$$anon$1 idx=6, name=<computed> : String'
+|         9: SpecializedJdbcResultConverter$$anon$1 idx=1, name=<computed> : String'
+
+22:58:50.070 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.QueryCompilerBenchmark - ------------------- Phase: Time ---------
+22:58:50.070 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.QueryCompilerBenchmark -       assignUniqueSymbols:    1.025304 ms
+22:58:50.070 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.QueryCompilerBenchmark -                inferTypes:    0.144045 ms
+22:58:50.070 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.QueryCompilerBenchmark -              expandTables:    2.003183 ms
+22:58:50.070 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.QueryCompilerBenchmark -           forceOuterBinds:    1.235886 ms
+22:58:50.070 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.QueryCompilerBenchmark -         removeMappedTypes:    1.130064 ms
+22:58:50.070 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.QueryCompilerBenchmark -                expandSums:    0.085294 ms
+22:58:50.070 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.QueryCompilerBenchmark -         emulateOuterJoins:    0.057689 ms
+22:58:50.070 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.QueryCompilerBenchmark -             expandRecords:    1.506281 ms
+22:58:50.071 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.QueryCompilerBenchmark -        flattenProjections:    7.274103 ms
+22:58:50.071 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.QueryCompilerBenchmark -              rewriteJoins:    0.088834 ms
+22:58:50.071 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.QueryCompilerBenchmark -             verifySymbols:    0.088480 ms
+22:58:50.071 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.QueryCompilerBenchmark -             relabelUnions:    0.056627 ms
+22:58:50.072 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.QueryCompilerBenchmark -          createAggregates:    0.031499 ms
+22:58:50.072 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.QueryCompilerBenchmark -           resolveZipJoins:    0.059458 ms
+22:58:50.072 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.QueryCompilerBenchmark -          pruneProjections:    0.265439 ms
+22:58:50.073 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.QueryCompilerBenchmark -           rewriteDistinct:    0.030083 ms
+22:58:50.073 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.QueryCompilerBenchmark -    createResultSetMapping:    2.159615 ms
+22:58:50.074 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.QueryCompilerBenchmark -            hoistClientOps:    3.313392 ms
+22:58:50.074 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.QueryCompilerBenchmark -         reorderOperations:    0.151124 ms
+22:58:50.074 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.QueryCompilerBenchmark -     mergeToComprehensions:    9.503441 ms
+22:58:50.074 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.QueryCompilerBenchmark -            optimizeScalar:    0.121748 ms
+22:58:50.074 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.QueryCompilerBenchmark -          removeFieldNames:    3.907269 ms
+22:58:50.074 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.QueryCompilerBenchmark -                   codeGen:    4.430716 ms
+22:58:50.074 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.QueryCompilerBenchmark -                     TOTAL:   38.669574 ms
+22:58:50.076 [default-akka.actor.default-dispatcher-9] DEBUG s.backend.DatabaseComponent.action - #1: update [update `TXS_SM` set `ENDTIME` = ?, `EXTID` = ?, `SUBSTATE` = ?, `ID` = ?, `REQUEST` = ?, `STARTTIME` = ?, `RESPONSE` = ?, `PRIORITY` = ?, `STATE` = ? where `TXS_SM`.`ID` = '901315394']
+22:58:50.077 [mysqldb-1] DEBUG slick.jdbc.JdbcBackend.statement - Preparing statement: update `TXS_SM` set `ENDTIME` = ?, `EXTID` = ?, `SUBSTATE` = ?, `ID` = ?, `REQUEST` = ?, `STARTTIME` = ?, `RESPONSE` = ?, `PRIORITY` = ?, `STATE` = ? where `TXS_SM`.`ID` = '901315394'
+22:58:50.130 [mysqldb-1] DEBUG slick.jdbc.JdbcBackend.benchmark - Execution of prepared update took 47ms
+[INFO] [04/02/2016 22:58:50.131] [default-akka.actor.default-dispatcher-9] [akka://default/user/$a] txs: 901315394 has been sent back to client : Actor[akka://default/temp/$a]
+[INFO] [04/02/2016 22:58:50.131] [default-akka.actor.default-dispatcher-9] [akka://default/user/$a] check if any pending txs for this type of workers.
+22:58:50.133 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.QueryCompiler - Source:
+| Filter s2
+|   from s2: TableExpansion
+|     table s3: Table TXS_SM
+|     columns: TypeMapping
+|       0: ProductNode
+|         1: Path s3.ID : String'
+|         2: Path s3.EXTID : String'
+|         3: Path s3.REQUEST : String'
+|         4: Path s3.STATE : String'
+|         5: Path s3.SUBSTATE : String'
+|         6: Path s3.RESPONSE : String'
+|         7: Path s3.PRIORITY : Int'
+|         8: Path s3.STARTTIME : String'
+|         9: Path s3.ENDTIME : String'
+|   where: Apply Function not
+|     0: Apply Function =
+|       0: Path s2.STATE : String'
+|       1: LiteralNode TODOWORKER (volatileHint=false)
+
+22:58:50.133 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.AssignUniqueSymbols - Detected features: UsedFeatures(false,true,false,false)
+22:58:50.134 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.QueryCompiler - After phase assignUniqueSymbols:
+| Filter s4
+|   from s4: TableExpansion
+|     table s5: Table TXS_SM
+|     columns: TypeMapping
+|       0: ProductNode
+|         1: Path s5.ID : String'
+|         2: Path s5.EXTID : String'
+|         3: Path s5.REQUEST : String'
+|         4: Path s5.STATE : String'
+|         5: Path s5.SUBSTATE : String'
+|         6: Path s5.RESPONSE : String'
+|         7: Path s5.PRIORITY : Int'
+|         8: Path s5.STARTTIME : String'
+|         9: Path s5.ENDTIME : String'
+|   where: Apply Function not
+|     0: Apply Function =
+|       0: Path s4.STATE : String'
+|       1: LiteralNode TODOWORKER (volatileHint=false)
+
+22:58:50.134 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.QueryCompiler - After phase inferTypes: (no change)
+22:58:50.134 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.ExpandTables - Found Selects for NominalTypes: @t6
+22:58:50.135 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.ExpandTables - With correct table types:
+| Filter s4 : Vector[@t6<{ID: String', STARTTIME: String', ENDTIME: String', STATE: String', SUBSTATE: String', RESPONSE: String', EXTID: String', REQUEST: String', PRIORITY: Int'}>]
+|   from s4: Table TXS_SM : Vector[@t6<{ID: String', STARTTIME: String', ENDTIME: String', STATE: String', SUBSTATE: String', RESPONSE: String', EXTID: String', REQUEST: String', PRIORITY: Int'}>]
+|   where: Apply Function not : Boolean
+|     0: Apply Function = : Boolean
+|       0: Path s4.STATE : String'
+|       1: LiteralNode TODOWORKER (volatileHint=false) : String'
+
+22:58:50.135 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.ExpandTables - Table expansions: @t6 -> (s5,TypeMapping)
+22:58:50.135 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.ExpandTables - Expanding tables in result type
+22:58:50.136 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.QueryCompiler - After phase expandTables:
+| Bind : Vector[t8<Mapped[(String', String', String', String', String', String', Int', String', String')]>]
+|   from s7: Filter s4 : Vector[@t6<{ID: String', STARTTIME: String', ENDTIME: String', STATE: String', SUBSTATE: String', RESPONSE: String', EXTID: String', REQUEST: String', PRIORITY: Int'}>]
+|     from s4: Table TXS_SM : Vector[@t6<{ID: String', STARTTIME: String', ENDTIME: String', STATE: String', SUBSTATE: String', RESPONSE: String', EXTID: String', REQUEST: String', PRIORITY: Int'}>]
+|     where: Apply Function not : Boolean
+|       0: Apply Function = : Boolean
+|         0: Path s4.STATE : String'
+|         1: LiteralNode TODOWORKER (volatileHint=false) : String'
+|   select: Pure t8 : Vector[t8<Mapped[(String', String', String', String', String', String', Int', String', String')]>]
+|     value: TypeMapping : Mapped[(String', String', String', String', String', String', Int', String', String')]
+|       0: ProductNode : (String', String', String', String', String', String', Int', String', String')
+|         1: Path s7.ID : String'
+|         2: Path s7.EXTID : String'
+|         3: Path s7.REQUEST : String'
+|         4: Path s7.STATE : String'
+|         5: Path s7.SUBSTATE : String'
+|         6: Path s7.RESPONSE : String'
+|         7: Path s7.PRIORITY : Int'
+|         8: Path s7.STARTTIME : String'
+|         9: Path s7.ENDTIME : String'
+
+22:58:50.140 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.QueryCompiler - After phase forceOuterBinds:
+| Bind : Vector[t8<Mapped[(String', String', String', String', String', String', Int', String', String')]>]
+|   from s7: Filter s4 : Vector[@t6<{ID: String', STARTTIME: String', ENDTIME: String', STATE: String', SUBSTATE: String', RESPONSE: String', EXTID: String', REQUEST: String', PRIORITY: Int'}>]
+|     from s4: Table TXS_SM : Vector[@t6<{ID: String', STARTTIME: String', ENDTIME: String', STATE: String', SUBSTATE: String', RESPONSE: String', EXTID: String', REQUEST: String', PRIORITY: Int'}>]
+|     where: Apply Function not : Boolean
+|       0: Apply Function = : Boolean
+|         0: Path s4.STATE : String'
+|         1: LiteralNode TODOWORKER (volatileHint=false) : String'
+|   select: Pure t8 : Vector[t8<Mapped[(String', String', String', String', String', String', Int', String', String')]>]
+|     value: TypeMapping : Mapped[(String', String', String', String', String', String', Int', String', String')]
+|       0: ProductNode : (String', String', String', String', String', String', Int', String', String')
+|         1: Path s7.ID : String'
+|         2: Path s7.EXTID : String'
+|         3: Path s7.REQUEST : String'
+|         4: Path s7.STATE : String'
+|         5: Path s7.SUBSTATE : String'
+|         6: Path s7.RESPONSE : String'
+|         7: Path s7.PRIORITY : Int'
+|         8: Path s7.STARTTIME : String'
+|         9: Path s7.ENDTIME : String'
+
+22:58:50.142 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.QueryCompiler - After phase removeMappedTypes:
+| Bind : Vector[t8<(String', String', String', String', String', String', Int', String', String')>]
+|   from s7: Filter s4 : Vector[@t6<{ID: String', STARTTIME: String', ENDTIME: String', STATE: String', SUBSTATE: String', RESPONSE: String', EXTID: String', REQUEST: String', PRIORITY: Int'}>]
+|     from s4: Table TXS_SM : Vector[@t6<{ID: String', STARTTIME: String', ENDTIME: String', STATE: String', SUBSTATE: String', RESPONSE: String', EXTID: String', REQUEST: String', PRIORITY: Int'}>]
+|     where: Apply Function not : Boolean
+|       0: Apply Function = : Boolean
+|         0: Path s4.STATE : String'
+|         1: LiteralNode TODOWORKER (volatileHint=false) : String'
+|   select: Pure t8 : Vector[t8<(String', String', String', String', String', String', Int', String', String')>]
+|     value: ProductNode : (String', String', String', String', String', String', Int', String', String')
+|       1: Path s7.ID : String'
+|       2: Path s7.EXTID : String'
+|       3: Path s7.REQUEST : String'
+|       4: Path s7.STATE : String'
+|       5: Path s7.SUBSTATE : String'
+|       6: Path s7.RESPONSE : String'
+|       7: Path s7.PRIORITY : Int'
+|       8: Path s7.STARTTIME : String'
+|       9: Path s7.ENDTIME : String'
+
+22:58:50.142 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.QueryCompiler - After phase expandSums: (no change)
+22:58:50.142 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.QueryCompiler - After phase emulateOuterJoins: (no change)
+22:58:50.143 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.QueryCompiler - After phase expandRecords:
+| Bind : Vector[t8<(String', String', String', String', String', String', Int', String', String')>]
+|   from s7: Filter s4 : Vector[@t6<{ID: String', STARTTIME: String', ENDTIME: String', STATE: String', SUBSTATE: String', RESPONSE: String', EXTID: String', REQUEST: String', PRIORITY: Int'}>]
+|     from s4: Table TXS_SM : Vector[@t6<{ID: String', STARTTIME: String', ENDTIME: String', STATE: String', SUBSTATE: String', RESPONSE: String', EXTID: String', REQUEST: String', PRIORITY: Int'}>]
+|     where: Apply Function not : Boolean
+|       0: Apply Function = : Boolean
+|         0: Path s4.STATE : String'
+|         1: LiteralNode TODOWORKER (volatileHint=false) : String'
+|   select: Pure t8 : Vector[t8<(String', String', String', String', String', String', Int', String', String')>]
+|     value: ProductNode : (String', String', String', String', String', String', Int', String', String')
+|       1: Path s7.ID : String'
+|       2: Path s7.EXTID : String'
+|       3: Path s7.REQUEST : String'
+|       4: Path s7.STATE : String'
+|       5: Path s7.SUBSTATE : String'
+|       6: Path s7.RESPONSE : String'
+|       7: Path s7.PRIORITY : Int'
+|       8: Path s7.STARTTIME : String'
+|       9: Path s7.ENDTIME : String'
+
+22:58:50.143 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Analyzing s4.STATE with symbols 
+| Path s4.STATE : String'
+
+22:58:50.143 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Translated s4.STATE to:
+| Path s4.STATE
+
+22:58:50.143 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Flattening projection t8
+22:58:50.143 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Analyzing s7.ID with symbols 
+| Path s7.ID : String'
+
+22:58:50.143 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Translated s7.ID to:
+| Path s7.ID
+
+22:58:50.143 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Analyzing s7.EXTID with symbols 
+| Path s7.EXTID : String'
+
+22:58:50.143 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Translated s7.EXTID to:
+| Path s7.EXTID
+
+22:58:50.143 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Analyzing s7.REQUEST with symbols 
+| Path s7.REQUEST : String'
+
+22:58:50.143 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Translated s7.REQUEST to:
+| Path s7.REQUEST
+
+22:58:50.144 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Analyzing s7.STATE with symbols 
+| Path s7.STATE : String'
+
+22:58:50.144 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Translated s7.STATE to:
+| Path s7.STATE
+
+22:58:50.144 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Analyzing s7.SUBSTATE with symbols 
+| Path s7.SUBSTATE : String'
+
+22:58:50.144 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Translated s7.SUBSTATE to:
+| Path s7.SUBSTATE
+
+22:58:50.144 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Analyzing s7.RESPONSE with symbols 
+| Path s7.RESPONSE : String'
+
+22:58:50.144 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Translated s7.RESPONSE to:
+| Path s7.RESPONSE
+
+22:58:50.144 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Analyzing s7.PRIORITY with symbols 
+| Path s7.PRIORITY : Int'
+
+22:58:50.144 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Translated s7.PRIORITY to:
+| Path s7.PRIORITY
+
+22:58:50.144 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Analyzing s7.STARTTIME with symbols 
+| Path s7.STARTTIME : String'
+
+22:58:50.144 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Translated s7.STARTTIME to:
+| Path s7.STARTTIME
+
+22:58:50.144 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Analyzing s7.ENDTIME with symbols 
+| Path s7.ENDTIME : String'
+
+22:58:50.144 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Translated s7.ENDTIME to:
+| Path s7.ENDTIME
+
+22:58:50.144 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Flattening node at Path 
+| ProductNode
+|   1: Path s7.ID
+|   2: Path s7.EXTID
+|   3: Path s7.REQUEST
+|   4: Path s7.STATE
+|   5: Path s7.SUBSTATE
+|   6: Path s7.RESPONSE
+|   7: Path s7.PRIORITY
+|   8: Path s7.STARTTIME
+|   9: Path s7.ENDTIME
+
+22:58:50.145 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Flattening node at Path _1
+| Path s7.ID
+
+22:58:50.145 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Adding definition: s9 -> Path s7.ID
+22:58:50.145 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Flattening node at Path _2
+| Path s7.EXTID
+
+22:58:50.145 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Adding definition: s10 -> Path s7.EXTID
+22:58:50.145 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Flattening node at Path _3
+| Path s7.REQUEST
+
+22:58:50.145 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Adding definition: s11 -> Path s7.REQUEST
+22:58:50.145 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Flattening node at Path _4
+| Path s7.STATE
+
+22:58:50.145 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Adding definition: s12 -> Path s7.STATE
+22:58:50.145 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Flattening node at Path _5
+| Path s7.SUBSTATE
+
+22:58:50.145 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Adding definition: s13 -> Path s7.SUBSTATE
+22:58:50.145 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Flattening node at Path _6
+| Path s7.RESPONSE
+
+22:58:50.145 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Adding definition: s14 -> Path s7.RESPONSE
+22:58:50.145 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Flattening node at Path _7
+| Path s7.PRIORITY
+
+22:58:50.145 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Adding definition: s15 -> Path s7.PRIORITY
+22:58:50.145 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Flattening node at Path _8
+| Path s7.STARTTIME
+
+22:58:50.145 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Adding definition: s16 -> Path s7.STARTTIME
+22:58:50.145 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Flattening node at Path _9
+| Path s7.ENDTIME
+
+22:58:50.146 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Adding definition: s17 -> Path s7.ENDTIME
+22:58:50.146 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Adding translation for t8: (Map(List(_2) -> s10, List(_4) -> s12, List(_5) -> s13, List(_3) -> s11, List(_9) -> s17, List(_1) -> s9, List(_7) -> s15, List(_6) -> s14, List(_8) -> s16), UnassignedType)
+22:58:50.146 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.FlattenProjections - Flattened projection to
+| Pure t8
+|   value: StructNode
+|     s9: Path s7.ID
+|     s10: Path s7.EXTID
+|     s11: Path s7.REQUEST
+|     s12: Path s7.STATE
+|     s13: Path s7.SUBSTATE
+|     s14: Path s7.RESPONSE
+|     s15: Path s7.PRIORITY
+|     s16: Path s7.STARTTIME
+|     s17: Path s7.ENDTIME
+
+22:58:50.147 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.QueryCompiler - After phase flattenProjections:
+| Bind : Vector[t8<{s9: String', s10: String', s11: String', s12: String', s13: String', s14: String', s15: Int', s16: String', s17: String'}>]
+|   from s7: Filter s4 : Vector[@t6<{ID: String', STARTTIME: String', ENDTIME: String', STATE: String', SUBSTATE: String', RESPONSE: String', EXTID: String', REQUEST: String', PRIORITY: Int'}>]
+|     from s4: Table TXS_SM : Vector[@t6<{ID: String', STARTTIME: String', ENDTIME: String', STATE: String', SUBSTATE: String', RESPONSE: String', EXTID: String', REQUEST: String', PRIORITY: Int'}>]
+|     where: Apply Function not : Boolean
+|       0: Apply Function = : Boolean
+|         0: Path s4.STATE : String'
+|         1: LiteralNode TODOWORKER (volatileHint=false) : String'
+|   select: Pure t8 : Vector[t8<{s9: String', s10: String', s11: String', s12: String', s13: String', s14: String', s15: Int', s16: String', s17: String'}>]
+|     value: StructNode : {s9: String', s10: String', s11: String', s12: String', s13: String', s14: String', s15: Int', s16: String', s17: String'}
+|       s9: Path s7.ID : String'
+|       s10: Path s7.EXTID : String'
+|       s11: Path s7.REQUEST : String'
+|       s12: Path s7.STATE : String'
+|       s13: Path s7.SUBSTATE : String'
+|       s14: Path s7.RESPONSE : String'
+|       s15: Path s7.PRIORITY : Int'
+|       s16: Path s7.STARTTIME : String'
+|       s17: Path s7.ENDTIME : String'
+
+22:58:50.147 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.QueryCompiler - After phase rewriteJoins: (no change)
+22:58:50.147 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.QueryCompiler - After phase verifySymbols: (no change)
+22:58:50.147 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.QueryCompiler - After phase relabelUnions: (no change)
+22:58:50.147 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.QueryCompiler - After phase createAggregates: (no change)
+22:58:50.147 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.QueryCompiler - After phase resolveZipJoins: (no change)
+22:58:50.148 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.PruneProjections - Unreferenced: t8; Field refs: (@t6,ID), (@t6,STATE), (@t6,STARTTIME), (@t6,EXTID), (@t6,RESPONSE), (@t6,PRIORITY), (@t6,SUBSTATE), (@t6,REQUEST), (@t6,ENDTIME)
+22:58:50.148 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.QueryCompiler - After phase pruneProjections: (no change)
+22:58:50.148 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.QueryCompiler - After phase rewriteDistinct: (no change)
+22:58:50.148 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.CreateResultSetMapping - Creating mapping from t8<Mapped[(String', String', String', String', String', String', Int', String', String')]>
+22:58:50.148 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.CreateResultSetMapping - Creating mapping from (String', String', String', String', String', String', Int', String', String')
+22:58:50.148 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.CreateResultSetMapping - Creating mapping from String'
+22:58:50.148 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.CreateResultSetMapping - Creating mapping from String'
+22:58:50.148 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.CreateResultSetMapping - Creating mapping from String'
+22:58:50.148 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.CreateResultSetMapping - Creating mapping from String'
+22:58:50.148 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.CreateResultSetMapping - Creating mapping from String'
+22:58:50.148 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.CreateResultSetMapping - Creating mapping from String'
+22:58:50.148 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.CreateResultSetMapping - Creating mapping from Int'
+22:58:50.149 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.CreateResultSetMapping - Creating mapping from String'
+22:58:50.149 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.CreateResultSetMapping - Creating mapping from String'
+22:58:50.150 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.QueryCompiler - After phase createResultSetMapping:
+| ResultSetMapping : Vector[Mapped[(String', String', String', String', String', String', Int', String', String')]]
+|   from s18: Bind : Vector[t8<{s9: String', s10: String', s11: String', s12: String', s13: String', s14: String', s15: Int', s16: String', s17: String'}>]
+|     from s7: Filter s4 : Vector[@t6<{ID: String', STARTTIME: String', ENDTIME: String', STATE: String', SUBSTATE: String', RESPONSE: String', EXTID: String', REQUEST: String', PRIORITY: Int'}>]
+|       from s4: Table TXS_SM : Vector[@t6<{ID: String', STARTTIME: String', ENDTIME: String', STATE: String', SUBSTATE: String', RESPONSE: String', EXTID: String', REQUEST: String', PRIORITY: Int'}>]
+|       where: Apply Function not : Boolean
+|         0: Apply Function = : Boolean
+|           0: Path s4.STATE : String'
+|           1: LiteralNode TODOWORKER (volatileHint=false) : String'
+|     select: Pure t8 : Vector[t8<{s9: String', s10: String', s11: String', s12: String', s13: String', s14: String', s15: Int', s16: String', s17: String'}>]
+|       value: StructNode : {s9: String', s10: String', s11: String', s12: String', s13: String', s14: String', s15: Int', s16: String', s17: String'}
+|         s9: Path s7.ID : String'
+|         s10: Path s7.EXTID : String'
+|         s11: Path s7.REQUEST : String'
+|         s12: Path s7.STATE : String'
+|         s13: Path s7.SUBSTATE : String'
+|         s14: Path s7.RESPONSE : String'
+|         s15: Path s7.PRIORITY : Int'
+|         s16: Path s7.STARTTIME : String'
+|         s17: Path s7.ENDTIME : String'
+|   map: TypeMapping : Mapped[(String', String', String', String', String', String', Int', String', String')]
+|     0: ProductNode : (String', String', String', String', String', String', Int', String', String')
+|       1: Path s18.s9 : String'
+|       2: Path s18.s10 : String'
+|       3: Path s18.s11 : String'
+|       4: Path s18.s12 : String'
+|       5: Path s18.s13 : String'
+|       6: Path s18.s14 : String'
+|       7: Path s18.s15 : Int'
+|       8: Path s18.s16 : String'
+|       9: Path s18.s17 : String'
+
+22:58:50.151 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.HoistClientOps - Hoisting operations from defs: 
+22:58:50.151 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.HoistClientOps - New defs: Map(Path s7.RESPONSE -> s19, Path s7.ID -> s20, Path s7.REQUEST -> s21, Path s7.EXTID -> s22, Path s7.SUBSTATE -> s23, Path s7.STATE -> s24, Path s7.ENDTIME -> s25, Path s7.STARTTIME -> s26, Path s7.PRIORITY -> s27)
+22:58:50.153 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.HoistClientOps - New ResultSetMapping:
+| ResultSetMapping : Vector[Mapped[(String', String', String', String', String', String', Int', String', String')]]
+|   from s18: Bind : Vector[t28<{s22: String', s21: String', s24: String', s19: String', s27: Int', s25: String', s26: String', s23: String', s20: String'}>]
+|     from s7: ...
+|     select: Pure t28 : Vector[t28<{s22: String', s21: String', s24: String', s19: String', s27: Int', s25: String', s26: String', s23: String', s20: String'}>]
+|       value: StructNode : {s22: String', s21: String', s24: String', s19: String', s27: Int', s25: String', s26: String', s23: String', s20: String'}
+|         s22: Path s7.EXTID : String'
+|         s21: Path s7.REQUEST : String'
+|         s24: Path s7.STATE : String'
+|         s19: Path s7.RESPONSE : String'
+|         s27: Path s7.PRIORITY : Int'
+|         s25: Path s7.ENDTIME : String'
+|         s26: Path s7.STARTTIME : String'
+|         s23: Path s7.SUBSTATE : String'
+|         s20: Path s7.ID : String'
+|   map: TypeMapping : Mapped[(String', String', String', String', String', String', Int', String', String')]
+|     0: ProductNode : (String', String', String', String', String', String', Int', String', String')
+|       1: Path s18.s20 : String'
+|       2: Path s18.s22 : String'
+|       3: Path s18.s21 : String'
+|       4: Path s18.s24 : String'
+|       5: Path s18.s23 : String'
+|       6: Path s18.s19 : String'
+|       7: Path s18.s27 : Int'
+|       8: Path s18.s26 : String'
+|       9: Path s18.s25 : String'
+
+22:58:50.154 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.QueryCompiler - After phase hoistClientOps:
+| ResultSetMapping : Vector[Mapped[(String', String', String', String', String', String', Int', String', String')]]
+|   from s18: Bind : Vector[t28<{s22: String', s21: String', s24: String', s19: String', s27: Int', s25: String', s26: String', s23: String', s20: String'}>]
+|     from s7: Filter s4 : Vector[@t6<{ID: String', STARTTIME: String', ENDTIME: String', STATE: String', SUBSTATE: String', RESPONSE: String', EXTID: String', REQUEST: String', PRIORITY: Int'}>]
+|       from s4: Table TXS_SM : Vector[@t6<{ID: String', STARTTIME: String', ENDTIME: String', STATE: String', SUBSTATE: String', RESPONSE: String', EXTID: String', REQUEST: String', PRIORITY: Int'}>]
+|       where: Apply Function not : Boolean
+|         0: Apply Function = : Boolean
+|           0: Path s4.STATE : String'
+|           1: LiteralNode TODOWORKER (volatileHint=false) : String'
+|     select: Pure t28 : Vector[t28<{s22: String', s21: String', s24: String', s19: String', s27: Int', s25: String', s26: String', s23: String', s20: String'}>]
+|       value: StructNode : {s22: String', s21: String', s24: String', s19: String', s27: Int', s25: String', s26: String', s23: String', s20: String'}
+|         s22: Path s7.EXTID : String'
+|         s21: Path s7.REQUEST : String'
+|         s24: Path s7.STATE : String'
+|         s19: Path s7.RESPONSE : String'
+|         s27: Path s7.PRIORITY : Int'
+|         s25: Path s7.ENDTIME : String'
+|         s26: Path s7.STARTTIME : String'
+|         s23: Path s7.SUBSTATE : String'
+|         s20: Path s7.ID : String'
+|   map: TypeMapping : Mapped[(String', String', String', String', String', String', Int', String', String')]
+|     0: ProductNode : (String', String', String', String', String', String', Int', String', String')
+|       1: Path s18.s20 : String'
+|       2: Path s18.s22 : String'
+|       3: Path s18.s21 : String'
+|       4: Path s18.s24 : String'
+|       5: Path s18.s23 : String'
+|       6: Path s18.s19 : String'
+|       7: Path s18.s27 : Int'
+|       8: Path s18.s26 : String'
+|       9: Path s18.s25 : String'
+
+22:58:50.155 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.QueryCompiler - After phase reorderOperations: (no change)
+22:58:50.155 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.MergeToComprehensions - Table fields: Map(@t6 -> Vector(STATE, EXTID, REQUEST, RESPONSE, PRIORITY, ENDTIME, STARTTIME, SUBSTATE, ID))
+22:58:50.156 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.MergeToComprehensions - Creating source from TableNode:
+| Table TXS_SM : Vector[@t6<{ID: String', STARTTIME: String', ENDTIME: String', STATE: String', SUBSTATE: String', RESPONSE: String', EXTID: String', REQUEST: String', PRIORITY: Int'}>]
+
+22:58:50.156 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.MergeToComprehensions - Mappings are: ConstArray(((@t6,STATE),List(STATE)), ((@t6,EXTID),List(EXTID)), ((@t6,REQUEST),List(REQUEST)), ((@t6,RESPONSE),List(RESPONSE)), ((@t6,PRIORITY),List(PRIORITY)), ((@t6,ENDTIME),List(ENDTIME)), ((@t6,STARTTIME),List(STARTTIME)), ((@t6,SUBSTATE),List(SUBSTATE)), ((@t6,ID),List(ID)))
+22:58:50.156 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.MergeToComprehensions - Building new Comprehension from:
+| Table TXS_SM : Vector[@t6<{ID: String', STARTTIME: String', ENDTIME: String', STATE: String', SUBSTATE: String', RESPONSE: String', EXTID: String', REQUEST: String', PRIORITY: Int'}>]
+
+22:58:50.157 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.MergeToComprehensions - Built new Comprehension:
+| Comprehension s29, None, None, ConstArray(), None, None, None, None : Vector[t30<{s31: String', s32: String', s33: String', s34: String', s35: Int', s36: String', s37: String', s38: String', s39: String'}>]
+|   from s29: Table TXS_SM : Vector[@t6<{ID: String', STARTTIME: String', ENDTIME: String', STATE: String', SUBSTATE: String', RESPONSE: String', EXTID: String', REQUEST: String', PRIORITY: Int'}>]
+|   select: Pure t30 : Vector[t30<{s31: String', s32: String', s33: String', s34: String', s35: Int', s36: String', s37: String', s38: String', s39: String'}>]
+|     value: StructNode : {s31: String', s32: String', s33: String', s34: String', s35: Int', s36: String', s37: String', s38: String', s39: String'}
+|       s31: Path s29.STATE : String'
+|       s32: Path s29.EXTID : String'
+|       s33: Path s29.REQUEST : String'
+|       s34: Path s29.RESPONSE : String'
+|       s35: Path s29.PRIORITY : Int'
+|       s36: Path s29.ENDTIME : String'
+|       s37: Path s29.STARTTIME : String'
+|       s38: Path s29.SUBSTATE : String'
+|       s39: Path s29.ID : String'
+
+22:58:50.157 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.MergeToComprehensions - Replacements are: Map((@t6,ID) -> s39, (@t6,STATE) -> s31, (@t6,STARTTIME) -> s37, (@t6,EXTID) -> s32, (@t6,RESPONSE) -> s34, (@t6,PRIORITY) -> s35, (@t6,SUBSTATE) -> s38, (@t6,REQUEST) -> s33, (@t6,ENDTIME) -> s36)
+22:58:50.158 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.MergeToComprehensions - Merging Filter into Comprehension:
+| Filter s4 : Vector[@t6<{ID: String', STARTTIME: String', ENDTIME: String', STATE: String', SUBSTATE: String', RESPONSE: String', EXTID: String', REQUEST: String', PRIORITY: Int'}>]
+|   from s4: ...
+|   where: Apply Function not : Boolean
+|     0: Apply Function = : Boolean
+|       0: Path s4.STATE : String'
+|       1: LiteralNode TODOWORKER (volatileHint=false) : String'
+
+22:58:50.158 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.MergeToComprehensions - Merged Filter into Comprehension:
+| Comprehension s29, Some(Apply Function not), None, ConstArray(), None, None, None, None : Vector[t30<{s31: String', s32: String', s33: String', s34: String', s35: Int', s36: String', s37: String', s38: String', s39: String'}>]
+|   from s29: Table TXS_SM : Vector[@t6<{ID: String', STARTTIME: String', ENDTIME: String', STATE: String', SUBSTATE: String', RESPONSE: String', EXTID: String', REQUEST: String', PRIORITY: Int'}>]
+|   select: Pure t30 : Vector[t30<{s31: String', s32: String', s33: String', s34: String', s35: Int', s36: String', s37: String', s38: String', s39: String'}>]
+|     value: StructNode : {s31: String', s32: String', s33: String', s34: String', s35: Int', s36: String', s37: String', s38: String', s39: String'}
+|       s31: Path s29.STATE : String'
+|       s32: Path s29.EXTID : String'
+|       s33: Path s29.REQUEST : String'
+|       s34: Path s29.RESPONSE : String'
+|       s35: Path s29.PRIORITY : Int'
+|       s36: Path s29.ENDTIME : String'
+|       s37: Path s29.STARTTIME : String'
+|       s38: Path s29.SUBSTATE : String'
+|       s39: Path s29.ID : String'
+|   where: Apply Function not : Boolean
+|     0: Apply Function = : Boolean
+|       0: Path s29.STATE : String'
+|       1: LiteralNode TODOWORKER (volatileHint=false) : String'
+
+22:58:50.159 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.MergeToComprehensions - Merging Bind into Comprehension as 'select':
+| Bind : Vector[t28<{s22: String', s21: String', s24: String', s19: String', s27: Int', s25: String', s26: String', s23: String', s20: String'}>]
+|   from s7: ...
+|   select: Pure t28 : Vector[t28<{s22: String', s21: String', s24: String', s19: String', s27: Int', s25: String', s26: String', s23: String', s20: String'}>]
+|     value: StructNode : {s22: String', s21: String', s24: String', s19: String', s27: Int', s25: String', s26: String', s23: String', s20: String'}
+|       s22: Path s7.EXTID : String'
+|       s21: Path s7.REQUEST : String'
+|       s24: Path s7.STATE : String'
+|       s19: Path s7.RESPONSE : String'
+|       s27: Path s7.PRIORITY : Int'
+|       s25: Path s7.ENDTIME : String'
+|       s26: Path s7.STARTTIME : String'
+|       s23: Path s7.SUBSTATE : String'
+|       s20: Path s7.ID : String'
+
+22:58:50.160 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.MergeToComprehensions - Merged Bind into Comprehension as 'select':
+| Comprehension s29, Some(Apply Function not), None, ConstArray(), None, None, None, None : Vector[t28<{s22: String', s21: String', s24: String', s19: String', s27: Int', s25: String', s26: String', s23: String', s20: String'}>]
+|   from s29: Table TXS_SM : Vector[@t6<{ID: String', STARTTIME: String', ENDTIME: String', STATE: String', SUBSTATE: String', RESPONSE: String', EXTID: String', REQUEST: String', PRIORITY: Int'}>]
+|   select: Pure t28 : Vector[t28<{s22: String', s21: String', s24: String', s19: String', s27: Int', s25: String', s26: String', s23: String', s20: String'}>]
+|     value: StructNode : {s22: String', s21: String', s24: String', s19: String', s27: Int', s25: String', s26: String', s23: String', s20: String'}
+|       s22: Path s29.EXTID : String'
+|       s21: Path s29.REQUEST : String'
+|       s24: Path s29.STATE : String'
+|       s19: Path s29.RESPONSE : String'
+|       s27: Path s29.PRIORITY : Int'
+|       s25: Path s29.ENDTIME : String'
+|       s26: Path s29.STARTTIME : String'
+|       s23: Path s29.SUBSTATE : String'
+|       s20: Path s29.ID : String'
+|   where: Apply Function not : Boolean
+|     0: Apply Function = : Boolean
+|       0: Path s29.STATE : String'
+|       1: LiteralNode TODOWORKER (volatileHint=false) : String'
+
+22:58:50.161 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.MergeToComprehensions - Replacements are: Map((t28,s22) -> s22, (t28,s19) -> s19, (t28,s21) -> s21, (t28,s24) -> s24, (t28,s20) -> s20, (t28,s27) -> s27, (t28,s26) -> s26, (t28,s25) -> s25, (t28,s23) -> s23)
+22:58:50.161 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.MergeToComprehensions - Mappings are: ConstArray(((t28,s22),List(s22)), ((t28,s19),List(s19)), ((t28,s21),List(s21)), ((t28,s24),List(s24)), ((t28,s20),List(s20)), ((t28,s27),List(s27)), ((t28,s26),List(s26)), ((t28,s25),List(s25)), ((t28,s23),List(s23)))
+22:58:50.162 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.QueryCompiler - After phase mergeToComprehensions:
+| ResultSetMapping : Vector[Mapped[(String', String', String', String', String', String', Int', String', String')]]
+|   from s18: Comprehension s29, Some(Apply Function not), None, ConstArray(), None, None, None, None : Vector[t28<{s22: String', s21: String', s24: String', s19: String', s27: Int', s25: String', s26: String', s23: String', s20: String'}>]
+|     from s29: Table TXS_SM : Vector[@t6<{ID: String', STARTTIME: String', ENDTIME: String', STATE: String', SUBSTATE: String', RESPONSE: String', EXTID: String', REQUEST: String', PRIORITY: Int'}>]
+|     select: Pure t28 : Vector[t28<{s22: String', s21: String', s24: String', s19: String', s27: Int', s25: String', s26: String', s23: String', s20: String'}>]
+|       value: StructNode : {s22: String', s21: String', s24: String', s19: String', s27: Int', s25: String', s26: String', s23: String', s20: String'}
+|         s22: Path s29.EXTID : String'
+|         s21: Path s29.REQUEST : String'
+|         s24: Path s29.STATE : String'
+|         s19: Path s29.RESPONSE : String'
+|         s27: Path s29.PRIORITY : Int'
+|         s25: Path s29.ENDTIME : String'
+|         s26: Path s29.STARTTIME : String'
+|         s23: Path s29.SUBSTATE : String'
+|         s20: Path s29.ID : String'
+|     where: Apply Function not : Boolean
+|       0: Apply Function = : Boolean
+|         0: Path s29.STATE : String'
+|         1: LiteralNode TODOWORKER (volatileHint=false) : String'
+|   map: TypeMapping : Mapped[(String', String', String', String', String', String', Int', String', String')]
+|     0: ProductNode : (String', String', String', String', String', String', Int', String', String')
+|       1: Path s18.s20 : String'
+|       2: Path s18.s22 : String'
+|       3: Path s18.s21 : String'
+|       4: Path s18.s24 : String'
+|       5: Path s18.s23 : String'
+|       6: Path s18.s19 : String'
+|       7: Path s18.s27 : Int'
+|       8: Path s18.s26 : String'
+|       9: Path s18.s25 : String'
+
+22:58:50.163 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.QueryCompiler - After phase optimizeScalar: (no change)
+22:58:50.165 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.RemoveFieldNames - Transformed RSM: 
+| ResultSetMapping
+|   from s18: Comprehension s29, Some(Apply Function not), None, ConstArray(), None, None, None, None : Vector[t28<(String', String', String', String', Int', String', String', String', String')>]
+|     from s29: Table TXS_SM : Vector[@t6<{ID: String', STARTTIME: String', ENDTIME: String', STATE: String', SUBSTATE: String', RESPONSE: String', EXTID: String', REQUEST: String', PRIORITY: Int'}>]
+|     select: Pure t28 : Vector[t28<(String', String', String', String', Int', String', String', String', String')>]
+|       value: ProductNode : (String', String', String', String', Int', String', String', String', String')
+|         1: Path s29.EXTID : String'
+|         2: Path s29.REQUEST : String'
+|         3: Path s29.STATE : String'
+|         4: Path s29.RESPONSE : String'
+|         5: Path s29.PRIORITY : Int'
+|         6: Path s29.ENDTIME : String'
+|         7: Path s29.STARTTIME : String'
+|         8: Path s29.SUBSTATE : String'
+|         9: Path s29.ID : String'
+|     where: Apply Function not : Boolean
+|       0: Apply Function = : Boolean
+|         0: Path s29.STATE : String'
+|         1: LiteralNode TODOWORKER (volatileHint=false) : String'
+|   map: TypeMapping : Mapped[(String', String', String', String', String', String', Int', String', String')]
+|     0: ProductNode : (String', String', String', String', String', String', Int', String', String')
+|       1: Path s18.s20 : String'
+|       2: Path s18.s22 : String'
+|       3: Path s18.s21 : String'
+|       4: Path s18.s24 : String'
+|       5: Path s18.s23 : String'
+|       6: Path s18.s19 : String'
+|       7: Path s18.s27 : Int'
+|       8: Path s18.s26 : String'
+|       9: Path s18.s25 : String'
+
+22:58:50.167 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.QueryCompiler - After phase removeFieldNames:
+| ResultSetMapping : Vector[Mapped[(String', String', String', String', String', String', Int', String', String')]]
+|   from s18: Comprehension s29, Some(Apply Function not), None, ConstArray(), None, None, None, None : Vector[t28<(String', String', String', String', Int', String', String', String', String')>]
+|     from s29: Table TXS_SM : Vector[@t6<{ID: String', STARTTIME: String', ENDTIME: String', STATE: String', SUBSTATE: String', RESPONSE: String', EXTID: String', REQUEST: String', PRIORITY: Int'}>]
+|     select: Pure t28 : Vector[t28<(String', String', String', String', Int', String', String', String', String')>]
+|       value: ProductNode : (String', String', String', String', Int', String', String', String', String')
+|         1: Path s29.EXTID : String'
+|         2: Path s29.REQUEST : String'
+|         3: Path s29.STATE : String'
+|         4: Path s29.RESPONSE : String'
+|         5: Path s29.PRIORITY : Int'
+|         6: Path s29.ENDTIME : String'
+|         7: Path s29.STARTTIME : String'
+|         8: Path s29.SUBSTATE : String'
+|         9: Path s29.ID : String'
+|     where: Apply Function not : Boolean
+|       0: Apply Function = : Boolean
+|         0: Path s29.STATE : String'
+|         1: LiteralNode TODOWORKER (volatileHint=false) : String'
+|   map: TypeMapping : Mapped[(String', String', String', String', String', String', Int', String', String')]
+|     0: ProductNode : (String', String', String', String', String', String', Int', String', String')
+|       1: Path s18._9 : String'
+|       2: Path s18._1 : String'
+|       3: Path s18._2 : String'
+|       4: Path s18._3 : String'
+|       5: Path s18._8 : String'
+|       6: Path s18._4 : String'
+|       7: Path s18._5 : Int'
+|       8: Path s18._7 : String'
+|       9: Path s18._6 : String'
+
+22:58:50.168 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.CodeGen - Compiling server-side and mapping with server-side:
+| Comprehension s29, Some(Apply Function not), None, ConstArray(), None, None, None, None : Vector[t28<(String', String', String', String', Int', String', String', String', String')>]
+|   from s29: Table TXS_SM : Vector[@t6<{ID: String', STARTTIME: String', ENDTIME: String', STATE: String', SUBSTATE: String', RESPONSE: String', EXTID: String', REQUEST: String', PRIORITY: Int'}>]
+|   select: Pure t28 : Vector[t28<(String', String', String', String', Int', String', String', String', String')>]
+|     value: ProductNode : (String', String', String', String', Int', String', String', String', String')
+|       1: Path s29.EXTID : String'
+|       2: Path s29.REQUEST : String'
+|       3: Path s29.STATE : String'
+|       4: Path s29.RESPONSE : String'
+|       5: Path s29.PRIORITY : Int'
+|       6: Path s29.ENDTIME : String'
+|       7: Path s29.STARTTIME : String'
+|       8: Path s29.SUBSTATE : String'
+|       9: Path s29.ID : String'
+|   where: Apply Function not : Boolean
+|     0: Apply Function = : Boolean
+|       0: Path s29.STATE : String'
+|       1: LiteralNode TODOWORKER (volatileHint=false) : String'
+
+22:58:50.169 [default-akka.actor.default-dispatcher-9] DEBUG s.relational.ResultConverterCompiler - Compiled ResultConverter
+| TypeMappingResultConverter
+|   child: ProductResultConverter
+|     1: SpecializedJdbcResultConverter$$anon$1 idx=9, name=<computed> : String'
+|     2: SpecializedJdbcResultConverter$$anon$1 idx=1, name=<computed> : String'
+|     3: SpecializedJdbcResultConverter$$anon$1 idx=2, name=<computed> : String'
+|     4: SpecializedJdbcResultConverter$$anon$1 idx=3, name=<computed> : String'
+|     5: SpecializedJdbcResultConverter$$anon$1 idx=8, name=<computed> : String'
+|     6: SpecializedJdbcResultConverter$$anon$1 idx=4, name=<computed> : String'
+|     7: BaseResultConverter$mcI$sp idx=5, name=<computed> : Int'
+|     8: SpecializedJdbcResultConverter$$anon$1 idx=7, name=<computed> : String'
+|     9: SpecializedJdbcResultConverter$$anon$1 idx=6, name=<computed> : String'
+
+22:58:50.169 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.CodeGen - Compiled server-side to:
+| CompiledStatement "select `EXTID`, `REQUEST`, `STATE`, `RESPONSE`, `PRIORITY`, `ENDTIME`, `STARTTIME`, `SUBSTATE`, `ID` from `TXS_SM` where not (`STATE` = 'TODOWORKER')" : Vector[t28<(String', String', String', String', Int', String', String', String', String')>]
+
+22:58:50.170 [default-akka.actor.default-dispatcher-9] DEBUG slick.compiler.QueryCompiler - After phase codeGen:
+| ResultSetMapping : Vector[Mapped[(String', String', String', String', String', String', Int', String', String')]]
+|   from s18: CompiledStatement "select `EXTID`, `REQUEST`, `STATE`, `RESPONSE`, `PRIORITY`, `ENDTIME`, `STARTTIME`, `SUBSTATE`, `ID` from `TXS_SM` where not (`STATE` = 'TODOWORKER')" : Vector[t28<(String', String', String', String', Int', String', String', String', String')>]
+|   map: CompiledMapping : Mapped[(String', String', String', String', String', String', Int', String', String')]
+|     converter: TypeMappingResultConverter
+|       child: ProductResultConverter
+|         1: SpecializedJdbcResultConverter$$anon$1 idx=9, name=<computed> : String'
+|         2: SpecializedJdbcResultConverter$$anon$1 idx=1, name=<computed> : String'
+|         3: SpecializedJdbcResultConverter$$anon$1 idx=2, name=<computed> : String'
+|         4: SpecializedJdbcResultConverter$$anon$1 idx=3, name=<computed> : String'
+|         5: SpecializedJdbcResultConverter$$anon$1 idx=8, name=<computed> : String'
+|         6: SpecializedJdbcResultConverter$$anon$1 idx=4, name=<computed> : String'
+|         7: BaseResultConverter$mcI$sp idx=5, name=<computed> : Int'
+|         8: SpecializedJdbcResultConverter$$anon$1 idx=7, name=<computed> : String'
+|         9: SpecializedJdbcResultConverter$$anon$1 idx=6, name=<computed> : String'
+
+22:58:50.170 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.QueryCompilerBenchmark - ------------------- Phase: Time ---------
+22:58:50.170 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.QueryCompilerBenchmark -       assignUniqueSymbols:    0.902848 ms
+22:58:50.170 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.QueryCompilerBenchmark -                inferTypes:    0.146169 ms
+22:58:50.170 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.QueryCompilerBenchmark -              expandTables:    2.201024 ms
+22:58:50.170 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.QueryCompilerBenchmark -           forceOuterBinds:    4.509993 ms
+22:58:50.170 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.QueryCompilerBenchmark -         removeMappedTypes:    1.153069 ms
+22:58:50.171 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.QueryCompilerBenchmark -                expandSums:    0.038931 ms
+22:58:50.171 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.QueryCompilerBenchmark -         emulateOuterJoins:    0.057688 ms
+22:58:50.171 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.QueryCompilerBenchmark -             expandRecords:    0.964430 ms
+22:58:50.171 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.QueryCompilerBenchmark -        flattenProjections:    4.153597 ms
+22:58:50.171 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.QueryCompilerBenchmark -              rewriteJoins:    0.066537 ms
+22:58:50.171 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.QueryCompilerBenchmark -             verifySymbols:    0.076447 ms
+22:58:50.171 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.QueryCompilerBenchmark -             relabelUnions:    0.055566 ms
+22:58:50.171 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.QueryCompilerBenchmark -          createAggregates:    0.030791 ms
+22:58:50.171 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.QueryCompilerBenchmark -           resolveZipJoins:    0.061582 ms
+22:58:50.171 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.QueryCompilerBenchmark -          pruneProjections:    0.689789 ms
+22:58:50.171 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.QueryCompilerBenchmark -           rewriteDistinct:    0.037162 ms
+22:58:50.171 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.QueryCompilerBenchmark -    createResultSetMapping:    2.307200 ms
+22:58:50.171 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.QueryCompilerBenchmark -            hoistClientOps:    4.387891 ms
+22:58:50.172 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.QueryCompilerBenchmark -         reorderOperations:    0.196779 ms
+22:58:50.172 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.QueryCompilerBenchmark -     mergeToComprehensions:    7.740214 ms
+22:58:50.172 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.QueryCompilerBenchmark -            optimizeScalar:    0.163864 ms
+22:58:50.172 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.QueryCompilerBenchmark -          removeFieldNames:    4.149349 ms
+22:58:50.172 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.QueryCompilerBenchmark -                   codeGen:    2.708544 ms
+22:58:50.172 [default-akka.actor.default-dispatcher-9] DEBUG s.compiler.QueryCompilerBenchmark -                     TOTAL:   36.799464 ms
+22:58:50.172 [default-akka.actor.default-dispatcher-9] DEBUG s.backend.DatabaseComponent.action - #1: StreamingInvokerAction$HeadOptionAction [select `EXTID`, `REQUEST`, `STATE`, `RESPONSE`, `PRIORITY`, `ENDTIME`, `STARTTIME`, `SUBSTATE`, `ID` from `TXS_SM` where not (`STATE` = 'TODOWORKER')]
+22:58:50.173 [mysqldb-1] DEBUG slick.jdbc.JdbcBackend.statement - Preparing statement: select `EXTID`, `REQUEST`, `STATE`, `RESPONSE`, `PRIORITY`, `ENDTIME`, `STARTTIME`, `SUBSTATE`, `ID` from `TXS_SM` where not (`STATE` = 'TODOWORKER')
+22:58:50.181 [mysqldb-1] DEBUG slick.jdbc.JdbcBackend.benchmark - Execution of prepared statement took 398µs
+22:58:50.182 [mysqldb-1] DEBUG slick.jdbc.StatementInvoker.result - /--------+----------------+----------+----------------------+----------+---------+-----------+----------+-----------\
+22:58:50.182 [mysqldb-1] DEBUG slick.jdbc.StatementInvoker.result - | 1      | 2              | 3        | 4                    | 5        | 6       | 7         | 8        | 9         |
+22:58:50.182 [mysqldb-1] DEBUG slick.jdbc.StatementInvoker.result - | EXTID  | REQUEST        | STATE    | RESPONSE             | PRIORITY | ENDTIME | STARTTIME | SUBSTATE | ID        |
+22:58:50.182 [mysqldb-1] DEBUG slick.jdbc.StatementInvoker.result - |--------+----------------+----------+----------------------+----------+---------+-----------+----------+-----------|
+22:58:50.182 [mysqldb-1] DEBUG slick.jdbc.StatementInvoker.result - | 123456 | a todo testing | VALIDATE | pass todo validation | 0        |         |           | DONESUB  | 420616867 |
+22:58:50.182 [mysqldb-1] DEBUG slick.jdbc.StatementInvoker.result - \--------+----------------+----------+----------------------+----------+---------+-----------+----------+-----------/
+[INFO] [04/02/2016 22:58:50.183] [default-akka.actor.default-dispatcher-5] [akka://default/user/$a/$a] I am in worker: Actor[akka://default/user/$a/$a#-655616289] 
+[INFO] [04/02/2016 22:58:50.183] [default-akka.actor.default-dispatcher-5] [akka://default/user/$a/$a] Got todo work: 420616867
+[DEBUG] [04/02/2016 22:58:50.222] [default-akka.actor.default-dispatcher-6] [akka://default/system/IO-TCP/selectors/$a/1] stopped
+[DEBUG] [04/02/2016 22:58:50.223] [default-akka.actor.default-dispatcher-8] [akka://default/system/IO-TCP/selectors/$a] received AutoReceiveMessage Envelope(Terminated(Actor[akka://default/system/IO-TCP/selectors/$a/1#-696261852]),Actor[akka://default/system/IO-TCP/selectors/$a/1#-696261852])
+[DEBUG] [04/02/2016 22:58:50.225] [default-akka.actor.default-dispatcher-9] [akka://default/user/StreamSupervisor-0/flow-1-0-unknown-operation] stopped
+Terminate batch job (Y/N)? 

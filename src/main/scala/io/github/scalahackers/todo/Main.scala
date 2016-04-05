@@ -14,7 +14,7 @@ object Main extends App
 
   // get it from config factory, TBD
   val httpHost = Properties.envOrElse("HOST", "0.0.0.0").toString
-  val httpPort = Properties.envOrElse("PORT", "8080").toInt
+  val httpPort = Properties.envOrElse("PORT", "8088").toInt
   implicit val system = ActorSystem()
   implicit val executor = system.dispatcher
   implicit val materializer = ActorMaterializer()
@@ -33,5 +33,5 @@ object Main extends App
   Http(system).bindAndHandle(routes, httpHost, port = httpPort)
     .foreach(binding => system.log.info("Bound to " + binding.localAddress))
 
-  todoManager ! JobProtocol.Ack("started!")
+  todoManager ! JobProtocol.WorkerAck("started!")
 }

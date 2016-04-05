@@ -7,7 +7,7 @@ case class TodoTxs(id: String, extid: String = "", request: String, state: Strin
 
 case object TodoTxs {
   def create(request: String, todoUpdate: TodoUpdate): TodoTxs = {
-    TodoTxs.create(TodoTxs(nextId(), "", request), todoUpdate)
+    TodoTxs.create(TodoTxs(nextId(), "", request, JobProtocol.initState), todoUpdate)
   }
 
   private def nextId() = Random.nextInt(Integer.MAX_VALUE).toString
