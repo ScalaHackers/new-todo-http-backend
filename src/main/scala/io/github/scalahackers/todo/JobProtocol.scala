@@ -63,7 +63,7 @@ object ManagerProtocol {
     extends StateRequest
 
   // notify from pipeline
-  case class TxsNotify(todo: TodoUpdate) extends StateRequest
+  case class TxsNotify(todo: TodoUpdate, subState: String) extends StateRequest
 
   case object Get extends StateRequest
 

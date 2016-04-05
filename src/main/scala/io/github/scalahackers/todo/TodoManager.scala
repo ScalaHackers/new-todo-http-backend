@@ -150,7 +150,7 @@ class TodoManagerActor extends BaseManager {
       sender() ! Status.Success()
 
     // message from Pipeline via RESTful interface
-    case TxsNotify(todoUpdate) =>
+    case TxsNotify(todoUpdate, subState) =>
       log.info("notify for accessionid: %s is in manager actor: %s".format(todoUpdate.extid, self.toString()))
 
       //      for (old <- Await.result(db.run(todos.filter(_.id === id).result.headOption), Duration.Inf)) {
@@ -160,16 +160,26 @@ class TodoManagerActor extends BaseManager {
       val update = new TodoUpdate(todoUpdate.extid,
         todoUpdate.request,
         Option(JobProtocol.finalState),
-        Option(JobProtocol.doneSubState),
+        Option(subState),
         Option("complete"), // response
         None, None, None )
 
-      for (old <- Await.result(db.run(todos.filter(_.extid === update.extid).result.headOption), Duration.Inf)) {
-        Await.result(db.run(todos.filter(_.extid === update.extid).update(TodoTxs.create(old, update))), Duration.Inf)
-      }
+      //for (old <- Await.result(db.run(todos.filter(_.extid === update.extid).result.headOption), Duration.Inf)) {
+      //   Await.result(db.run(todos.filter(_.extid === update.extid).update(TodoTxs.create(old, update))), Duration.Inf)
+      //}
+      //Query(todos).where(extid = update.extid ).map{txs => txs.state ~ txs.substate ~ txs.response}.update
+      //        ((StateProtocol.finalState, StateProtocol.doneSubState, todoUpdate.response))
+      //db.run(todos.filter(_.extid === update.extid).map(txs => (txs.state, txs.substate, txs.response))).
+      //      update((StateProtocol.finalState, StateProtocol.doneSubState, todoUpdate.response))
+      val columns = for {txs <- todos if txs.extid === update.extid } yield (txs.state, txs.substate, txs.response)
+      Await.result(db.run(columns.update((JobProtocol.finalState, subState, todoUpdate.response.getOrElse("no response")))),
+        Duration.Inf)
 
       log.info("notify for accessionid: %s is received".format(update.extid))
-    //sender() ! todoUpdate
+      sender() ! TodoTxs.create(update.request.getOrElse("No request"), update)
+    //      sender() ! ClientAck(todoUpdate.extid.getOrElse("error extid"), "",
+    //          ResponseData(todoUpdate.extid.getOrElse("error extid"), "completed!"))
+    //      self.forward(Get(id))
 
     // message from Workers
     case WorkerResponse(retWorkerId, state, todo, update) =>

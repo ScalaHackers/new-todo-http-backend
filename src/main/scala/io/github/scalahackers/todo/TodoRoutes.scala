@@ -80,7 +80,7 @@ trait TodoRoutes extends TodoMarshalling
         } ~
         post {
             entity(as[TodoUpdate]) { update =>
-              onSuccess(todoManager ? ManagerProtocol.TodoRequest(update, enrollState)) { todo =>
+              onSuccess(todoManager ? ManagerProtocol.TxsNotify(update, doneSubState)) { todo =>
                 complete(StatusCodes.OK, todo.asInstanceOf[TodoTxs])
               }
             }
