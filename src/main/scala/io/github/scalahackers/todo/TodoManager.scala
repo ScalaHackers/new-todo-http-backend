@@ -181,6 +181,7 @@ class TodoManagerActor extends BaseManager {
     //          ResponseData(todoUpdate.extid.getOrElse("error extid"), "completed!"))
     //      self.forward(Get(id))
 
+      // move txs to next state
     // message from Workers
     case WorkerResponse(retWorkerId, state, todo, update) =>
       log.info("response for accessionid: %s is received in manager actor: %s, from worker: %s".format(todo.id, self.toString(),
@@ -190,13 +191,11 @@ class TodoManagerActor extends BaseManager {
         // hd: to find which front end is sender
         log.debug("txs: %s is ready to send back".format(todo.id))
         // find the frontend from table Clients
-        clients.get(todo.id) match {
-          case Some(ref) =>
-            ref ! todo
-            log.info("txs: %s has been sent back to client : %s".format(todo.id, ref.toString()))
-            log.info("The response is + " + todo.toString)
-          case _ =>
-        }
+        clients.get(todo.id).foreach(ref => {
+          ref ! todo
+          log.info("txs: %s has been sent back to client : %s".format(todo.id, ref.toString()))
+          log.info("The response is + " + todo.toString)
+        })
       }
       // newly added
       log.debug("changeWorkerStatus: %s %s %s %s".format(retWorkerId, state, todo.id, Idle.toString()))
