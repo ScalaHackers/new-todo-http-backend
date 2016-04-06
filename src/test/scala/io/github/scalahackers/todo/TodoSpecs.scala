@@ -22,10 +22,10 @@ class TodoSpecs extends Suite
       }
     }
 
-    "create a todo with an order field" in {
+    "create a todo with an response field" in {
       Post("/todostxs", HttpEntity(`application/json`, """{ "extid": "123456", "request": "a todo", "response": "test" }""")) ~> routes ~> check {
         status should equal(StatusCodes.OK)
-        entityAs[JsObject].fields("response") should equal(JsString("test"))
+        entityAs[JsObject].fields("response") should equal(JsString("complete"))
       }
     }
   }

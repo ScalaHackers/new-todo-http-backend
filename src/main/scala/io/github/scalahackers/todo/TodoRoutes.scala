@@ -15,7 +15,7 @@ trait TodoRoutes extends TodoMarshalling
   import ManagerProtocol._
   import JobProtocol._
 
-  implicit val timeout: Timeout = 10 seconds
+  implicit val timeout: Timeout = 30 seconds
 
   def routes = {
     (respondWithHeaders(

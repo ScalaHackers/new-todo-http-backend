@@ -217,27 +217,22 @@ class TodoManagerActor extends BaseManager {
       return defaultStateMachineList.last
   }
 
-  def reSchedule(freeWorker: ActorRef, freeWorkerId: String, pendingState: String): Unit = {
+  def reSchedule: Unit = {
     // check all pending txs and send to available workers
-    var pendingList = for (pending <- Await.result(db.run(todos.filter(_.substate === newSubState).
-      filter(_.state =!= finalState).result.headOption), Duration.Inf))
-      yield pending
-
-    pendingList match {
-      case Some(pendingTxs) =>
-        var workersMap = stateWorkerMap.get(pendingTxs.state)
+    for (pending <- Await.result(db.run(todos.filter(_.substate === newSubState).
+      filter(_.state =!= finalState).result), Duration.Inf)) {
+        var workersMap = stateWorkerMap.get(pending.state)
         workersMap match {
           case Some(workers) =>
             workers.find(entry => entry._2.status == Idle).foreach {
               case (myWorkerId, WorkerState(ref, _)) =>
-                ref ! pendingTxs
-                changeWorkerStatus(myWorkerId, pendingTxs.state, pendingTxs.id, Busy(pendingTxs.id))
+                ref ! pending
+                changeWorkerStatus(myWorkerId, pending.state, pending.id, Busy(pending.id))
             }
           case None =>
-            log.info("No available worker for new txsid: {}, save in queue", pendingTxs.id)
+            log.info("No available worker for new txsid: {}, save in queue", pending.id)
         }
-      case _ =>
-    }
+      }
   }
 
   def changeWorkerStatus(workerId: String, workerType: String, txsId: String, newStatus: WorkerStatus): Unit = {
@@ -266,7 +261,7 @@ class TodoManagerActor extends BaseManager {
     }
 
     // TBD: check if there is pending txs in queue of todos, schedule it if so.
-    reSchedule(freeWorker, freeWorkerId, pendingState)
+    reSchedule
   }
 
   def addTxsClientMap(id: String, sender: ActorRef) = {
