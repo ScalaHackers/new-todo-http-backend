@@ -75,7 +75,7 @@ class TodoManagerActor extends BaseManager {
       context.actorOf(Props(new TodoWorker(self)))
       context.actorOf(Props(new SearchWorker(self)))
       //context.actorOf(Props(new NoneWorker(self)))
-      startRemoteWorker(5000, "remoteWorker")
+      startRemoteWorker(5000, "remoteBamWorker")
     }
   }
 
@@ -85,8 +85,8 @@ class TodoManagerActor extends BaseManager {
       withFallback(ConfigFactory.load("worker"))
     val system = ActorSystem("RemoteWorkerSystem", workerConf)
 
-    val remoteWorker = system.actorOf(Props(new RemoteActor(self)), actorName)
-    remoteWorker ! ManagerProtocol.Ack("started!")
+    val remoteBamWorker = system.actorOf(Props(new RemoteActor(self)), actorName)
+    remoteBamWorker ! ManagerProtocol.Ack("started!")
   }
 
   def receive = {
@@ -201,7 +201,6 @@ class TodoManagerActor extends BaseManager {
     //          ResponseData(todoUpdate.extid.getOrElse("error extid"), "completed!"))
     //      self.forward(Get(id))
 
-      // move txs to next state
     // message from Workers
     case WorkerResponse(retWorkerId, state, todo, update) =>
       log.info("response for accessionid: %s is received in manager actor: %s, from worker: %s".format(todo.id, self.toString(),
