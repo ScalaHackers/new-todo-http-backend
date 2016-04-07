@@ -33,6 +33,7 @@ object JobProtocol {
   val prepState     = "PREP"
   val todoState     = "TODO"
   val searchState   = "SEARCH"
+  val remoteState   = "REMOTE"
   val enrollState   = "ENROLL"
   val finalState    = "FINAL"
   val errorState    = "ERROR"

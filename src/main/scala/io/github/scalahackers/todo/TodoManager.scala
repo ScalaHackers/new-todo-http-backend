@@ -6,6 +6,12 @@ import scala.concurrent.Await
 import scala.concurrent.duration.Duration
 
 import scala.collection.mutable.Map
+import scala.collection.mutable.ArrayBuffer
+
+import com.typesafe.config.ConfigFactory
+
+import akka.actor.{ Props, Deploy, Address, AddressFromURIString }
+//import akka.remote.RemoteScope
 
 
 trait TodoManager {
@@ -40,23 +46,26 @@ class TodoManagerActor extends BaseManager {
   private var todoWorkers     = Map[String, WorkerState]()
   private var searchWorkers   = Map[String, WorkerState]()
   private var noneWorkers     = Map[String, WorkerState]()
+  private var remoteWorkers   = Map[String, WorkerState]()
   //more
 
   private var stateWorkerMap = Map[String, Map[String, WorkerState]]()
 
-  private var defaultStateMachineList = List[String]()
+  private var defaultStateMachineList = ArrayBuffer[String]()
 
   override def preStart(): Unit = {
     // workers' map by (workerType, set of workers for state)
     stateWorkerMap = Map(initState -> noneWorkers,
       todoState -> todoWorkers,
       searchState -> searchWorkers,
+      remoteState -> remoteWorkers,
       finalState -> noneWorkers)
 
     // map of stateMachine to workerType
-    defaultStateMachineList = List(initState,
+    defaultStateMachineList = ArrayBuffer(initState,
       todoState,
       searchState,
+      remoteState,
       finalState)
     log.info("TBD: to load configed workflow!")
 
@@ -66,7 +75,18 @@ class TodoManagerActor extends BaseManager {
       context.actorOf(Props(new TodoWorker(self)))
       context.actorOf(Props(new SearchWorker(self)))
       //context.actorOf(Props(new NoneWorker(self)))
+      startRemoteWorker(5000, "remoteBamWorker")
     }
+  }
+
+  def startRemoteWorker(port: Int, actorName: String): Unit = {
+    // load worker.conf
+    val workerConf = ConfigFactory.parseString("akka.remote.netty.tcp.port=" + port).
+      withFallback(ConfigFactory.load("worker"))
+    val system = ActorSystem("RemoteWorkerSystem", workerConf)
+
+    val remoteBamWorker = system.actorOf(Props(new RemoteActor(self)), actorName)
+    remoteBamWorker ! ManagerProtocol.Ack("started!")
   }
 
   def receive = {
@@ -79,10 +99,10 @@ class TodoManagerActor extends BaseManager {
       stateWorkerMap.get(workerType) match {
         case Some(sameTypeWorkers) => sameTypeWorkers.get(workerId) match {
           case Some(worker) =>
-            log.info("Worker re-registered: {}", workerId)
+            log.info("Worker re-registered: {} {}", workerId, workerType)
             sameTypeWorkers += (workerId ->WorkerState(sender(), Idle))
           case None =>
-            log.info("New worker registered: {}", workerId)
+            log.info("New worker registered: {} {}", workerId, workerType)
             sameTypeWorkers += (workerId ->WorkerState(sender(), Idle))
         }
 
@@ -190,31 +210,30 @@ class TodoManagerActor extends BaseManager {
         // hd: to find which front end is sender
         log.debug("txs: %s is ready to send back".format(todo.id))
         // find the frontend from table Clients
-        clients.get(todo.id) match {
-          case Some(ref) =>
-            ref ! todo
-            log.info("txs: %s has been sent back to client : %s".format(todo.id, ref.toString()))
-            log.info("The response is + " + todo.toString)
-          case _ =>
-        }
+        clients.get(todo.id).foreach(ref => {
+          ref ! todo
+          log.info("txs: %s has been sent back to client : %s".format(todo.id, ref.toString()))
+          log.info("The response is + " + todo.toString)
+        })
       }
       // newly added
       log.debug("changeWorkerStatus: %s %s %s %s".format(retWorkerId, state, todo.id, Idle.toString()))
       changeWorkerStatus(retWorkerId, state, todo.id, Idle)
 
       // move to next state
-      if (defaultStateMachineList.indexOf(state) < defaultStateMachineList.length) {
+      if (!(state.equalsIgnoreCase(defaultStateMachineList.last))) {
         changeTxsState(todo, getNextState(state), newSubState, sender(), retWorkerId, state)
-        println("move to next state {}", getNextState(state))
+        log.debug("txs %s move to next state %s ".format(todo.id, getNextState(state)))
       }
   }
 
   def getNextState(state: String): String = {
     val curStateIdx = defaultStateMachineList.indexOf(state)
-    if (curStateIdx < defaultStateMachineList.length)
-      return defaultStateMachineList(curStateIdx+1)
-    else
-      return defaultStateMachineList.last
+    val nextIdx =
+      if (curStateIdx == defaultStateMachineList.length - 1) defaultStateMachineList.length - 1
+      else curStateIdx + 1
+
+    return defaultStateMachineList(nextIdx)
   }
 
   def reSchedule: Unit = {

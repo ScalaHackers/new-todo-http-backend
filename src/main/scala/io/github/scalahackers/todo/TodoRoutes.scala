@@ -74,6 +74,15 @@ trait TodoRoutes extends TodoMarshalling
           }
         }
       } ~
+      path("remotework") {
+        post {
+          entity(as[TodoUpdate]) { update =>
+            onSuccess(todoManager ? ManagerProtocol.TodoRequest(update, remoteState)) { todo =>
+              complete(StatusCodes.OK, todo.asInstanceOf[TodoTxs])
+            }
+          }
+        }
+      } ~
       path("notifytxs") {
         get {
           complete(StatusCodes.OK)
