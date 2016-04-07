@@ -201,6 +201,7 @@ class TodoManagerActor extends BaseManager {
     //          ResponseData(todoUpdate.extid.getOrElse("error extid"), "completed!"))
     //      self.forward(Get(id))
 
+      // move txs to next state
     // message from Workers
     case WorkerResponse(retWorkerId, state, todo, update) =>
       log.info("response for accessionid: %s is received in manager actor: %s, from worker: %s".format(todo.id, self.toString(),
