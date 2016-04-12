@@ -15,7 +15,7 @@ trait TodoTxsTable extends DatabaseConfigOracle {
 
     def extid = column[String]("EXTID")
 
-    def request = column[String]("REQUEST")
+    def request = column[RequestPayload]("REQUEST")
 
     def state = column[String]("STATE")
 

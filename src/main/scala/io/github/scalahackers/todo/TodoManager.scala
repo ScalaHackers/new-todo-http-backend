@@ -58,14 +58,14 @@ class TodoManagerActor extends BaseManager {
     stateWorkerMap = Map(initState -> noneWorkers,
       todoState -> todoWorkers,
       searchState -> searchWorkers,
-      remoteState -> remoteWorkers,
+      //remoteState -> remoteWorkers,
       finalState -> noneWorkers)
 
     // map of stateMachine to workerType
     defaultStateMachineList = ArrayBuffer(initState,
       todoState,
       searchState,
-      remoteState,
+      //remoteState,
       finalState)
     log.info("TBD: to load configed workflow!")
 
@@ -196,7 +196,7 @@ class TodoManagerActor extends BaseManager {
         Duration.Inf)
 
       log.info("notify for accessionid: %s is received".format(update.extid))
-      sender() ! TodoTxs.create(update.request.getOrElse("No request"), update)
+      sender() ! TodoTxs.create(update.request.getOrElse(None), update)
     //      sender() ! ClientAck(todoUpdate.extid.getOrElse("error extid"), "",
     //          ResponseData(todoUpdate.extid.getOrElse("error extid"), "completed!"))
     //      self.forward(Get(id))

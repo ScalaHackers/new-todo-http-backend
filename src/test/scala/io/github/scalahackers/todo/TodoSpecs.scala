@@ -15,15 +15,15 @@ class TodoSpecs extends Suite
     with TodoManager {
 
   "The Todo backend" should {
-    "respond to a POST with the todo which was posted to it" in {
-      Post("/todostxs", HttpEntity(`application/json`, """{ "extid": "123456", "request": "a todo" }""")) ~> routes ~> check {
-        status should equal(StatusCodes.OK)
-        entityAs[JsObject].fields("request") should equal(JsString("a todo"))
-      }
-    }
+//    "respond to a POST with the todo which was posted to it" in {
+//      Post("/todostxs", HttpEntity(`application/json`, """{ "extid": "123456", "request": "a todo" }""")) ~> routes ~> check {
+//        status should equal(StatusCodes.OK)
+//        entityAs[JsObject].fields("request") should equal(JsString("a todo"))
+//      }
+//    }
 
     "create a todo with an response field" in {
-      Post("/todostxs", HttpEntity(`application/json`, """{ "extid": "123456", "request": "a todo", "response": "test" }""")) ~> routes ~> check {
+      Post("/todostxs", HttpEntity(`application/json`, """{ "extid": 123456, "request": {"type": "search", "task": "a todo"}}""")) ~> routes ~> check {
         status should equal(StatusCodes.OK)
         entityAs[JsObject].fields("response") should equal(JsString("complete"))
       }
