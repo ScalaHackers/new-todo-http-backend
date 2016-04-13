@@ -7,7 +7,7 @@ scalaVersion := "2.11.7"
 libraryDependencies ++= Seq(
   "com.typesafe.akka" %% "akka-http-experimental" % "2.4.3",
   "com.typesafe.akka" %% "akka-http-spray-json-experimental" % "2.4.3",
-  "io.spray" %%  "spray-json" % "1.3.2",
+  //"io.spray" %%  "spray-json" % "1.3.2",
   "com.typesafe.slick" %% "slick" % "3.1.0",
   "com.typesafe.slick" %% "slick-extensions" % "3.1.0",
   "com.oracle" % "ojdbc7" % "12.1.0.2",

@@ -11,7 +11,7 @@ trait TodoMarshalling extends SprayJsonSupport
   val standardTodoFormat  = jsonFormat9(TodoTxs.apply)
   implicit val todoUpdateFormat = jsonFormat8(TodoUpdate.apply)
 
-  def todoFormatFor(baseUrl: String)(implicit request: RequestPayload) = new RootJsonFormat[TodoTxs] {
+  def todoFormatFor(baseUrl: String) = new RootJsonFormat[TodoTxs] {
     def read(json: JsValue) = standardTodoFormat.read(json)
 
     def write(todo: TodoTxs) = {
