@@ -196,7 +196,7 @@ class TodoManagerActor extends BaseManager {
         Duration.Inf)
 
       log.info("notify for accessionid: %s is received".format(update.extid))
-      sender() ! TodoTxs.create(update.request.getOrElse(None), update)
+      sender() ! TodoTxs.create(update.request.get, update)
     //      sender() ! ClientAck(todoUpdate.extid.getOrElse("error extid"), "",
     //          ResponseData(todoUpdate.extid.getOrElse("error extid"), "completed!"))
     //      self.forward(Get(id))

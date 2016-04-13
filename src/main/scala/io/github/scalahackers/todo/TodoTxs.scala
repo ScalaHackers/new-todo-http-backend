@@ -2,12 +2,18 @@ package io.github.scalahackers.todo
 
 import scala.util.Random
 
-case class TodoTxs(id: String, extid: String = "", request: RequestPayload, state: String = "", substate: String = "",
-                   response: String = "", priority: Int = 0, starttime: String = "", endtime: String = "")
+case class RequestPayload(reqtype: String,
+                          reqtask: String)
 
-case class RequestPayload(reqtype: String, reqtask: String)
-
-case object RequestPayload extends RequestPayload
+case class TodoTxs(id: String,
+                   extid: String = "",
+                   request: RequestPayload,
+                   state: String = "",
+                   substate: String = "",
+                   response: String = "",
+                   priority: Int = 0,
+                   starttime: String = "",
+                   endtime: String = "")
 
 case object TodoTxs {
   def create(request: RequestPayload, todoUpdate: TodoUpdate): TodoTxs = {
