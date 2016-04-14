@@ -58,7 +58,7 @@ class TodoManagerActor extends BaseManager {
     stateWorkerMap = Map(initState -> noneWorkers,
       todoState -> todoWorkers,
       searchState -> searchWorkers,
-      //remoteState -> remoteWorkers,
+      remoteState -> remoteWorkers,
       finalState -> noneWorkers)
 
     // map of stateMachine to workerType

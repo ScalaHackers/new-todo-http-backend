@@ -16,6 +16,7 @@ trait TodoTxsTable extends DatabaseConfigOracle {
 
     //def request = column[String]("REQUEST")
     def reqtype = column[String]("REQTYPE")
+
     def reqtask = column[String]("REQTASK")
 
     def state = column[String]("STATE")

@@ -13,7 +13,10 @@ case class TodoTxs(id: String,
                    response: String = "",
                    priority: Int = 0,
                    starttime: String = "",
-                   endtime: String = "")
+                   endtime: String = "") {
+  //require(!extid.isEmpty, "extid must be present")
+  require(0 <= priority && priority < 10, "priority must be between 0 and 10")
+}
 
 case object TodoTxs {
   def create(request: RequestPayload, todoUpdate: TodoUpdate): TodoTxs = {

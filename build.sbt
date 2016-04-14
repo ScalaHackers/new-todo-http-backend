@@ -7,7 +7,7 @@ scalaVersion := "2.11.7"
 libraryDependencies ++= Seq(
   "com.typesafe.akka" %% "akka-http-experimental" % "2.4.3",
   "com.typesafe.akka" %% "akka-http-spray-json-experimental" % "2.4.3",
-  //"io.spray" %%  "spray-json" % "1.3.2",
+  "io.spray" %%  "spray-json" % "1.3.2",
   "com.typesafe.slick" %% "slick" % "3.1.0",
   "com.typesafe.slick" %% "slick-extensions" % "3.1.0",
   "com.oracle" % "ojdbc7" % "12.1.0.2",
@@ -16,7 +16,7 @@ libraryDependencies ++= Seq(
   "com.typesafe.scala-logging" %% "scala-logging" % "3.1.0",
   "org.slf4j" % "slf4j-api" % "1.7.19",
   "org.slf4j" % "log4j-over-slf4j" % "1.7.19",
-  //"ch.qos.logback" % "logback-classic" % "1.1.2" % Runtime,
+  "ch.qos.logback" % "logback-classic" % "1.1.2" % Runtime,
   "org.scalatest" %% "scalatest" % "2.2.4" % "test"
 )
 
