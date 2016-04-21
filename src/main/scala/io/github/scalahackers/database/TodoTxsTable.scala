@@ -1,4 +1,6 @@
-package io.github.scalahackers.todo
+package io.github.scalahackers.database
+
+import io.github.scalahackers.service.{RequestPayload, TodoTxs}
 
 //trait TodoTxsTable extends DatabaseConfig {
 trait TodoTxsTable extends DatabaseConfigOracle {

@@ -1,4 +1,4 @@
-package io.github.scalahackers.todo
+package io.github.scalahackers.database
 
 trait DatabaseConfig {
   val driver = slick.driver.MySQLDriver

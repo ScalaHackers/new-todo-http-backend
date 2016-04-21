@@ -1,4 +1,4 @@
-package io.github.scalahackers.todo
+package io.github.scalahackers.service
 
 import akka.http.scaladsl.model.HttpMethods._
 import akka.http.scaladsl.model._

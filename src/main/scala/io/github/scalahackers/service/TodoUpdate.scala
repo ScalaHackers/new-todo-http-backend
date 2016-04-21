@@ -1,4 +1,4 @@
-package io.github.scalahackers.todo
+package io.github.scalahackers.service
 
 case class TodoUpdate(extid: Option[String],
                       request: Option[RequestPayload],

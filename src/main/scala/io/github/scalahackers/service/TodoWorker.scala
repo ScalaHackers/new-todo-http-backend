@@ -1,4 +1,4 @@
-package io.github.scalahackers.todo
+package io.github.scalahackers.service
 
 import java.util.UUID
 

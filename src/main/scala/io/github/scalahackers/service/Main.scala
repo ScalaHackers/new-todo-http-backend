@@ -1,9 +1,10 @@
-package io.github.scalahackers.todo
+package io.github.scalahackers.service
 
 import akka.actor._
 import akka.http.scaladsl.Http
 import akka.stream._
 import com.typesafe.config.ConfigFactory
+import io.github.scalahackers.database.TodoTxsTable
 
 import scala.util._
 
