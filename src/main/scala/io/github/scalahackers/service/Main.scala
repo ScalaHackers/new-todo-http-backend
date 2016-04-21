@@ -4,12 +4,13 @@ import akka.actor._
 import akka.http.scaladsl.Http
 import akka.stream._
 import com.typesafe.config.ConfigFactory
-import io.github.scalahackers.database.TodoTxsTable
+
 
 import scala.util._
 
 object Main extends App
   //with TodoManager
+  //with Service
   with TodoRoutes
   with TodoTxsTable {
 
@@ -19,6 +20,9 @@ object Main extends App
   implicit val system = ActorSystem()
   implicit val executor = system.dispatcher
   implicit val materializer = ActorMaterializer()
+
+  val config = ConfigFactory.load()
+  //override val logger = Logging(system, getClass)
 
   // load todo.conf
   //val conf = ConfigFactory.parseString("akka.remote.http.port=" + port).
@@ -31,7 +35,7 @@ object Main extends App
   //  val setupAction: DBIO[Unit] = DBIO.seq(todos.schema.create)
   //  Await.result(db.run(setupAction), Duration.Inf)
 
-  Http(system).bindAndHandle(routes, httpHost, port = httpPort)
+  Http(system).bindAndHandle(routes, config.getString("http.interface"), config.getInt("http.port"))
     .foreach(binding => system.log.info("Bound to " + binding.localAddress))
 
   todoManager ! JobProtocol.WorkerAck("started!")

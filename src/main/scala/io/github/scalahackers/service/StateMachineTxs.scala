@@ -1,7 +1,4 @@
-package io.github.scalahackers.database
-
-import io.github.scalahackers.service.RequestPayload
-import io.github.scalahackers.service.TodoTxs
+package io.github.scalahackers.service
 
 //import slick.profile.RelationalTableComponent.Table
 
@@ -9,9 +6,6 @@ import io.github.scalahackers.service.TodoTxs
 trait TodoTxsTable extends DatabaseConfigOracle {
 
   import driver.api._
-  import java.sql.Timestamp
-  import slick.lifted.{Shape, ShapeLevel, TupleShape}
-  import slick.util.TupleSupport
   import slick.lifted.Rep
 
   case class LiftedRequestPayload(reqtype: Rep[String],

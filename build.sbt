@@ -2,7 +2,7 @@ name := "new-todo-http-backend"
 
 packageArchetype.java_application
 
-scalaVersion := "2.11.7"
+scalaVersion := "2.11.8"
 
 libraryDependencies ++= Seq(
   "com.typesafe.akka" %% "akka-http-experimental" % "2.4.3",

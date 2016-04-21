@@ -1,4 +1,4 @@
-package io.github.scalahackers.database
+package io.github.scalahackers.service
 
 /**
   * Created by hdong on 3/14/2016.

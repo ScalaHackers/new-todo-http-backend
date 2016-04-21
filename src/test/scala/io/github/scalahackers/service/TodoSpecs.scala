@@ -1,11 +1,12 @@
 package io.github.scalahackers.service
-package io.github.scalahackers.database
 
 import akka.http.scaladsl.model.ContentTypes._
 import akka.http.scaladsl.model._
 import akka.http.scaladsl.testkit._
+import akka.http.scaladsl.testkit.ScalatestRouteTest
 import org.scalatest._
 import spray.json._
+
 
 class TodoSpecs extends Suite
     with ScalatestRouteTest
