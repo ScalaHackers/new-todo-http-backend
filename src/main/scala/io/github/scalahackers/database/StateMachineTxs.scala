@@ -6,7 +6,7 @@ import io.github.scalahackers.service.TodoTxs
 //import slick.profile.RelationalTableComponent.Table
 
 //trait SmTxsTable extends DatabaseConfig {
-trait StateMachineTxsTable extends DatabaseConfigOracle {
+trait TodoTxsTable extends DatabaseConfigOracle {
 
   import driver.api._
   import java.sql.Timestamp
@@ -30,8 +30,8 @@ trait StateMachineTxsTable extends DatabaseConfigOracle {
   implicit object RequestPayloadShape extends CaseClassShape(LiftedRequestPayload.tupled, RequestPayload.tupled)
 
   class RequestPayloadRow(tag: Tag) extends Table[RequestPayload](tag, "REQUEST_PAYLOAD") {
-    def reqtype = column[String]("reqtype")
-    def reqtask = column[String]("reqtask")
+    def reqtype = column[String]("REQTYPE")
+    def reqtask = column[String]("REQTASK")
     def * = LiftedRequestPayload(reqtype, reqtask)
   }
   val requestpayload = TableQuery[RequestPayloadRow]
@@ -39,7 +39,7 @@ trait StateMachineTxsTable extends DatabaseConfigOracle {
 
   implicit object TodoTxsShape extends CaseClassShape(LiftedTodoTxs.tupled, (TodoTxs.apply _).tupled)
 
-  class TodosTxsRow(tag: Tag) extends Table[TodoTxs](tag, "TXS_SM") {
+  class TodosTxs(tag: Tag) extends Table[TodoTxs](tag, "TXS_SM") {
 
     def id = column[String]("ID", O.PrimaryKey)
 
@@ -63,9 +63,16 @@ trait StateMachineTxsTable extends DatabaseConfigOracle {
     def endtime = column[String]("ENDTIME")
 
     def projection = LiftedTodoTxs(
-      //column("REQTYPE"),
-      //column("REQTASK"), // (cols defined inline, type inferred)
-      LiftedRequestPayload(reqtask, reqtask)
+      column[String]("ID"),
+      column[String]("EXTID"),
+      LiftedRequestPayload(reqtype, reqtask),
+      column[String]("STATE"),
+      column[String]("SUBSTATE"),
+      column[String]("RESPONSE"),
+      column[Int]("PRIORITY"),
+      column[String]("STARTTIME"),
+      column[String]("ENDTIME")
+      // (cols defined inline, type inferred)
     )
 
     def * = projection
@@ -81,6 +88,6 @@ trait StateMachineTxsTable extends DatabaseConfigOracle {
     //<>((TodoTxs.apply _).tupled, TodoTxs.unapply)
   }
 
-  protected val todos = TableQuery[TodosTxsRow]
+  protected val todos = TableQuery[TodosTxs]
 
 }

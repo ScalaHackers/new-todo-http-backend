@@ -3,14 +3,14 @@ package io.github.scalahackers.database
 import io.github.scalahackers.service.{RequestPayload, TodoTxs}
 
 //trait TodoTxsTable extends DatabaseConfig {
-trait TodoTxsTable extends DatabaseConfigOracle {
+trait SMTodoTxsTable extends DatabaseConfigOracle {
 
   import driver.api._
 
   // same table
-  protected val todos = TableQuery[TodosTxs]
+  protected val todos = TableQuery[SMTodosTxs]
 
-  class TodosTxs(tag: Tag) extends Table[TodoTxs](tag, "TXS_SM") {
+  class SMTodosTxs(tag: Tag) extends Table[TodoTxs](tag, "TXS_SM") {
 
     def id = column[String]("ID", O.PrimaryKey)
 

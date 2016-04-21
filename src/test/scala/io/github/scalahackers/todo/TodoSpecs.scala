@@ -1,4 +1,5 @@
-package io.github.scalahackers.todo
+package io.github.scalahackers.service
+package io.github.scalahackers.database
 
 import akka.http.scaladsl.model.ContentTypes._
 import akka.http.scaladsl.model._
