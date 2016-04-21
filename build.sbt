@@ -22,4 +22,6 @@ libraryDependencies ++= Seq(
 
 Revolver.settings
 
+scalacOptions ++= Seq("-unchecked", "-deprecation", "-Ylog-classpath")
+
 resolvers += "Typesafe Releases" at "http://repo.typesafe.com/typesafe/maven-releases/"

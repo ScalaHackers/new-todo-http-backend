@@ -259,8 +259,8 @@ class TodoManagerActor extends BaseManager {
     stateWorkerMap.get(workerType) match {
       case Some(sameTypeWorkers) => sameTypeWorkers.get(workerId) match {
         case Some(worker) =>
-          sameTypeWorkers += (workerId -> WorkerState(sender(), newStatus))
-        //sameTypeWorkers += (workerId -> worker.copy(status = newStatus))
+          //sameTypeWorkers += (workerId -> WorkerState(sender(), newStatus))
+          sameTypeWorkers += (workerId -> worker.copy(status = newStatus))
         case _ ⇒
       }
       case _ =>
